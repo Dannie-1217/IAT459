@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2025 at 06:25 AM
+-- Generation Time: Mar 20, 2025 at 05:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,6 +64,52 @@ CREATE TABLE `pet` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `pet`
+--
+
+INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `description`) VALUES
+(10000, 'Bella', 'Vancouver, BC', 'dog', '2025-01-01', 'Bella is a friendly and well-trained golden retriever who loves playing fetch in the park. She is great with kids and other dogs, perfect family pet.'),
+(10001, 'Whiskers', 'Burnaby, BC', 'cat', '2025-01-03', 'Whiskers is a gentle gray tabby cat who enjoys lounging by the window and soaking up the sun. She loves cuddles and is very affectionate.'),
+(10002, 'Thunder', 'Richmond, BC', 'horse', '2025-01-04', 'Thunder is a majestic black stallion with a calm temperament. He is trained for trail rides and enjoys open pastures. Ideal for experienced riders.'),
+(10003, 'Fluffy', 'Coquitlam, BC', 'rabbit', '2025-01-07', 'Fluffy is a cute white bunny with floppy ears who loves being petted. She enjoys hopping around and munching on fresh greens and carrots.'),
+(10004, 'Sunny', 'Surrey, BC', 'bird', '2025-01-08', 'Sunny is a bright yellow parrot known for singing beautiful melodies every morning. He is social and can mimic a few words with regular interaction.'),
+(10005, 'Goldie', 'North Vancouver, BC', 'fish', '2025-01-12', 'Goldie is a graceful goldfish with shimmering scales. Easy to care for, she adds a calming presence to any aquarium.'),
+(10006, 'Oreo', 'New Westminster, BC', 'cat', '2025-01-15', 'Oreo is a playful black and white kitten who loves chasing toys and exploring new spaces. Very friendly and gets along with other pets.'),
+(10007, 'Rocky', 'Port Coquitlam, BC', 'dog', '2025-01-19', 'Rocky is an energetic husky with striking blue eyes. He loves outdoor adventures, long walks, and playing with his favorite ball.'),
+(10008, 'Shadow', 'Delta, BC', 'horse', '2025-01-22', 'Shadow is a beautiful brown mare with a gentle personality. She is perfect for light riding and enjoys quiet time in the stable or out in the field.'),
+(10009, 'Nibbles', 'Langley, BC', 'rabbit', '2025-01-28', 'Nibbles is a sweet little bunny who loves attention and treats. She enjoys being held and will happily sit on your lap while nibbling on vegetables.'),
+(10010, 'Daisy', 'Vancouver, BC', 'dog', '2025-02-01', 'Daisy is a sweet golden doodle who loves long walks along the seawall. Friendly with kids and other dogs, perfect for a family.'),
+(10011, 'Milo', 'Burnaby, BC', 'cat', '2025-02-03', 'Milo is an adventurous orange tabby who loves exploring high places. He is food-motivated and purrs loudly when happy.'),
+(10012, 'Spirit', 'Richmond, BC', 'horse', '2025-02-05', 'Spirit is a beautiful young black horse, ideal for trail rides. Calm and bonds quickly with gentle riders.'),
+(10013, 'Mochi', 'Coquitlam, BC	', 'rabbit	', '2025-02-06', 'Mochi is a fluffy grey bunny who enjoys fresh greens and hopping around the living room. Loves being hand-fed treats.\r\n'),
+(10014, 'Kiwi', 'Surrey, BC', 'bird', '2025-02-08', 'Kiwi is a talkative green parakeet that enjoys learning new words. Social and loves sitting on your shoulder.'),
+(10015, 'Bubbles', 'North Vancouver, BC', 'fish', '2025-02-10', 'Bubbles is a vibrant betta fish with long flowing fins. Peaceful and easy to care for, perfect for any small tank.'),
+(10016, 'Luna', 'New Westminster, BC', 'cat', '2025-02-12', 'Luna is a shy black cat who warms up quickly with treats. Loves chin scratches and sunbathing by the window.'),
+(10017, 'Max', 'Port Coquitlam, BC', 'dog', '2025-02-14', 'Max is a high-energy Labrador retriever who loves swimming and fetch. Always ready for outdoor adventures.'),
+(10018, 'Maple', 'Delta, BC', 'horse', '2025-02-17', 'Maple is a gentle brown mare, perfect for beginner riders. She is calm and enjoys peaceful walks through fields and forests.'),
+(10019, 'Peanut', 'Langley, BC', 'rabbit', '2025-02-19', 'Peanut is a small tan bunny who loves cuddles and chewing on cardboard toys. Great with kids.'),
+(10020, 'Sky', 'Vancouver, BC', 'bird', '2025-02-20', 'Sky is a blue budgie with a sweet singing voice. Loves sitting by the window and watching the world outside.'),
+(10021, 'Coral', 'Burnaby, BC', 'fish', '2025-02-22', 'Coral is a bright neon tetra, perfect for community tanks. Loves swimming in schools and creates a colorful display.'),
+(10022, 'Tiger', 'Richmond, BC', 'cat', '2025-02-25', 'Tiger is a playful tabby cat who loves climbing and exploring. Gets along well with other pets.'),
+(10023, 'Bruno', 'Coquitlam, BC', 'dog', '2025-02-27', 'Bruno is a loyal German Shepherd who is protective but loving. Excellent family dog with basic obedience training.'),
+(10024, 'Hazel', 'Surrey, BC', 'rabbit', '2025-03-01', 'Hazel is a gentle brown rabbit who enjoys being brushed. Prefers quiet environments and soft bedding.'),
+(10025, 'Mango', 'North Vancouver, BC', 'bird', '2025-03-03', 'Mango is a colorful sun conure with a playful personality. Loves fruit treats and knows a few words.'),
+(10026, 'Neptune', 'New Westminster, BC', 'fish', '2025-03-05', 'Neptune is a large koi fish with stunning orange and white patterns. Peaceful and ideal for ponds.'),
+(10027, 'Olive', 'Port Coquitlam, BC', 'cat', '2025-03-07', 'Olive is a sweet rescue cat with mismatched eyes. Loves sleeping in cozy corners and being brushed.'),
+(10028, 'Diesel', 'Delta, BC', 'dog', '2025-03-09', 'Diesel is a strong Rottweiler with a calm demeanor. Great guard dog but gentle with family.'),
+(10029, 'Coco', 'Langley, BC', 'rabbit', '2025-03-11', 'Coco is a curious black rabbit who enjoys exploring the backyard. Loves munching on lettuce and carrots.'),
+(10030, 'Blue', 'Vancouver, BC', 'bird', '2025-03-12', 'Blue is a majestic macaw with bright blue feathers. Enjoys flying in open spaces and mimicking sounds.'),
+(10031, 'Marble', 'Burnaby, BC', 'fish', '2025-03-14', 'Marble is a marble-patterned angelfish who adds elegance to any tank. Loves swimming through plants.'),
+(10032, 'Simba', 'Richmond, BC', 'cat', '2025-03-16', 'Simba is a big fluffy Maine Coon who loves being the center of attention. Very social and good with children.'),
+(10033, 'Rocky', 'Coquitlam, BC', 'dog', '2025-03-18', 'Rocky is a husky mix with endless energy. Enjoys hikes and outdoor play. Best suited for an active family.\r\n'),
+(10034, 'Snowball', 'Surrey, BC', 'rabbit', '2025-03-20', 'Snowball is a pure white rabbit with red eyes. Very gentle and loves nibbling on apples.'),
+(10035, 'Lemon', 'North Vancouver, BC', 'bird', '2025-03-22', 'Lemon is a small canary with a bright yellow coat. Known for singing sweet melodies every morning.'),
+(10036, 'Flash', 'New Westminster, BC', 'fish', '2025-03-24', 'Flash is a speedy goldfish who loves racing around the tank. Very active and fun to watch.'),
+(10037, 'Bella', 'Port Coquitlam, BC', 'cat', '2025-03-26', 'Bella is a loving Siamese cat who enjoys being close to people. Loves sitting on laps and purring for hours.'),
+(10038, 'Rex', 'Delta, BC', 'dog', '2025-03-28', 'Rex is a border collie known for his intelligence and agility. Perfect for someone who loves training and outdoor activities.'),
+(10039, 'Carrot', 'Langley, BC', 'rabbit', '2025-03-30', 'Carrot is an orange bunny who gets excited every time she sees her food bowl. Very friendly and loves to play.');
+
 -- --------------------------------------------------------
 
 --
@@ -72,7 +118,7 @@ CREATE TABLE `pet` (
 
 CREATE TABLE `pet_images` (
   `pet_id` int(5) NOT NULL,
-  `images` varbinary(20000) NOT NULL
+  `images` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -83,7 +129,7 @@ CREATE TABLE `pet_images` (
 
 CREATE TABLE `pet_tags` (
   `pet_id` int(5) NOT NULL,
-  `tags` varchar(20) NOT NULL
+  `tag_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -94,7 +140,30 @@ CREATE TABLE `pet_tags` (
 
 CREATE TABLE `preferences` (
   `user_id` int(5) NOT NULL,
-  `preferences_tags` varchar(20) NOT NULL
+  `tag_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `provide_records`
+--
+
+CREATE TABLE `provide_records` (
+  `user_id` int(5) NOT NULL,
+  `pet_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `tag_id` int(5) NOT NULL,
+  `tag_name` varchar(20) NOT NULL,
+  `tag_type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -105,13 +174,36 @@ CREATE TABLE `preferences` (
 
 CREATE TABLE `user` (
   `user_id` int(5) NOT NULL,
+  `user_type` varchar(20) NOT NULL,
   `user_name` varchar(15) NOT NULL,
   `password` varchar(20) NOT NULL,
   `legal_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `other_contact` varchar(50) NOT NULL,
-  `profile_photo` varbinary(8000) NOT NULL
+  `profile_photo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_type`, `user_name`, `password`, `legal_name`, `email`, `other_contact`, `profile_photo`) VALUES
+(10000, '', 'jone_doe', 'password123', 'John Doe', 'john.doe@workmail.com', '123-456-7890', 'profilephoto/10000.jpg'),
+(10001, '', 'jane_smith', 'securepass', 'Jane Smith', 'jane.smith@workmail.com', '321-645-8790', 'profilephoto/10001.jpg'),
+(10002, '', 'mike_lee', 'mikepass456', 'Michael Lee', 'mike.lee@workmail.com', '555-578-1234', 'profilephoto/10002.jpg'),
+(10003, '', 'sarah_conner', 'terminator', 'Sarah Conner', 'sara.conner@workmail.com', '123-778-0931', 'profilephoto/10003.jpg'),
+(10004, '', 'alex_wong', 'alex@123', 'Alex Wong', 'alex.wong@workmail.com', '789-445-1200', 'profilephoto/10004.jpg'),
+(10005, '', 'alice_chen', 'qwer123', 'Alice Chen', 'alice.chen@workmail.com', '998-778-6523', 'profilephoto/10005.jpg'),
+(10006, '', 'mark_wang', 'passMark99', 'Mark Wang', 'mark.wang@workmail.com', '555-123-7890', 'profilephoto/10006.jpg'),
+(10007, '', 'emily_chan', 'emilyPass88', 'Emily Chan', 'emily.chan@workmail.com', '222-333-4444', 'profilephoto/10007.jpg'),
+(10008, '', 'tom_huang', 'tom123456', 'Tom Huang', 'tom.huang@workmail.com', '666-777-8888', 'profilephoto/10008.jpg'),
+(10009, '', 'lucy_kim', 'luckyLucy7', 'Lucy Kim', 'lucy.kim@example.com', '424-553-6866', 'profilephoto/10009.jpg'),
+(10010, '', 'jone_yang', 'zxcvb123', 'Jone Yang', 'john.yang@workmail.com', '778-062-2451', 'profilephoto/10010.jpg'),
+(10011, '', 'mary_smith', 'secret123', 'Mary Smith', 'mary.smith@workmail.com', '798-260-2377', 'profilephoto/10011.jpg'),
+(10012, '', 'james_wilson', 'mypassword', 'James Wilson', 'james.wilson@workmail.com', '236-887-1116', 'profilephoto/10012.jpg'),
+(10013, '', 'sarah_jones', '12345Secure', 'Sarah Jones', 'sarah.jones@workmail.com', 'pass1998', 'profilephoto/10013.jpg'),
+(10014, '', 'robert_brown', 'pass2000', 'Robert Brown', 'robert.brown@workmail.com', '236-562-7388', 'profilephoto/10014.jpg'),
+(10015, '', 'linda_taylor', '123lind', 'Linda Taylor', 'linda.taylor@workmail.com', '798-181-2233', 'profilephoto/10015.jpg');
 
 --
 -- Indexes for dumped tables
@@ -147,13 +239,28 @@ ALTER TABLE `pet_images`
 -- Indexes for table `pet_tags`
 --
 ALTER TABLE `pet_tags`
-  ADD KEY `pet_id` (`pet_id`);
+  ADD KEY `pet_id` (`pet_id`),
+  ADD KEY `tag_id` (`tag_id`);
 
 --
 -- Indexes for table `preferences`
 --
 ALTER TABLE `preferences`
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `tag_id` (`tag_id`);
+
+--
+-- Indexes for table `provide_records`
+--
+ALTER TABLE `provide_records`
+  ADD KEY `pet_id` (`pet_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`tag_id`);
 
 --
 -- Indexes for table `user`
@@ -189,13 +296,22 @@ ALTER TABLE `pet_images`
 -- Constraints for table `pet_tags`
 --
 ALTER TABLE `pet_tags`
-  ADD CONSTRAINT `pet_tags_ibfk_1` FOREIGN KEY (`pet_id`) REFERENCES `pet` (`pet_id`);
+  ADD CONSTRAINT `pet_tags_ibfk_1` FOREIGN KEY (`pet_id`) REFERENCES `pet` (`pet_id`),
+  ADD CONSTRAINT `pet_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`);
 
 --
 -- Constraints for table `preferences`
 --
 ALTER TABLE `preferences`
-  ADD CONSTRAINT `preferences_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `preferences_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `preferences_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`);
+
+--
+-- Constraints for table `provide_records`
+--
+ALTER TABLE `provide_records`
+  ADD CONSTRAINT `provide_records_ibfk_1` FOREIGN KEY (`pet_id`) REFERENCES `pet` (`pet_id`),
+  ADD CONSTRAINT `provide_records_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
