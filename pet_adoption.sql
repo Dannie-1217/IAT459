@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 20, 2025 at 05:35 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost
+-- Generation Time: Mar 22, 2025 at 01:23 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -162,8 +162,7 @@ CREATE TABLE `provide_records` (
 
 CREATE TABLE `tags` (
   `tag_id` int(5) NOT NULL,
-  `tag_name` varchar(20) NOT NULL,
-  `tag_type` varchar(50) NOT NULL
+  `content` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -176,7 +175,7 @@ CREATE TABLE `user` (
   `user_id` int(5) NOT NULL,
   `user_type` varchar(20) NOT NULL,
   `user_name` varchar(15) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `legal_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `other_contact` varchar(50) NOT NULL,
@@ -188,22 +187,24 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_type`, `user_name`, `password`, `legal_name`, `email`, `other_contact`, `profile_photo`) VALUES
-(10000, '', 'jone_doe', 'password123', 'John Doe', 'john.doe@workmail.com', '123-456-7890', 'profilephoto/10000.jpg'),
-(10001, '', 'jane_smith', 'securepass', 'Jane Smith', 'jane.smith@workmail.com', '321-645-8790', 'profilephoto/10001.jpg'),
-(10002, '', 'mike_lee', 'mikepass456', 'Michael Lee', 'mike.lee@workmail.com', '555-578-1234', 'profilephoto/10002.jpg'),
-(10003, '', 'sarah_conner', 'terminator', 'Sarah Conner', 'sara.conner@workmail.com', '123-778-0931', 'profilephoto/10003.jpg'),
-(10004, '', 'alex_wong', 'alex@123', 'Alex Wong', 'alex.wong@workmail.com', '789-445-1200', 'profilephoto/10004.jpg'),
-(10005, '', 'alice_chen', 'qwer123', 'Alice Chen', 'alice.chen@workmail.com', '998-778-6523', 'profilephoto/10005.jpg'),
-(10006, '', 'mark_wang', 'passMark99', 'Mark Wang', 'mark.wang@workmail.com', '555-123-7890', 'profilephoto/10006.jpg'),
-(10007, '', 'emily_chan', 'emilyPass88', 'Emily Chan', 'emily.chan@workmail.com', '222-333-4444', 'profilephoto/10007.jpg'),
-(10008, '', 'tom_huang', 'tom123456', 'Tom Huang', 'tom.huang@workmail.com', '666-777-8888', 'profilephoto/10008.jpg'),
-(10009, '', 'lucy_kim', 'luckyLucy7', 'Lucy Kim', 'lucy.kim@example.com', '424-553-6866', 'profilephoto/10009.jpg'),
-(10010, '', 'jone_yang', 'zxcvb123', 'Jone Yang', 'john.yang@workmail.com', '778-062-2451', 'profilephoto/10010.jpg'),
-(10011, '', 'mary_smith', 'secret123', 'Mary Smith', 'mary.smith@workmail.com', '798-260-2377', 'profilephoto/10011.jpg'),
-(10012, '', 'james_wilson', 'mypassword', 'James Wilson', 'james.wilson@workmail.com', '236-887-1116', 'profilephoto/10012.jpg'),
-(10013, '', 'sarah_jones', '12345Secure', 'Sarah Jones', 'sarah.jones@workmail.com', 'pass1998', 'profilephoto/10013.jpg'),
-(10014, '', 'robert_brown', 'pass2000', 'Robert Brown', 'robert.brown@workmail.com', '236-562-7388', 'profilephoto/10014.jpg'),
-(10015, '', 'linda_taylor', '123lind', 'Linda Taylor', 'linda.taylor@workmail.com', '798-181-2233', 'profilephoto/10015.jpg');
+(10000, 'provider', 'jone_doe', '123', 'John Doe', 'john.doe@workmail.com', '123-456-7890', 'profilephoto/10000.jpg'),
+(10001, 'provider', 'jane_smith', '123', 'Jane Smith', 'jane.smith@workmail.com', '321-645-8790', 'profilephoto/10001.jpg'),
+(10002, 'provider', 'mike_lee', '123', 'Michael Lee', 'mike.lee@workmail.com', '555-578-1234', 'profilephoto/10002.jpg'),
+(10003, 'provider', 'sarah_conner', '123', 'Sarah Conner', 'sara.conner@workmail.com', '123-778-0931', 'profilephoto/10003.jpg'),
+(10004, 'provider', 'alex_wong', '123', 'Alex Wong', 'alex.wong@workmail.com', '789-445-1200', 'profilephoto/10004.jpg'),
+(10005, 'provider', 'alice_chen', '123', 'Alice Chen', 'alice.chen@workmail.com', '998-778-6523', 'profilephoto/10005.jpg'),
+(10006, 'provider', 'mark_wang', '123', 'Mark Wang', 'mark.wang@workmail.com', '555-123-7890', 'profilephoto/10006.jpg'),
+(10007, 'adopter', 'emily_chan', '123', 'Emily Chan', 'emily.chan@workmail.com', '222-333-4444', 'profilephoto/10007.jpg'),
+(10008, 'adopter', 'tom_huang', '123', 'Tom Huang', 'tom.huang@workmail.com', '666-777-8888', 'profilephoto/10008.jpg'),
+(10009, 'adopter', 'lucy_kim', '123', 'Lucy Kim', 'lucy.kim@example.com', '424-553-6866', 'profilephoto/10009.jpg'),
+(10010, 'adopter', 'jone_yang', '123', 'Jone Yang', 'john.yang@workmail.com', '778-062-2451', 'profilephoto/10010.jpg'),
+(10011, 'provider', 'mary_smith', '123', 'Mary Smith', 'mary.smith@workmail.com', '798-260-2377', 'profilephoto/10011.jpg'),
+(10012, 'provider', 'james_wilson', '123', 'James Wilson', 'james.wilson@workmail.com', '236-887-1116', 'profilephoto/10012.jpg'),
+(10013, 'adopter', 'sarah_jones', '123', 'Sarah Jones', 'sarah.jones@workmail.com', 'pass1998', 'profilephoto/10013.jpg'),
+(10014, 'adopter', 'robert_brown', '123', 'Robert Brown', 'robert.brown@workmail.com', '236-562-7388', 'profilephoto/10014.jpg'),
+(10015, 'adopter', 'linda_taylor', '123', 'Linda Taylor', 'linda.taylor@workmail.com', '798-181-2233', 'profilephoto/10015.jpg'),
+(10016, 'provider', 'Dannie', '$2y$10$7nOYA.RcX5o8S18a62sKcOH2fo2i3U9I5swZbxajZ3au6QDDaLpGe', 'Danni Chen', 'dca158@sfu.ca', '7789981116', '../../profilephoto/Dannie_95.jpg'),
+(10017, 'adopter', 'Angus', '$2y$10$qY4yfZ6lXGizFB8r3NUYBehJoZmjmcIjGRT4RA8iGIktQOhbuCQbO', 'Zekun Wang', 'zekun@sfu.ca', '7789983821', '../../profilephoto/Angus_8.jpg');
 
 --
 -- Indexes for dumped tables
@@ -269,6 +270,28 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pet`
+--
+ALTER TABLE `pet`
+  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10040;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `tag_id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10018;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -276,15 +299,14 @@ ALTER TABLE `user`
 -- Constraints for table `adoption_records`
 --
 ALTER TABLE `adoption_records`
-  ADD CONSTRAINT `adoption_records_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `adoption_records_ibfk_2` FOREIGN KEY (`pet_id`) REFERENCES `pet` (`pet_id`);
+  ADD CONSTRAINT `adoption_records_ibfk_1` FOREIGN KEY (`pet_id`) REFERENCES `pet` (`pet_id`),
+  ADD CONSTRAINT `adoption_records_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `favorites`
 --
 ALTER TABLE `favorites`
-  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`pet_id`) REFERENCES `pet` (`pet_id`);
+  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `pet_images`
