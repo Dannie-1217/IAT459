@@ -36,10 +36,10 @@ if(mysqli_num_rows($select_result) != 0){
         echo "<td class='tableGrid'><p class='tableHeader'>Location</p></td>";
     echo "</tr><tr>";
     while($row = mysqli_fetch_assoc($select_result)){
-        echo "<td class='tableGrid'>". $row['pet_id']. " </td>";  
-        echo "<td class='tableGrid'>". $row['pet_name']. " </td>";
-        echo "<td class='tableGrid'>". $row['pet_type']. " </td>"; 
-        echo "<td class='tableGrid'>". $row['location']. " </td>";
+        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['pet_id']. "</a></td>";  
+        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['pet_name']. "</a></td>";
+        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['pet_type']. "</a></td>"; 
+        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['location']. "</a></td>";
         echo"</tr>";
     }
     echo"</table>";
@@ -47,7 +47,6 @@ if(mysqli_num_rows($select_result) != 0){
 //If result is empty, then show this warning.
 else{
     echo"<tr>Result is empty!</tr>";
-    echo"<tr><p class='warning'>Please check the date form (YYYY-MM-DD) or change the date!</p></tr>";
 }
 
 
