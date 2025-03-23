@@ -36,10 +36,11 @@ if(mysqli_num_rows($select_result) != 0){
         echo "<td class='tableGrid'><p class='tableHeader'>Location</p></td>";
     echo "</tr><tr>";
     while($row = mysqli_fetch_assoc($select_result)){
-        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['pet_id']. "</a></td>";  
-        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['pet_name']. "</a></td>";
-        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['pet_type']. "</a></td>"; 
-        echo "<td class='tableGrid'><a href='pet_information.php' id='link1'>". $row['location']. "</a></td>";
+        $pet_id = $row['pet_id'];
+        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_id']. "</a></td>";  
+        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_name']. "</a></td>";
+        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_type']. "</a></td>"; 
+        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['location']. "</a></td>";
         echo"</tr>";
     }
     echo"</table>";
