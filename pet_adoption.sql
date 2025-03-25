@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2025 at 01:23 AM
+-- Generation Time: Mar 25, 2025 at 09:30 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -69,46 +69,46 @@ CREATE TABLE `pet` (
 --
 
 INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `description`) VALUES
-(10000, 'Bella', 'Vancouver, BC', 'dog', '2025-01-01', 'Bella is a friendly and well-trained golden retriever who loves playing fetch in the park. She is great with kids and other dogs, perfect family pet.'),
-(10001, 'Whiskers', 'Burnaby, BC', 'cat', '2025-01-03', 'Whiskers is a gentle gray tabby cat who enjoys lounging by the window and soaking up the sun. She loves cuddles and is very affectionate.'),
-(10002, 'Thunder', 'Richmond, BC', 'horse', '2025-01-04', 'Thunder is a majestic black stallion with a calm temperament. He is trained for trail rides and enjoys open pastures. Ideal for experienced riders.'),
-(10003, 'Fluffy', 'Coquitlam, BC', 'rabbit', '2025-01-07', 'Fluffy is a cute white bunny with floppy ears who loves being petted. She enjoys hopping around and munching on fresh greens and carrots.'),
-(10004, 'Sunny', 'Surrey, BC', 'bird', '2025-01-08', 'Sunny is a bright yellow parrot known for singing beautiful melodies every morning. He is social and can mimic a few words with regular interaction.'),
-(10005, 'Goldie', 'North Vancouver, BC', 'fish', '2025-01-12', 'Goldie is a graceful goldfish with shimmering scales. Easy to care for, she adds a calming presence to any aquarium.'),
-(10006, 'Oreo', 'New Westminster, BC', 'cat', '2025-01-15', 'Oreo is a playful black and white kitten who loves chasing toys and exploring new spaces. Very friendly and gets along with other pets.'),
-(10007, 'Rocky', 'Port Coquitlam, BC', 'dog', '2025-01-19', 'Rocky is an energetic husky with striking blue eyes. He loves outdoor adventures, long walks, and playing with his favorite ball.'),
-(10008, 'Shadow', 'Delta, BC', 'horse', '2025-01-22', 'Shadow is a beautiful brown mare with a gentle personality. She is perfect for light riding and enjoys quiet time in the stable or out in the field.'),
-(10009, 'Nibbles', 'Langley, BC', 'rabbit', '2025-01-28', 'Nibbles is a sweet little bunny who loves attention and treats. She enjoys being held and will happily sit on your lap while nibbling on vegetables.'),
-(10010, 'Daisy', 'Vancouver, BC', 'dog', '2025-02-01', 'Daisy is a sweet golden doodle who loves long walks along the seawall. Friendly with kids and other dogs, perfect for a family.'),
-(10011, 'Milo', 'Burnaby, BC', 'cat', '2025-02-03', 'Milo is an adventurous orange tabby who loves exploring high places. He is food-motivated and purrs loudly when happy.'),
-(10012, 'Spirit', 'Richmond, BC', 'horse', '2025-02-05', 'Spirit is a beautiful young black horse, ideal for trail rides. Calm and bonds quickly with gentle riders.'),
-(10013, 'Mochi', 'Coquitlam, BC	', 'rabbit	', '2025-02-06', 'Mochi is a fluffy grey bunny who enjoys fresh greens and hopping around the living room. Loves being hand-fed treats.\r\n'),
-(10014, 'Kiwi', 'Surrey, BC', 'bird', '2025-02-08', 'Kiwi is a talkative green parakeet that enjoys learning new words. Social and loves sitting on your shoulder.'),
-(10015, 'Bubbles', 'North Vancouver, BC', 'fish', '2025-02-10', 'Bubbles is a vibrant betta fish with long flowing fins. Peaceful and easy to care for, perfect for any small tank.'),
-(10016, 'Luna', 'New Westminster, BC', 'cat', '2025-02-12', 'Luna is a shy black cat who warms up quickly with treats. Loves chin scratches and sunbathing by the window.'),
-(10017, 'Max', 'Port Coquitlam, BC', 'dog', '2025-02-14', 'Max is a high-energy Labrador retriever who loves swimming and fetch. Always ready for outdoor adventures.'),
-(10018, 'Maple', 'Delta, BC', 'horse', '2025-02-17', 'Maple is a gentle brown mare, perfect for beginner riders. She is calm and enjoys peaceful walks through fields and forests.'),
-(10019, 'Peanut', 'Langley, BC', 'rabbit', '2025-02-19', 'Peanut is a small tan bunny who loves cuddles and chewing on cardboard toys. Great with kids.'),
-(10020, 'Sky', 'Vancouver, BC', 'bird', '2025-02-20', 'Sky is a blue budgie with a sweet singing voice. Loves sitting by the window and watching the world outside.'),
-(10021, 'Coral', 'Burnaby, BC', 'fish', '2025-02-22', 'Coral is a bright neon tetra, perfect for community tanks. Loves swimming in schools and creates a colorful display.'),
-(10022, 'Tiger', 'Richmond, BC', 'cat', '2025-02-25', 'Tiger is a playful tabby cat who loves climbing and exploring. Gets along well with other pets.'),
-(10023, 'Bruno', 'Coquitlam, BC', 'dog', '2025-02-27', 'Bruno is a loyal German Shepherd who is protective but loving. Excellent family dog with basic obedience training.'),
-(10024, 'Hazel', 'Surrey, BC', 'rabbit', '2025-03-01', 'Hazel is a gentle brown rabbit who enjoys being brushed. Prefers quiet environments and soft bedding.'),
-(10025, 'Mango', 'North Vancouver, BC', 'bird', '2025-03-03', 'Mango is a colorful sun conure with a playful personality. Loves fruit treats and knows a few words.'),
-(10026, 'Neptune', 'New Westminster, BC', 'fish', '2025-03-05', 'Neptune is a large koi fish with stunning orange and white patterns. Peaceful and ideal for ponds.'),
-(10027, 'Olive', 'Port Coquitlam, BC', 'cat', '2025-03-07', 'Olive is a sweet rescue cat with mismatched eyes. Loves sleeping in cozy corners and being brushed.'),
-(10028, 'Diesel', 'Delta, BC', 'dog', '2025-03-09', 'Diesel is a strong Rottweiler with a calm demeanor. Great guard dog but gentle with family.'),
-(10029, 'Coco', 'Langley, BC', 'rabbit', '2025-03-11', 'Coco is a curious black rabbit who enjoys exploring the backyard. Loves munching on lettuce and carrots.'),
-(10030, 'Blue', 'Vancouver, BC', 'bird', '2025-03-12', 'Blue is a majestic macaw with bright blue feathers. Enjoys flying in open spaces and mimicking sounds.'),
-(10031, 'Marble', 'Burnaby, BC', 'fish', '2025-03-14', 'Marble is a marble-patterned angelfish who adds elegance to any tank. Loves swimming through plants.'),
-(10032, 'Simba', 'Richmond, BC', 'cat', '2025-03-16', 'Simba is a big fluffy Maine Coon who loves being the center of attention. Very social and good with children.'),
-(10033, 'Rocky', 'Coquitlam, BC', 'dog', '2025-03-18', 'Rocky is a husky mix with endless energy. Enjoys hikes and outdoor play. Best suited for an active family.\r\n'),
-(10034, 'Snowball', 'Surrey, BC', 'rabbit', '2025-03-20', 'Snowball is a pure white rabbit with red eyes. Very gentle and loves nibbling on apples.'),
-(10035, 'Lemon', 'North Vancouver, BC', 'bird', '2025-03-22', 'Lemon is a small canary with a bright yellow coat. Known for singing sweet melodies every morning.'),
-(10036, 'Flash', 'New Westminster, BC', 'fish', '2025-03-24', 'Flash is a speedy goldfish who loves racing around the tank. Very active and fun to watch.'),
-(10037, 'Bella', 'Port Coquitlam, BC', 'cat', '2025-03-26', 'Bella is a loving Siamese cat who enjoys being close to people. Loves sitting on laps and purring for hours.'),
-(10038, 'Rex', 'Delta, BC', 'dog', '2025-03-28', 'Rex is a border collie known for his intelligence and agility. Perfect for someone who loves training and outdoor activities.'),
-(10039, 'Carrot', 'Langley, BC', 'rabbit', '2025-03-30', 'Carrot is an orange bunny who gets excited every time she sees her food bowl. Very friendly and loves to play.');
+(10000, 'Bella', 'Vancouver', 'dog', '2025-01-01', 'Bella is a friendly and well-trained golden retriever who loves playing fetch in the park. She is great with kids and other dogs, perfect family pet.'),
+(10001, 'Whiskers', 'Burnaby', 'cat', '2025-01-03', 'Whiskers is a gentle gray tabby cat who enjoys lounging by the window and soaking up the sun. She loves cuddles and is very affectionate.'),
+(10002, 'Thunder', 'Richmond', 'horse', '2025-01-04', 'Thunder is a majestic black stallion with a calm temperament. He is trained for trail rides and enjoys open pastures. Ideal for experienced riders.'),
+(10003, 'Fluffy', 'Coquitlam', 'rabbit', '2025-01-07', 'Fluffy is a cute white bunny with floppy ears who loves being petted. She enjoys hopping around and munching on fresh greens and carrots.'),
+(10004, 'Sunny', 'Surrey', 'bird', '2025-01-08', 'Sunny is a bright yellow parrot known for singing beautiful melodies every morning. He is social and can mimic a few words with regular interaction.'),
+(10005, 'Goldie', 'North Vancouver', 'fish', '2025-01-12', 'Goldie is a graceful goldfish with shimmering scales. Easy to care for, she adds a calming presence to any aquarium.'),
+(10006, 'Oreo', 'New Westminster', 'cat', '2025-01-15', 'Oreo is a playful black and white kitten who loves chasing toys and exploring new spaces. Very friendly and gets along with other pets.'),
+(10007, 'Rocky', 'Coquitlam', 'dog', '2025-01-19', 'Rocky is an energetic husky with striking blue eyes. He loves outdoor adventures, long walks, and playing with his favorite ball.'),
+(10008, 'Shadow', 'Delta', 'horse', '2025-01-22', 'Shadow is a beautiful brown mare with a gentle personality. She is perfect for light riding and enjoys quiet time in the stable or out in the field.'),
+(10009, 'Nibbles', 'Langley', 'rabbit', '2025-01-28', 'Nibbles is a sweet little bunny who loves attention and treats. She enjoys being held and will happily sit on your lap while nibbling on vegetables.'),
+(10010, 'Daisy', 'Vancouver', 'dog', '2025-02-01', 'Daisy is a sweet golden doodle who loves long walks along the seawall. Friendly with kids and other dogs, perfect for a family.'),
+(10011, 'Milo', 'Burnaby', 'cat', '2025-02-03', 'Milo is an adventurous orange tabby who loves exploring high places. He is food-motivated and purrs loudly when happy.'),
+(10012, 'Spirit', 'Richmond', 'horse', '2025-02-05', 'Spirit is a beautiful young black horse, ideal for trail rides. Calm and bonds quickly with gentle riders.'),
+(10013, 'Mochi', 'Coquitlam', 'rabbit	', '2025-02-06', 'Mochi is a fluffy grey bunny who enjoys fresh greens and hopping around the living room. Loves being hand-fed treats.\r\n'),
+(10014, 'Kiwi', 'Surrey', 'bird', '2025-02-08', 'Kiwi is a talkative green parakeet that enjoys learning new words. Social and loves sitting on your shoulder.'),
+(10015, 'Bubbles', 'North Vancouver', 'fish', '2025-02-10', 'Bubbles is a vibrant betta fish with long flowing fins. Peaceful and easy to care for, perfect for any small tank.'),
+(10016, 'Luna', 'New Westminster', 'cat', '2025-02-12', 'Luna is a shy black cat who warms up quickly with treats. Loves chin scratches and sunbathing by the window.'),
+(10017, 'Max', 'Coquitlam', 'dog', '2025-02-14', 'Max is a high-energy Labrador retriever who loves swimming and fetch. Always ready for outdoor adventures.'),
+(10018, 'Maple', 'Delta', 'horse', '2025-02-17', 'Maple is a gentle brown mare, perfect for beginner riders. She is calm and enjoys peaceful walks through fields and forests.'),
+(10019, 'Peanut', 'Langley', 'rabbit', '2025-02-19', 'Peanut is a small tan bunny who loves cuddles and chewing on cardboard toys. Great with kids.'),
+(10020, 'Sky', 'Vancouver', 'bird', '2025-02-20', 'Sky is a blue budgie with a sweet singing voice. Loves sitting by the window and watching the world outside.'),
+(10021, 'Coral', 'Burnaby', 'fish', '2025-02-22', 'Coral is a bright neon tetra, perfect for community tanks. Loves swimming in schools and creates a colorful display.'),
+(10022, 'Tiger', 'Richmond', 'cat', '2025-02-25', 'Tiger is a playful tabby cat who loves climbing and exploring. Gets along well with other pets.'),
+(10023, 'Bruno', 'Coquitlam', 'dog', '2025-02-27', 'Bruno is a loyal German Shepherd who is protective but loving. Excellent family dog with basic obedience training.'),
+(10024, 'Hazel', 'Surrey', 'rabbit', '2025-03-01', 'Hazel is a gentle brown rabbit who enjoys being brushed. Prefers quiet environments and soft bedding.'),
+(10025, 'Mango', 'North Vancouver', 'bird', '2025-03-03', 'Mango is a colorful sun conure with a playful personality. Loves fruit treats and knows a few words.'),
+(10026, 'Neptune', 'New Westminster', 'fish', '2025-03-05', 'Neptune is a large koi fish with stunning orange and white patterns. Peaceful and ideal for ponds.'),
+(10027, 'Olive', 'Coquitlam', 'cat', '2025-03-07', 'Olive is a sweet rescue cat with mismatched eyes. Loves sleeping in cozy corners and being brushed.'),
+(10028, 'Diesel', 'Delta', 'dog', '2025-03-09', 'Diesel is a strong Rottweiler with a calm demeanor. Great guard dog but gentle with family.'),
+(10029, 'Coco', 'Langley', 'rabbit', '2025-03-11', 'Coco is a curious black rabbit who enjoys exploring the backyard. Loves munching on lettuce and carrots.'),
+(10030, 'Blue', 'Vancouver', 'bird', '2025-03-12', 'Blue is a majestic macaw with bright blue feathers. Enjoys flying in open spaces and mimicking sounds.'),
+(10031, 'Marble', 'Burnaby', 'fish', '2025-03-14', 'Marble is a marble-patterned angelfish who adds elegance to any tank. Loves swimming through plants.'),
+(10032, 'Simba', 'Richmond', 'cat', '2025-03-16', 'Simba is a big fluffy Maine Coon who loves being the center of attention. Very social and good with children.'),
+(10033, 'Rocky', 'Coquitlam', 'dog', '2025-03-18', 'Rocky is a husky mix with endless energy. Enjoys hikes and outdoor play. Best suited for an active family.\r\n'),
+(10034, 'Snowball', 'Surrey', 'rabbit', '2025-03-20', 'Snowball is a pure white rabbit with red eyes. Very gentle and loves nibbling on apples.'),
+(10035, 'Lemon', 'North Vancouver', 'bird', '2025-03-22', 'Lemon is a small canary with a bright yellow coat. Known for singing sweet melodies every morning.'),
+(10036, 'Flash', 'New Westminster', 'fish', '2025-03-24', 'Flash is a speedy goldfish who loves racing around the tank. Very active and fun to watch.'),
+(10037, 'Bella', 'Coquitlam', 'cat', '2025-03-26', 'Bella is a loving Siamese cat who enjoys being close to people. Loves sitting on laps and purring for hours.'),
+(10038, 'Rex', 'Delta', 'dog', '2025-03-28', 'Rex is a border collie known for his intelligence and agility. Perfect for someone who loves training and outdoor activities.'),
+(10039, 'Carrot', 'Langley', 'rabbit', '2025-03-30', 'Carrot is an orange bunny who gets excited every time she sees her food bowl. Very friendly and loves to play.');
 
 -- --------------------------------------------------------
 
@@ -153,6 +153,14 @@ CREATE TABLE `provide_records` (
   `user_id` int(5) NOT NULL,
   `pet_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `provide_records`
+--
+
+INSERT INTO `provide_records` (`user_id`, `pet_id`) VALUES
+(10016, 10016),
+(10016, 10030);
 
 -- --------------------------------------------------------
 
@@ -234,7 +242,7 @@ ALTER TABLE `pet`
 -- Indexes for table `pet_images`
 --
 ALTER TABLE `pet_images`
-  ADD KEY `pet_id` (`pet_id`);
+  ADD UNIQUE KEY `idx_pet_id_image` (`pet_id`,`images`);
 
 --
 -- Indexes for table `pet_tags`
@@ -254,6 +262,7 @@ ALTER TABLE `preferences`
 -- Indexes for table `provide_records`
 --
 ALTER TABLE `provide_records`
+  ADD PRIMARY KEY (`pet_id`,`user_id`),
   ADD KEY `pet_id` (`pet_id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -277,7 +286,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10040;
+  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10052;
 
 --
 -- AUTO_INCREMENT for table `tags`

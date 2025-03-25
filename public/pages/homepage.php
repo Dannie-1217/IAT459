@@ -1,6 +1,6 @@
 <?php
 // Connect to the database.
-require("db.php");
+require("../../private/functions/db_credentials.php");
 
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -13,10 +13,10 @@ if(mysqli_connect_errno()){
 <?php
 //Set CSS file.
 echo '<style>'; 
-include "Formstyle.css"; 
+include "../css/Formstyle.css"; 
 echo '</style>';
 
-require('header.php');
+require('../../private/shared/header.php');
 
 echo "<lable>Filter </lable>
       <div class='row'>
@@ -43,7 +43,6 @@ echo "<lable>Filter </lable>
             <option value='coquitlam'>Coquitlam</option>
             <option value='north_vancouver'>North Vancouver</option>
             <option value='new_westminster'>New Westminster</option>
-            <option value='port_coquitlam'>Port Coquitlam</option>
         </select>
       </div>
       
@@ -83,5 +82,5 @@ else{
 }
 
 
-require('footer.php');
+require('../../private/shared/header.php');
 ?>

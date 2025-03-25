@@ -1,6 +1,6 @@
 <?php
 // Connect to the database.
-require("db.php");
+require("../../private/functions/db_credentials.php");
 
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -12,10 +12,10 @@ if(mysqli_connect_errno()){
 <?php
 //Set CSS file.
 echo '<style>'; 
-include "Formstyle.css"; 
+include "../css/Formstyle.css"; 
 echo '</style>';
 
-require('header.php');
+require('../../private/shared/header.php');
 echo "<h1>Pet Information: </h1>";
 
 if(isset($_GET['edit'])){
@@ -57,5 +57,5 @@ else{
     echo"<tr>Result is empty!</tr>";
 }
 
-require('footer.php');
+require('../../private/shared/footer.php');
 ?>
