@@ -1,16 +1,6 @@
+<?php require_once("../../../private/functions/initialization.php") ?>
+
 <?php
-    require_once("db_credentials.php");
-
-    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-    if(mysqli_connect_error()){
-        echo mysqli_connect_error();
-    }
-
-    $errors = [];
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
 
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         $pet_name = mysqli_real_escape_string($connection, $_POST["pet_name"]);
@@ -27,7 +17,7 @@
         if(mysqli_query($connection,$insertPetQuery)){
             $pet_id = mysqli_insert_id($connection);
 
-            $target_dir = "petimages/";
+            $target_dir = PRIVATE_PATH . "images/petimages";
             if (!is_dir($target_dir)){
                 array_push($errors, "The image folder does not exist");
             } else{

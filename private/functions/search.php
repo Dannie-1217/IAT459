@@ -1,6 +1,6 @@
 <?php
-    require_once("../../db_credentials.php");
-    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+    require_once("initialization.php");
+
 
     if (isset($_GET['q'])) {
         $q = mysqli_real_escape_string($connection, $_GET['q']);

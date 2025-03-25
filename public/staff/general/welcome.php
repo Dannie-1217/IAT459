@@ -1,8 +1,4 @@
-<?php
-       if(session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-?>
+<?php require_once("../../../private/functions/initialization.php") ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +42,7 @@
                 return;
             }
 
-            fetch("search.php?q=" + query)
+            fetch("../../../private/functions/search.php?q=" + query)
                 .then(response => response.text())
                 .then(data => {
                     suggestionBox.innerHTML = data;

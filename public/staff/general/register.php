@@ -1,15 +1,10 @@
+<?php require_once("../../../private/functions/initialization.php") ?>
+
 <?php
-    require_once("../../db_credentials.php");
 
-    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-    if (mysqli_connect_error()) {
-        echo mysqli_connect_error();
-    }
-
-    $errors = [];
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+    if(isset($_SESSION['user_name'])){
+        header("Location: welcome.php");
+        exit();
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,7 +22,7 @@
         array_push($errors, 'Passwords do not match');
     } else {
         // Handle file upload
-        $target_dir = "../../profilephoto/";
+        $target_dir = PRIVATE_PATH . "/images/profilephoto";
 
         if (!is_dir($target_dir)) {
             array_push($errors, "The image folder does not exist");

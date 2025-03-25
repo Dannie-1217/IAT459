@@ -1,16 +1,6 @@
-<?php
-    require_once("db_credentials.php");
+<?php require_once("../../../private/functions/initialization.php") ?>
 
-    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-  
-    if(mysqli_connect_error()){
-          cho mysqli_connect_error();
-    }
-  
-    $errors = [];
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+<?php
 
     if(!isset($_SESSION['user_name'])){
         header("Location: public/staff/login.php");
