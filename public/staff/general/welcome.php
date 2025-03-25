@@ -42,7 +42,7 @@
                 return;
             }
 
-            fetch("search.php?q=" + query)
+            fetch("../../../private/functions/search.php?q=" + query)
                 .then(response => response.text())
                 .then(data => {
                     suggestionBox.innerHTML = data;

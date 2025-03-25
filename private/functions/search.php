@@ -1,5 +1,5 @@
 <?php
-    require_once("db_credentials.php");
+    require_once("initialization.php");
 
 
     if (isset($_GET['q'])) {
