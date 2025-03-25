@@ -1,3 +1,4 @@
+
 <?php require_once("../../../private/functions/initialization.php") ?>
 
 <!DOCTYPE html>
@@ -5,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Username Auto-Complete</title>
+    <title>Test Page</title>
     <style>
         #suggestion-box {
             border: 1px solid #ccc;
