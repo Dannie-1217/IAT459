@@ -2,6 +2,11 @@
 
 <?php
 
+    if(isset($_SESSION['user_name'])){
+        header("Location: welcome.php");
+        exit();
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_name = mysqli_real_escape_string($connection, $_POST['user_name']);
         $password = $_POST['password'];
