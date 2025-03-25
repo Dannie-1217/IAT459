@@ -1,28 +1,18 @@
-<?php
-// Connect to the database.
-require("../../private/functions/db_credentials.php");
-
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-if(mysqli_connect_errno()){
-    echo "connection error!";
-    die(mysqli_connect_error());
-}
-?>
+<?php require_once("../../private/functions/initialization.php") ?>
 
 <?php
 //Set CSS file.
 echo '<style>'; 
-include "../css/Formstyle.css"; 
+include PUBLIC_PATH."/css/Formstyle.css"; 
 echo '</style>';
 
 if( isset($_GET['pet_type'])) $pet_type=trim($_GET['pet_type']); 
 if( isset($_GET['location'])) $location=trim($_GET['location']);
 
-require('../../private/shared/header.php');
-require('../../private/functions/functions.php');
+require(SHARED_PATH.'/header.php');
+require(PRIVATE_PATH.'/functions/functions.php');
 
-echo "<form action=\"../../public/pages/homepage.php\">";
+echo "<form action= homepage.php>";
 echo "<table>";
 echo "<tr><td><lable>Filter </lable></td></tr>";
 drop_list('Pet Type: ', 'pet_type' , ['','dog','cat','horse','rabbit','bird','fish','other'],['','Dog','Cat','Horse','Rabbit','Bird','Fish','Other']);
@@ -37,7 +27,7 @@ if(!empty($pet_type) && empty($location)){
     $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet WHERE pet_type = '".$pet_type."';";
 }
 else if(empty($pet_type) && !empty($location)){
-    $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet WHERE location = '".$location.",;";
+    $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet WHERE location = '".$location."';";
 }
 else if(!empty($pet_type) && !empty($location)){
     $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet WHERE pet_type = '".$pet_type."' AND location = '".$location."';";
@@ -45,6 +35,8 @@ else if(!empty($pet_type) && !empty($location)){
 else{
     $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet";
 }
+
+echo $general_query;
 
 $select_result = mysqli_query($connection, $general_query);
 
@@ -76,5 +68,5 @@ else{
 }
 
 
-require('../../private/shared/header.php');
+require(SHARED_PATH.'/footer.php');
 ?>

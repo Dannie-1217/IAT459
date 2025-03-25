@@ -1,21 +1,12 @@
-<?php
-// Connect to the database.
-require("../../private/functions/db_credentials.php");
+<?php require_once("../../private/functions/initialization.php") ?>
 
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-if(mysqli_connect_errno()){
-    echo "connection error!";
-    die(mysqli_connect_error());
-}
-?>
 <?php
 //Set CSS file.
 echo '<style>'; 
-include "../css/Formstyle.css"; 
+include PUBLIC_PATH."/css/Formstyle.css"; 
 echo '</style>';
 
-require('../../private/shared/header.php');
+require(SHARED_PATH.'/header.php');
 echo "<h1>Pet Information: </h1>";
 
 if(isset($_GET['edit'])){
@@ -57,5 +48,5 @@ else{
     echo"<tr>Result is empty!</tr>";
 }
 
-require('../../private/shared/footer.php');
+require(SHARED_PATH.'/footer.php');
 ?>
