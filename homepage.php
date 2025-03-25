@@ -17,6 +17,38 @@ include "Formstyle.css";
 echo '</style>';
 
 require('header.php');
+
+echo "<lable>Filter </lable>
+      <div class='row'>
+        <lable>Pet Type </lable>
+        <select name='pet_type'>
+            <option value=''></option>
+            <option value='dog'>Dog</option>
+            <option value='cat'>Cat</option>
+            <option value='horse'>Horse</option>
+            <option value='rabbit'>Rabbit</option>
+            <option value='bird'>Bird</option>
+            <option value='fish'>Fish</option>
+            <option value='other'>Other</option>
+        </select>
+        <lable>Location </lable>
+        <select name='location'>
+            <option value=''></option>
+            <option value='buranby'>Burnaby</option>
+            <option value='surrey'>Surrey</option>
+            <option value='richmond'>Richmond</option>
+            <option value='vancouver'>Vancouver</option>
+            <option value='delta'>Delta</option>
+            <option value='langley'>Langley</option>
+            <option value='coquitlam'>Coquitlam</option>
+            <option value='north_vancouver'>North Vancouver</option>
+            <option value='new_westminster'>New Westminster</option>
+            <option value='port_coquitlam'>Port Coquitlam</option>
+        </select>
+      </div>
+      
+      <input type='submit' value='Search' />";
+
 echo "<h1>Pet List: </h1>";
 
 $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet";

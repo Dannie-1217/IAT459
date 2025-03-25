@@ -16,7 +16,7 @@
     <tr height="30" bgcolor="#1E3755">
         <td style="font-family:verdana;font-size:24px;color:#E2EAF4;" id="header">
             <strong><a href="homepage.php"> Homepage </a> |
-                    <a href="log_in.php"> Log in/Sign up </a> 
+                    <a href="public/staff/register.php"> Log in/Sign up </a> 
                     <a href="about_us.php"> About Us </a> 
         </td>
     <tr bgcolor="FFFFFF">
