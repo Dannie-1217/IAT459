@@ -1,17 +1,6 @@
+<?php require_once("../../../private/functions/initialization.php") ?>
+
 <?php
-      require_once("db_credentials.php");
-
-      $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-  
-      if(mysqli_connect_error()){
-          echo mysqli_connect_error();
-      }
-  
-      $errors = [];
-      if (session_status() === PHP_SESSION_NONE) {
-          session_start();
-      }
-
       if(!isset($_SESSION['user_name'])){
         header("Location: public/staff/login.php");
         exit();
@@ -45,21 +34,6 @@
       $recentPetsResult = mysqli_query($connection, $recentPetsQuery);
 ?>
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dashboard(provider)</title>
-    </head>
-    
-    <body>
-        <h1>Provider Dashboard</h1>
-
-        <h2>Pet Lists</h2>
-        <h2>Adoption Requests</h2>
-        <h2>Profile Management</h2>
-    </body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

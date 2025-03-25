@@ -1,8 +1,4 @@
-<?php
-       if(session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-?>
+<?php require_once("../../../private/functions/initialization.php") ?>
 
 <!DOCTYPE html>
 <html lang="en">
