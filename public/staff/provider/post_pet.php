@@ -17,7 +17,7 @@
         if(mysqli_query($connection,$insertPetQuery)){
             $pet_id = mysqli_insert_id($connection);
 
-            $target_dir = PRIVATE_PATH . "images/petimages";
+            $target_dir = PRIVATE_PATH . "/images/petimages/";
             if (!is_dir($target_dir)){
                 array_push($errors, "The image folder does not exist");
             } else{
