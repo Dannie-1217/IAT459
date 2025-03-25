@@ -16,41 +16,35 @@ echo '<style>';
 include "../css/Formstyle.css"; 
 echo '</style>';
 
-require('../../private/shared/header.php');
+if( isset($_GET['pet_type'])) $pet_type=trim($_GET['pet_type']); 
+if( isset($_GET['location'])) $location=trim($_GET['location']);
 
-echo "<lable>Filter </lable>
-      <div class='row'>
-        <lable>Pet Type </lable>
-        <select name='pet_type'>
-            <option value=''></option>
-            <option value='dog'>Dog</option>
-            <option value='cat'>Cat</option>
-            <option value='horse'>Horse</option>
-            <option value='rabbit'>Rabbit</option>
-            <option value='bird'>Bird</option>
-            <option value='fish'>Fish</option>
-            <option value='other'>Other</option>
-        </select>
-        <lable>Location </lable>
-        <select name='location'>
-            <option value=''></option>
-            <option value='buranby'>Burnaby</option>
-            <option value='surrey'>Surrey</option>
-            <option value='richmond'>Richmond</option>
-            <option value='vancouver'>Vancouver</option>
-            <option value='delta'>Delta</option>
-            <option value='langley'>Langley</option>
-            <option value='coquitlam'>Coquitlam</option>
-            <option value='north_vancouver'>North Vancouver</option>
-            <option value='new_westminster'>New Westminster</option>
-        </select>
-      </div>
-      
-      <input type='submit' value='Search' />";
+require('../../private/shared/header.php');
+require('../../private/functions/functions.php');
+
+echo "<form action=\"../../public/pages/homepage.php\">";
+echo "<table>";
+echo "<tr><td><lable>Filter </lable></td></tr>";
+drop_list('Pet Type: ', 'pet_type' , ['','dog','cat','horse','rabbit','bird','fish','other'],['','Dog','Cat','Horse','Rabbit','Bird','Fish','Other']);
+drop_list('Location: ', 'location' , ['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster'],['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster']);
+search_button();
+echo "</table>";
+echo "</form>";
 
 echo "<h1>Pet List: </h1>";
 
-$general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet";
+if(!empty($pet_type) && empty($location)){
+    $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet WHERE pet_type = '".$pet_type."';";
+}
+else if(empty($pet_type) && !empty($location)){
+    $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet WHERE location = '".$location.",;";
+}
+else if(!empty($pet_type) && !empty($location)){
+    $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet WHERE pet_type = '".$pet_type."' AND location = '".$location."';";
+}
+else{
+    $general_query = "SELECT pet_id, pet_name, pet_type, location FROM pet";
+}
 
 $select_result = mysqli_query($connection, $general_query);
 
