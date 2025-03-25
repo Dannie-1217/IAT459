@@ -45,7 +45,9 @@ echo "<lable>Filter </lable>
             <option value='new_westminster'>New Westminster</option>
             <option value='port_coquitlam'>Port Coquitlam</option>
         </select>
-      </div>";
+      </div>
+      
+      <input type='submit' value='Search' />";
 
 echo "<h1>Pet List: </h1>";
 
