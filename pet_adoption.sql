@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2025 at 09:30 PM
+-- Generation Time: Mar 26, 2025 at 02:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -108,7 +108,8 @@ INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `d
 (10036, 'Flash', 'New Westminster', 'fish', '2025-03-24', 'Flash is a speedy goldfish who loves racing around the tank. Very active and fun to watch.'),
 (10037, 'Bella', 'Coquitlam', 'cat', '2025-03-26', 'Bella is a loving Siamese cat who enjoys being close to people. Loves sitting on laps and purring for hours.'),
 (10038, 'Rex', 'Delta', 'dog', '2025-03-28', 'Rex is a border collie known for his intelligence and agility. Perfect for someone who loves training and outdoor activities.'),
-(10039, 'Carrot', 'Langley', 'rabbit', '2025-03-30', 'Carrot is an orange bunny who gets excited every time she sees her food bowl. Very friendly and loves to play.');
+(10039, 'Carrot', 'Langley', 'rabbit', '2025-03-30', 'Carrot is an orange bunny who gets excited every time she sees her food bowl. Very friendly and loves to play.'),
+(10070, 'cc', 'Burnaby', 'dog', '2025-03-26', 'asdf');
 
 -- --------------------------------------------------------
 
@@ -118,8 +119,16 @@ INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `d
 
 CREATE TABLE `pet_images` (
   `pet_id` int(5) NOT NULL,
-  `images` varchar(50) NOT NULL
+  `images` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pet_images`
+--
+
+INSERT INTO `pet_images` (`pet_id`, `images`) VALUES
+(10070, '10070_10.jpg'),
+(10070, '10070_9.jpg');
 
 -- --------------------------------------------------------
 
@@ -286,7 +295,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10052;
+  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10071;
 
 --
 -- AUTO_INCREMENT for table `tags`
