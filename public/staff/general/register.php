@@ -22,7 +22,7 @@
         array_push($errors, 'Passwords do not match');
     } else {
         // Handle file upload
-        $target_dir = PRIVATE_PATH . "/images/profilephoto";
+        $target_dir = PUBLIC_PATH . "/images/profilephoto";
 
         if (!is_dir($target_dir)) {
             array_push($errors, "The image folder does not exist");

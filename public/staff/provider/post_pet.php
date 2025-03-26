@@ -2,56 +2,109 @@
 
 <?php
 
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
+    // if($_SERVER["REQUEST_METHOD"] === "POST"){
+    //     $pet_name = mysqli_real_escape_string($connection, $_POST["pet_name"]);
+    //     $location = mysqli_real_escape_string($connection, $_POST["location"]);
+    //     $pet_type = mysqli_real_escape_string($connection, $_POST["pet_type"]);
+    //     $description = mysqli_real_escape_string($connection, $_POST["description"]);
+    //     $post_date = date("Y-m-d");
+
+
+    //     // Insert pet infomation into "pet" table
+    //     $insertPetQuery = "INSERT INTO pet (pet_name, location, pet_type, post_date, description)
+    //     VALUES ('$pet_name' , '$location', '$pet_type', '$post_date', '$description')";
+
+    //     if(mysqli_query($connection,$insertPetQuery)){
+    //         $pet_id = mysqli_insert_id($connection);
+
+    //         $target_dir = PUBLIC_PATH . "/images/petimages";
+    //         $relative_dir = "private/images/petimages";
+
+    //         if (!is_dir($target_dir)){
+    //             array_push($errors, "The image folder does not exist");
+    //         } else{
+    //             foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name){
+    //                 $file_name = basename($_FILES['images']['name'][$key]);
+    //                 $new_file_name = $pet_id . "_" . $file_name;
+
+    //                 $target_file = $target_dir . $pet_id . "_" . $file_name;
+    //                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    //                 $allowed_types = ['jpg', 'jpeg', 'png', 'webp'];
+    //                 if (in_array($imageFileType, $allowed_types)){
+    //                     if(move_uploaded_file($tmp_name, $target_file)){
+    //                         $relative_path = $relative_dir . "/" . $new_file_name;
+    //                         $imgQuery = "INSERT INTO pet_images(pet_id, images) VALUES ('$pet_id', '$relative_path')";
+    //                         mysqli_query($connection, $imgQuery);
+    //                     } else{
+    //                         array_push($errors, "Failed to upload image: ".$file_name);
+    //                     }
+    //                 } else{
+    //                     array_push($errors, "Invalid image format for: ".$file_name);
+    //                 }
+    //             }
+    //         }
+    //         if (empty($errors)) {
+    //             echo "<p style='color:green;'>Pet Posted Successfully!</p>";
+    //         }
+    //     }else{
+    //         array_push($errors, $mysqli_error($connection));
+    //     }
+    // }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $pet_name = mysqli_real_escape_string($connection, $_POST["pet_name"]);
         $location = mysqli_real_escape_string($connection, $_POST["location"]);
         $pet_type = mysqli_real_escape_string($connection, $_POST["pet_type"]);
         $description = mysqli_real_escape_string($connection, $_POST["description"]);
         $post_date = date("Y-m-d");
-
-
-        // Insert pet infomation into "pet" table
+    
+        // Insert pet information into the "pet" table
         $insertPetQuery = "INSERT INTO pet (pet_name, location, pet_type, post_date, description)
-        VALUES ('$pet_name' , '$location', '$pet_type', '$post_date', '$description')";
-
-        if(mysqli_query($connection,$insertPetQuery)){
-            $pet_id = mysqli_insert_id($connection);
-
-            $target_dir = PRIVATE_PATH . "/images/petimages";
-            $relative_dir = "private/images/petimages";
-
-            if (!is_dir($target_dir)){
+                           VALUES ('$pet_name', '$location', '$pet_type', '$post_date', '$description')";
+    
+        if (mysqli_query($connection, $insertPetQuery)) {
+            $pet_id = mysqli_insert_id($connection); // Get the inserted pet ID
+    
+            // Save images inside the PUBLIC images folder
+            $target_dir = PUBLIC_PATH . "/images/petimages/";
+            if (!is_dir($target_dir)) {
                 array_push($errors, "The image folder does not exist");
-            } else{
-                foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name){
-                    $file_name = basename($_FILES['images']['name'][$key]);
-                    $new_file_name = $pet_id . "_" . $file_name;
-
-                    $target_file = $target_dir . $pet_id . "_" . $file_name;
-                    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
+            } else {
+                foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+                    $original_name = basename($_FILES['images']['name'][$key]);
+                    $imageFileType = strtolower(pathinfo($original_name, PATHINFO_EXTENSION));
+    
                     $allowed_types = ['jpg', 'jpeg', 'png', 'webp'];
-                    if (in_array($imageFileType, $allowed_types)){
-                        if(move_uploaded_file($tmp_name, $target_file)){
-                            $relative_path = $relative_dir . "/" . $new_file_name;
-                            $imgQuery = "INSERT INTO pet_images(pet_id, images) VALUES ('$pet_id', '$relative_path')";
+                    if (in_array($imageFileType, $allowed_types)) {
+                        // Rename the file as pet_id + original name for uniqueness
+                        $file_name = $pet_id . "_" . $original_name;
+                        $target_file = $target_dir . $file_name;
+    
+                        if (move_uploaded_file($tmp_name, $target_file)) {
+                            // ONLY store the file name (not the full path) in the database
+                            $imgQuery = "INSERT INTO pet_images (pet_id, images) VALUES ('$pet_id', '$file_name')";
                             mysqli_query($connection, $imgQuery);
-                        } else{
-                            array_push($errors, "Failed to upload image: ".$file_name);
+                        } else {
+                            array_push($errors, "Failed to upload image: " . $original_name);
                         }
-                    } else{
-                        array_push($errors, "Invalid image format for: ".$file_name);
+                    } else {
+                        array_push($errors, "Invalid image format for: " . $original_name);
                     }
                 }
             }
+    
             if (empty($errors)) {
                 echo "<p style='color:green;'>Pet Posted Successfully!</p>";
+            } else {
+                foreach ($errors as $err) {
+                    echo "<p style='color:red;'>$err</p>";
+                }
             }
-        }else{
-            array_push($errors, $mysqli_error($connection));
+        } else {
+            echo "<p style='color:red;'>Failed to post pet: " . mysqli_error($connection) . "</p>";
         }
     }
-
 
 ?>
 
