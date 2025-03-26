@@ -17,19 +17,24 @@
         if(mysqli_query($connection,$insertPetQuery)){
             $pet_id = mysqli_insert_id($connection);
 
-            $target_dir = PRIVATE_PATH . "/images/petimages/";
+            $target_dir = PRIVATE_PATH . "/images/petimages";
+            $relative_dir = "private/images/petimages";
+
             if (!is_dir($target_dir)){
                 array_push($errors, "The image folder does not exist");
             } else{
                 foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name){
                     $file_name = basename($_FILES['images']['name'][$key]);
+                    $new_file_name = $pet_id . "_" . $file_name;
+
                     $target_file = $target_dir . $pet_id . "_" . $file_name;
                     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
                     $allowed_types = ['jpg', 'jpeg', 'png', 'webp'];
                     if (in_array($imageFileType, $allowed_types)){
                         if(move_uploaded_file($tmp_name, $target_file)){
-                            $imgQuery = "INSERT INTO pet_images(pet_id, images) VALUES ('$pet_id','$target_file')";
+                            $relative_path = $relative_dir . "/" . $new_file_name;
+                            $imgQuery = "INSERT INTO pet_images(pet_id, images) VALUES ('$pet_id', '$relative_path')";
                             mysqli_query($connection, $imgQuery);
                         } else{
                             array_push($errors, "Failed to upload image: ".$file_name);
