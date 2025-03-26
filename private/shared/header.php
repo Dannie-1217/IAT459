@@ -17,9 +17,9 @@
     </tr>
     <tr height="30" bgcolor="#1E3755">
         <td style="font-family:verdana;font-size:24px;color:#E2EAF4;" id="header">
-            <strong><a href= PUBLIC_PATH."/pages/homepage.php"> Homepage </a> |
-                    <a href= PUBLIC_PATH."/staff/general/register.php"> Log in/Sign up </a> 
-                    <a href= PUBLIC_PATH."/pages/about_us.php"> About Us </a> 
+            <strong><a href= "../../public/pages/homepage.php"> Homepage </a> |
+                    <a href= "../../public/staff/general/register.php"> Log in/Sign up </a> 
+                    <a href= "../../public/pages/about_us.php"> About Us </a> 
         </td>
     <tr bgcolor="FFFFFF">
     <td >

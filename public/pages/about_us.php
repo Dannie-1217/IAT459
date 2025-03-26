@@ -1,11 +1,13 @@
+<?php require_once("../../private/functions/initialization.php") ?>
+
 <?php
 //Set CSS file.
 echo '<style>'; 
-include "Formstyle.css"; 
+include PUBLIC_PATH."/css/Formstyle.css";
 echo '</style>';
 
-require('header.php');
+require(SHARED_PATH.'/header.php');
 echo "<h1>About Us: </h1>";
 
-require('footer.php');
+require(SHARED_PATH.'/footer.php');
 ?>
