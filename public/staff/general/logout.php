@@ -4,6 +4,6 @@
 
     unset($_SESSION["user_name"]);
 
-    header("Location: login.php");
+    header("Location: ../../pages/homepage.php");
     exit();
 ?>

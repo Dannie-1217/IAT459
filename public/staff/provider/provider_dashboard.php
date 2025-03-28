@@ -81,7 +81,7 @@
     <div class="mt-4">
         <a href="post_pet.php" class="btn btn-primary">Add New Pet</a>
         <a href="adoption_requests.php" class="btn btn-secondary">Manage Adoption Requests</a>
-        <a href="logout.php" class="btn btn-danger">Logout</a>
+        <a href="../general/logout.php" class="btn btn-danger">Logout</a>
     </div>
 </div>
 </body>

@@ -37,7 +37,7 @@
                     array_push($errors, "The entered password do not match our record");
                 }
             }else{
-                array_push($errors, "The account does not exist");
+                array_push($errors, "The account does not exist, Please create a new Account!");
             }
         }else{
             array_push($errors, "Username or password field is not filled");
@@ -63,6 +63,10 @@
             <label>Password</label><br>
             <input type="text" name="password" value=""/><br>
             <input type="submit" value="Login"/>
+        </form>
+        <form action="register.php">
+            <input type="submit" value="Go to Another Page">
+        </form>
     </body>
 
 
