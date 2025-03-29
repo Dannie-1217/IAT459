@@ -22,7 +22,7 @@
         array_push($errors, 'Passwords do not match');
     } else {
         // Handle file upload
-        $target_dir = PUBLIC_PATH . "/images/profilephoto";
+        $target_dir = PUBLIC_PATH . "/images/profilephoto/";
 
         if (!is_dir($target_dir)) {
             array_push($errors, "The image folder does not exist");
@@ -30,6 +30,7 @@
             $upload = true;
             $file_name = basename($_FILES["profile_photo"]["name"]);
             $target_file = $target_dir . $user_name. "_" . $file_name;
+            $new_file_name = $user_name . "_" . $file_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
             // Validate file upload
@@ -44,13 +45,7 @@
                 $upload = false;
             }
 
-            // Optional: check file size (e.g., max 2MB)
-            if ($_FILES["profile_photo"]["size"] > 2000000) {
-                array_push($errors, "Sorry, your file is too large. Max 2MB allowed.");
-                $upload = false;
-            }
-
-            // Optional: only allow certain file formats
+            // Only allow certain file formats
             $allowed_types = ['jpg', 'jpeg', 'png','webp'];
             if (!in_array($imageFileType, $allowed_types)) {
                 array_push($errors, "Only JPG, JPEG, PNG & WEBP files are allowed.");
@@ -69,7 +64,7 @@
                         array_push($errors, "Username or Email already exists");
                     } else {
                         $insertQuery = "INSERT INTO user (user_name, password, legal_name, email, other_contact, profile_photo, user_type)
-                                        VALUES ('$user_name', '$password_hashed', '$legal_name', '$email', '$other_contact', '$target_file', '$user_type')";
+                                        VALUES ('$user_name', '$password_hashed', '$legal_name', '$email', '$other_contact', '$new_file_name', '$user_type')";
                                 if (mysqli_query($connection, $insertQuery)) {
                             $_SESSION['user_name'] = $user_name;
                             header("Location: welcome.php");
