@@ -80,7 +80,7 @@
     <!-- Quick Actions -->
     <div class="mt-4">
         <a href="../../pages/homepage.php" class="btn btn-primary">Adopt New Pet</a>
-        <a href="adoption_requests.php" class="btn btn-secondary">Check Adoption Status</a>
+        <a href="adopter_records.php" class="btn btn-secondary">Check Adoption Status</a>
         <a href="../general/logout.php" class="btn btn-danger">Logout</a>
     </div>
 </div>

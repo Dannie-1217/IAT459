@@ -65,7 +65,7 @@
             <input type="submit" value="Login"/>
         </form>
         <form action="register.php">
-            <input type="submit" value="Go to Another Page">
+            <input type="submit" value="Create New Account">
         </form>
     </body>
 
