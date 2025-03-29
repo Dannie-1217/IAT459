@@ -14,21 +14,21 @@
       $userData = mysqli_fetch_assoc($userResult);
       $user_id = $userData['user_id'];
 
-      // Get count of pets posted by the user
-      $petCountQuery = "SELECT COUNT(*) AS pet_count FROM provide_records WHERE user_id = '$user_id'";
+      // Get count of saved pets by the user
+      $petCountQuery = "SELECT COUNT(*) AS favorite_pet_count FROM favorites WHERE user_id = '$user_id'";
       $petCountResult = mysqli_query($connection, $petCountQuery);
-      $petCount = mysqli_fetch_assoc($petCountResult)['pet_count'];
+      $petCount = mysqli_fetch_assoc($petCountResult)['favorite_pet_count'];
 
-      // Get count of adoption requests for this provider
-      $adoptionRequestCountQuery = "SELECT COUNT(*) AS adoption_request_count FROM adoption_records ar JOIN provide_records pr ON ar.pet_id = pr.pet_id WHERE pr.user_id = '$user_id'";
+      // Get count of adoption records for this provider
+      $adoptionRequestCountQuery = "SELECT COUNT(*) AS adoption_count FROM adoption_records WHERE user_id = '$user_id'";
       $adoptionRequestCountResult = mysqli_query($connection, $adoptionRequestCountQuery);
-      $adoptionRequestCount = mysqli_fetch_assoc($adoptionRequestCountResult)['adoption_request_count'];
+      $adoptionRequestCount = mysqli_fetch_assoc($adoptionRequestCountResult)['adoption_count'];
 
-      // Get recent 3 pet posts by this provider
+      // Get recent 3 pet liked by this provider
       $recentPetsQuery = "SELECT pet.pet_name, pet.post_date 
-                    FROM provide_records 
-                    JOIN pet ON provide_records.pet_id = pet.pet_id 
-                    WHERE provide_records.user_id = '$user_id' 
+                    FROM favorites 
+                    JOIN pet ON favorites.pet_id = pet.pet_id 
+                    WHERE favorites.user_id = '$user_id' 
                     ORDER BY pet.post_date DESC 
                     LIMIT 3";
       $recentPetsResult = mysqli_query($connection, $recentPetsQuery);
@@ -50,7 +50,7 @@
         <div class="col-md-4">
             <div class="card text-white bg-primary mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Pets Posted</h5>
+                    <h5 class="card-title">Favorite Pets</h5>
                     <p class="card-text fs-2"><?= $petCount ?></p>
                 </div>
             </div>
@@ -58,7 +58,7 @@
         <div class="col-md-4">
             <div class="card text-white bg-success mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Adoption Requests</h5>
+                    <h5 class="card-title">Adoption Records</h5>
                     <p class="card-text fs-2"><?= $adoptionRequestCount ?></p>
                 </div>
             </div>
@@ -67,7 +67,7 @@
 
     <!-- Recent Activity Section -->
     <div class="card mt-4">
-        <div class="card-header bg-dark text-white">Recent Pet Posts</div>
+        <div class="card-header bg-dark text-white">Recent Liked Pets</div>
         <ul class="list-group list-group-flush">
             <?php while ($pet = mysqli_fetch_assoc($recentPetsResult)) : ?>
                 <li class="list-group-item">
@@ -79,8 +79,8 @@
 
     <!-- Quick Actions -->
     <div class="mt-4">
-        <a href="post_pet.php" class="btn btn-primary">Add New Pet</a>
-        <a href="adoption_requests.php" class="btn btn-secondary">Manage Adoption Requests</a>
+        <a href="../../pages/homepage.php" class="btn btn-primary">Adopt New Pet</a>
+        <a href="adoption_requests.php" class="btn btn-secondary">Check Adoption Status</a>
         <a href="../general/logout.php" class="btn btn-danger">Logout</a>
     </div>
 </div>
