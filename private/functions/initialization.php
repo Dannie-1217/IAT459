@@ -12,10 +12,8 @@
     }
 
     // Assign file paths to PHP constants
-    // __FILE__ returns the current path to this file
-    // dirname() returns the path to the parent directory
-    define("PRIVATE_PATH", dirname(dirname(__FILE__)));
-    define("PUBLIC_PATH", dirname(PRIVATE_PATH) . '/public');
+    define("PRIVATE_PATH", '/IAT459/private');
+    define("PUBLIC_PATH", '/IAT459/public');
     define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
     $errors = [];
