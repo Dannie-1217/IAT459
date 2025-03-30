@@ -25,11 +25,13 @@
                         $userType = mysqli_fetch_assoc($type_res)['user_type'];
                         echo $userType;
                         if($userType == 'provider'){
-                            header("location: ../provider/provider_dashboard.php");
+                            //header("location: ../provider/provider_dashboard.php");
+                            header("location: ../../pages/homepage.php");
                             //header(PUBLIC_PATH."/staff/provider/provider_dashboard.php");
                         }
                         else if($userType == 'adopter'){
-                            header("location: ../adopter/adopter_dashboard.php");
+                            //header("location: ../adopter/adopter_dashboard.php");
+                            header("location: ../../pages/homepage.php");
                             //header(PUBLIC_PATH."/staff/adopter/adopter_dashboard.php");
                         }
                     exit();
