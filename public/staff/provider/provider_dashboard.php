@@ -2,7 +2,7 @@
 
 <?php
       if(!isset($_SESSION['user_name'])){
-        header(PUBLIC_PATH."/staff/general/login.php");
+        header("Location: ../staff/general/login.php");
         exit();
       }
       
