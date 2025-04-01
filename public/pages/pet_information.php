@@ -63,7 +63,7 @@ if(mysqli_num_rows($tag_result) != 0){
     echo"<table class='resultTable'><tr>";          
         echo "<td class='tableGrid'><p class='tableHeader'>Tags</p></td>";  
     echo "</tr><tr>";
-    while($row = mysqli_fetch_assoc($select_result)){
+    while($row = mysqli_fetch_assoc($tag_result)){
         echo "<td class='tableGrid'>". $row['content']. "</td>";  
         echo"</tr>";
     }
