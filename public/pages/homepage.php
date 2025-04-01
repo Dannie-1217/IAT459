@@ -3,14 +3,16 @@
 <?php
 //Set CSS file.
 echo '<style>'; 
-include PUBLIC_PATH."/css/Formstyle.css"; 
+include ROOT_PATH . PUBLIC_PATH."/css/Formstyle.css"; 
 echo '</style>';
 
 if( isset($_GET['pet_type'])) $pet_type=trim($_GET['pet_type']); 
 if( isset($_GET['location'])) $location=trim($_GET['location']);
 
-require(SHARED_PATH.'/header.php');
-require(PRIVATE_PATH.'/functions/functions.php');
+
+
+require_once(ROOT_PATH . SHARED_PATH.'/header.php');
+require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');
 
 echo "<form action= homepage.php>";
 echo "<table>";
@@ -68,5 +70,5 @@ else{
 }
 
 
-require(SHARED_PATH.'/footer.php');
+require_once(ROOT_PATH . SHARED_PATH.'/footer.php');
 ?>

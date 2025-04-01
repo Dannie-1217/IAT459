@@ -1,14 +1,36 @@
 <?php require_once("../../../private/functions/initialization.php") ?>
 
 <?php
+    require_once(ROOT_PATH . PRIVATE_PATH . "/functions/functions.php");
 
+    echo '<style>'; 
+    include ROOT_PATH . PUBLIC_PATH."/css/Formstyle.css";
+    echo '</style>';
+
+    if (isset($_SESSION['user_name'])) {
+        $user_name = $_SESSION['user_name'];
+        if(check_user_type($connection, $user_name) == "adopter"){
+            header("Location: ../adopter/adopter_dashboard.php");
+        } else{
+            header("Location: ../provider/provider_dashboard.php");
+        }
+    }
+    
+    
+
+    require_once(ROOT_PATH . SHARED_PATH.'/header.php');
     $user_name = '';
     $password = '';
 
-    /*if(isset($_SESSION['user_name'])){
-        header("Location: welcome.php");
-        exit();
-    }*/
+    // if(isset($_SESSION['user_name'])){
+        
+    //     header("Location: welcome.php");
+    //     exit();
+    // }
+
+   
+
+    
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(!empty($_POST['user_name']) && !empty($_POST["password"])){
@@ -25,13 +47,13 @@
                         $userType = mysqli_fetch_assoc($type_res)['user_type'];
                         echo $userType;
                         if($userType == 'provider'){
-                            //header("location: ../provider/provider_dashboard.php");
-                            header("location: ../../pages/homepage.php");
+                            header("Location: ../provider/provider_dashboard.php");
+                            // header("location: ../../pages/homepage.php");
                             //header(PUBLIC_PATH."/staff/provider/provider_dashboard.php");
                         }
                         else if($userType == 'adopter'){
-                            //header("location: ../adopter/adopter_dashboard.php");
-                            header("location: ../../pages/homepage.php");
+                            header("Location: ../adopter/adopter_dashboard.php");
+                            // header("location: ../../pages/homepage.php");
                             //header(PUBLIC_PATH."/staff/adopter/adopter_dashboard.php");
                         }
                     exit();
@@ -45,16 +67,9 @@
             array_push($errors, "Username or password field is not filled");
         }
     }
+
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-    </head>
 
     <body>
         <h1>Login</h1>
@@ -69,7 +84,5 @@
         <form action="register.php">
             <input type="submit" value="Create New Account">
         </form>
-    </body>
 
-
-</html>
+<?php require_once(ROOT_PATH . SHARED_PATH.'/footer.php');?>

@@ -3,10 +3,10 @@
 <?php
 //Set CSS file.
 echo '<style>'; 
-include PUBLIC_PATH."/css/Formstyle.css"; 
+include ROOT_PATH . PUBLIC_PATH."/css/Formstyle.css"; 
 echo '</style>';
 
-require(SHARED_PATH.'/header.php');
+require_once(ROOT_PATH . SHARED_PATH.'/header.php');
 echo "<h1>Pet Information: </h1>";
 
 if(isset($_GET['edit'])){
@@ -48,5 +48,5 @@ else{
     echo"<tr>Result is empty!</tr>";
 }
 
-require(SHARED_PATH.'/footer.php');
+require_once(ROOT_PATH . SHARED_PATH.'/footer.php');
 ?>

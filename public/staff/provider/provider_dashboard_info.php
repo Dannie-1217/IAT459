@@ -21,9 +21,9 @@
     $userData = mysqli_fetch_assoc($userResult);
 
     // Handle form submission for updates
-    if($_SERVER["REQUEST_METHOD" == "POST"]){
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
         $new_user_name = mysqli_real_escape_string($connection, $_POST['user_name']);
-        $legal_name = mysqli_real_escape_string($connection, $_POST['leg_name']);
+        $legal_name = mysqli_real_escape_string($connection, $_POST['legal_name']);
         $other_contact = mysqli_real_escape_string($connection, $_POST['other_contact']);
 
         // Check if username is unique
@@ -76,6 +76,9 @@
         .success { color: green; }
     </style>
 </head>
+
+    <?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
+
 <body>
     <div class="profile-container">
         <h2>User Profile</h2>
@@ -88,8 +91,8 @@
                 }
             }
         ?>
-        <!-- Profile Photo -->
-        <img src="<?php echo htmlspecialchars($userData['profile_photo']); ?>" alt="Profile Photo" class="profile-photo">
+ 
+        <img src="<?php echo htmlspecialchars(PUBLIC_PATH .'/images/profilephoto/' .$userData['profile_photo']); ?>" alt="Profile Photo" class="profile-photo">
 
         <form method="POST">
             <div class="form-group">

@@ -12,6 +12,7 @@
     }
 
     // Assign file paths to PHP constants
+    define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT']);
     define("PRIVATE_PATH", '/IAT459/private');
     define("PUBLIC_PATH", '/IAT459/public');
     define("SHARED_PATH", PRIVATE_PATH . '/shared');

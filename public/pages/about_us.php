@@ -3,11 +3,11 @@
 <?php
 //Set CSS file.
 echo '<style>'; 
-include PUBLIC_PATH."/css/Formstyle.css";
+include ROOT_PATH . PUBLIC_PATH."/css/Formstyle.css";
 echo '</style>';
 
-require(SHARED_PATH.'/header.php');
+require(ROOT_PATH . SHARED_PATH.'/header.php');
 echo "<h1>About Us: </h1>";
 
-require(SHARED_PATH.'/footer.php');
+require(ROOT_PATH . SHARED_PATH.'/footer.php');
 ?>
