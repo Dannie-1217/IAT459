@@ -8,7 +8,7 @@
       
       $user_name = $_SESSION['user_name'];
 
-      // Fetch user id based o username
+      // Fetch user id based on username
       $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
       $userResult = mysqli_query($connection, $userQuery);
       $userData = mysqli_fetch_assoc($userResult);
