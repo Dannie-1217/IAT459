@@ -8,7 +8,7 @@
       
       $user_name = $_SESSION['user_name'];
 
-      // Fetch user id based o username
+      // Fetch user id based on username
       $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
       $userResult = mysqli_query($connection, $userQuery);
       $userData = mysqli_fetch_assoc($userResult);
@@ -41,6 +41,7 @@
     <title>Provider Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body class="bg-light">
 <div class="container mt-5">
     <h1 class="mb-4">Welcome, <?= htmlspecialchars($user_name) ?></h1>
@@ -55,14 +56,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <a href="adopter_records.php" class="col-md-4 text-decoration-none">
             <div class="card text-white bg-success mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Adoption Records</h5>
                     <p class="card-text fs-2"><?= $adoptionRequestCount ?></p>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <!-- Recent Activity Section -->
@@ -80,7 +81,7 @@
     <!-- Quick Actions -->
     <div class="mt-4">
         <a href="../../pages/homepage.php" class="btn btn-primary">Adopt New Pet</a>
-        <a href="adopter_records.php" class="btn btn-secondary">Check Adoption Status</a>
+        <a href="../general/personal_info.php" class="btn btn-secondary">Update Personal information</a>
         <a href="../general/logout.php" class="btn btn-danger">Logout</a>
     </div>
 </div>

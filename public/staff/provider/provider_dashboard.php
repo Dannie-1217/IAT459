@@ -81,7 +81,7 @@
     <!-- Quick Actions -->
     <div class="mt-4">
         <a href="post_pet.php" class="btn btn-primary">Add New Pet</a>
-        <a href="provider_dashboard_info.php" class="btn btn-secondary">Update Personal information</a>
+        <a href="../general/personal_info.php" class="btn btn-secondary">Update Personal information</a>
         <a href="../general/logout.php" class="btn btn-danger">Logout</a>
     </div>
 </div>
