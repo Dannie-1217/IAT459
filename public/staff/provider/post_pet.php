@@ -154,6 +154,7 @@
             }
         </script>
     </head>
+    <?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
     
     <body>
         <h1>Post a Pet</h1>

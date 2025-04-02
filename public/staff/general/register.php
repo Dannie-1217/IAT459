@@ -89,7 +89,7 @@
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
-
+<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body>
     <h2>User Registration</h2>
 

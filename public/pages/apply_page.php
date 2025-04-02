@@ -1,6 +1,14 @@
 <?php require_once("../../private/functions/initialization.php") ?>
 
 <?php
+
+    if(!isset($_SESSION['user_name'])){
+        header("Location: ../staff/general/login.php");
+        exit();
+    }
+  
+  $user_name = $_SESSION['user_name'];
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $q1 = $_POST['q1'];
         $q2 = $_POST['q2'];
