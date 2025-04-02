@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2025 at 01:11 AM
+-- Generation Time: Apr 02, 2025 at 08:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -48,6 +48,13 @@ CREATE TABLE `favorites` (
   `user_id` int(5) NOT NULL,
   `pet_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`user_id`, `pet_id`) VALUES
+(10019, 10000);
 
 -- --------------------------------------------------------
 
@@ -268,13 +275,13 @@ INSERT INTO `pet_tags` (`pet_id`, `tag_id`) VALUES
 (10000, 10010),
 (10000, 10011),
 (10001, 10001),
+(10001, 10006),
 (10001, 10007),
 (10001, 10008),
 (10001, 10012),
-(10001, 10006),
+(10001, 10014),
 (10002, 10002),
 (10002, 10013),
-(10001, 10014),
 (10002, 10014),
 (10003, 10003),
 (10003, 10015),
@@ -285,21 +292,21 @@ INSERT INTO `pet_tags` (`pet_id`, `tag_id`) VALUES
 (10004, 10019),
 (10005, 10005),
 (10005, 10023),
-(10006, 10022),
 (10006, 10001),
 (10006, 10020),
 (10006, 10021),
+(10006, 10022),
 (10007, 10000),
-(10007, 10028),
 (10007, 10026),
 (10007, 10027),
+(10007, 10028),
 (10008, 10002),
-(10008, 10025),
 (10008, 10012),
 (10008, 10024),
+(10008, 10025),
 (10008, 10030),
-(10009, 10016),
 (10009, 10003),
+(10009, 10016),
 (10009, 10029),
 (10010, 10000),
 (10010, 10029),
@@ -333,8 +340,47 @@ CREATE TABLE `provide_records` (
 --
 
 INSERT INTO `provide_records` (`user_id`, `pet_id`) VALUES
-(10016, 10016),
-(10016, 10030);
+(10000, 10000),
+(10016, 10001),
+(10011, 10002),
+(10016, 10003),
+(10005, 10004),
+(10016, 10005),
+(10004, 10006),
+(10001, 10007),
+(10003, 10008),
+(10006, 10009),
+(10011, 10010),
+(10016, 10011),
+(10016, 10012),
+(10012, 10013),
+(10011, 10014),
+(10004, 10015),
+(10005, 10016),
+(10001, 10017),
+(10003, 10018),
+(10003, 10019),
+(10012, 10020),
+(10011, 10021),
+(10006, 10022),
+(10003, 10023),
+(10012, 10024),
+(10004, 10025),
+(10011, 10026),
+(10005, 10027),
+(10012, 10028),
+(10006, 10029),
+(10002, 10030),
+(10002, 10031),
+(10016, 10032),
+(10000, 10033),
+(10011, 10034),
+(10006, 10035),
+(10016, 10036),
+(10012, 10037),
+(10002, 10038),
+(10005, 10039),
+(10001, 10071);
 
 -- --------------------------------------------------------
 
@@ -442,6 +488,7 @@ ALTER TABLE `adoption_records`
 -- Indexes for table `favorites`
 --
 ALTER TABLE `favorites`
+  ADD PRIMARY KEY (`user_id`,`pet_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `pet_id` (`pet_id`);
 
@@ -461,6 +508,7 @@ ALTER TABLE `pet_images`
 -- Indexes for table `pet_tags`
 --
 ALTER TABLE `pet_tags`
+  ADD PRIMARY KEY (`pet_id`,`tag_id`),
   ADD KEY `pet_id` (`pet_id`),
   ADD KEY `tag_id` (`tag_id`);
 
@@ -499,13 +547,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10072;
+  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10075;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `tag_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10033;
+  MODIFY `tag_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10036;
 
 --
 -- AUTO_INCREMENT for table `user`
