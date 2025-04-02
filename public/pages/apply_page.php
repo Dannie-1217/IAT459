@@ -40,6 +40,7 @@
         }
     }
 
+    require_once(ROOT_PATH . SHARED_PATH.'/header.php');
 
     echo '<form action="apply_page.php" method="POST" enctype="multipart/form-data">
         <label>Application Form Questions: </label><br>
