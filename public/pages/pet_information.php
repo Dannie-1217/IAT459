@@ -11,7 +11,9 @@ echo "<h1>Pet Information: </h1>";
 
 if(isset($_GET['edit'])){
     $id = $_GET['edit'];
-}  
+} 
+
+$_SESSION['pet_id'] = $id;
 
 $general_query = "SELECT * FROM pet WHERE pet_id = ".$id;
 
@@ -47,6 +49,40 @@ if(mysqli_num_rows($select_result) != 0){
 else{
     echo"<tr>Result is empty!</tr>";
 }
+
+echo "Tags:";
+
+$tag_query = "SELECT tags.content FROM tags LEFT JOIN pet_tags ON pet_tags.tag_id = tags.tag_id WHERE pet_tags.pet_id = ".$id;
+
+$tag_result = mysqli_query($connection, $tag_query);
+
+if(!$tag_result){
+    echo"query faled!";
+    exit;
+}
+
+if(mysqli_num_rows($tag_result) != 0){
+    echo"<table class='resultTable'><tr>";          
+        echo "<td class='tableGrid'><p class='tableHeader'>Tags</p></td>";  
+    echo "</tr><tr>";
+    while($row = mysqli_fetch_assoc($tag_result)){
+        echo "<td class='tableGrid'>". $row['content']. "</td>";  
+        echo"</tr>";
+    }
+    echo"</table>";
+}
+//If result is empty, then show this warning.
+else{
+    echo"<tr>Result is empty!</tr>";
+}
+
+echo '<form action="../../private/functions/add_favorite.php">
+            <input type="submit" value="Add to Favorite List">
+        </form>';
+
+echo '<form action="apply_page.php">
+        <input type="submit" value="Apply for Adoption">
+      </form>';      
 
 require_once(ROOT_PATH . SHARED_PATH.'/footer.php');
 ?>
