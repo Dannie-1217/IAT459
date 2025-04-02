@@ -55,6 +55,7 @@
             suggestionBox.innerHTML = "";
         }
     </script>
+
 </body>
 
 </html>
