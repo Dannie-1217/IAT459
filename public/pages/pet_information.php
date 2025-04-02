@@ -11,7 +11,9 @@ echo "<h1>Pet Information: </h1>";
 
 if(isset($_GET['edit'])){
     $id = $_GET['edit'];
-}  
+} 
+
+$_SESSION['pet_id'] = $id;
 
 $general_query = "SELECT * FROM pet WHERE pet_id = ".$id;
 
@@ -73,6 +75,14 @@ if(mysqli_num_rows($tag_result) != 0){
 else{
     echo"<tr>Result is empty!</tr>";
 }
+
+echo '<form action="../../private/functions/add_favorite.php">
+            <input type="submit" value="Add to Favorite List">
+        </form>';
+
+echo '<form action="apply_page.php">
+        <input type="submit" value="Apply for Adoption">
+      </form>';      
 
 require_once(ROOT_PATH . SHARED_PATH.'/footer.php');
 ?>
