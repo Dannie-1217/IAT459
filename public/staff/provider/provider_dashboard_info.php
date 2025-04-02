@@ -64,8 +64,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .profile-container { width: 50%; margin: auto; }
+        body { font-family: Arial, sans-serif;  }
+        .profile-container { width: 50%; margin: auto;text-align: center; }
         .profile-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
         .form-group { margin: 10px 0; }
         label { display: block; font-weight: bold; }
@@ -74,14 +74,30 @@
         .submit-btn { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
         .error { color: red; }
         .success { color: green; }
+        .black_button{width: 50%; margin: auto}
+        .reset-btn {
+            width: 100%; 
+            padding: 5px 10px;
+            background-color: #095F98; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            text-decoration: none; 
+            display: inline-block;
+            text-align: center; 
+            margin-bottom: 0.5rem
+        }
+        <?php include ROOT_PATH . PUBLIC_PATH."/css/Formstyle.css"; ?>
     </style>
+   
 </head>
 
-    <?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
+<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 
 <body>
+    
     <div class="profile-container">
-        <h2>User Profile</h2>
+    <h2>User Profile</h2>
 
         <?php if (isset($successMessage)) echo "<p class='success'>$successMessage</p>"; ?>
         <?php
@@ -122,8 +138,14 @@
 
             <input type="submit" value="Update Profile" class="submit-btn">
         </form>
-
-        <a href="provider_dashboard.php">Back to Dashboard</a>
+        <br>
+        <div class="black_button">
+            <a href="change_password.php" class="reset-btn">Reset Password</a>
+            <br>
+            <a href="provider_dashboard.php" class="reset-btn">Back to Dashboard</a>
+        </div>
     </div>
+   
 </body>
+
 </html>

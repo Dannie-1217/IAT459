@@ -41,28 +41,29 @@
     <title>Provider Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body class="bg-light">
 <div class="container mt-5">
     <h1 class="mb-4">Welcome, <?= htmlspecialchars($user_name) ?></h1>
 
     <!-- Stats Section -->
     <div class="row">
-        <div class="col-md-4">
+        <a href="provider_dashboard_post.php" class="col-md-4 text-decoration-none">
             <div class="card text-white bg-primary mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Pets Posted</h5>
                     <p class="card-text fs-2"><?= $petCount ?></p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
+        </a>
+        <a href="adoption_requests.php" class="col-md-4 text-decoration-none">
             <div class="card text-white bg-success mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Adoption Requests</h5>
                     <p class="card-text fs-2"><?= $adoptionRequestCount ?></p>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <!-- Recent Activity Section -->
@@ -80,9 +81,11 @@
     <!-- Quick Actions -->
     <div class="mt-4">
         <a href="post_pet.php" class="btn btn-primary">Add New Pet</a>
-        <a href="adoption_requests.php" class="btn btn-secondary">Manage Adoption Requests</a>
+        <a href="provider_dashboard_info.php" class="btn btn-secondary">Update Personal information</a>
         <a href="../general/logout.php" class="btn btn-danger">Logout</a>
     </div>
 </div>
+
 </body>
+
 </html>

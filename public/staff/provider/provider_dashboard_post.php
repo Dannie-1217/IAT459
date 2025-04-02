@@ -31,6 +31,7 @@
     <meta charset="UTF-8">
     <title>My Posted Pets</title>
 </head>
+<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body>
     <h1>My Posted Pets</h1>
 

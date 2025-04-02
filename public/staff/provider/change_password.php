@@ -52,8 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Password</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .form-container { width: 50%; margin: auto; }
+        body { font-family: Arial, sans-serif; }
+        .form-container { width: 50%; margin: auto;text-align: center;  }
         .form-group { margin: 10px 0; }
         label { display: block; font-weight: bold; }
         input { width: 100%; padding: 8px; }
@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .success { color: green; }
     </style>
 </head>
+<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body>
     <div class="form-container">
         <h2>Change Password</h2>
