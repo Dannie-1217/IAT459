@@ -73,40 +73,42 @@ if (isset($_SESSION['user_name'])) {
     $user_name = $_SESSION['user_name'];
 
       // Fetch user id based on username
-    $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
+    $userQuery = "SELECT user_id, user_type FROM user WHERE user_name = '$user_name'";
     $userResult = mysqli_query($connection, $userQuery);
     $userData = mysqli_fetch_assoc($userResult);
-    $user_id = $userData['user_id'];
+    if($userData['user_type'] == 'adopter'){
+        $user_id = $userData['user_id'];
 
-    echo "<h1>Pets You May Like: </h1>";
-    $prefer_query = "SELECT pet.pet_id, pet.pet_name, pet.pet_type, pet.location FROM pet INNER JOIN pet_tags ON pet.pet_id = pet_tags.pet_id WHERE pet_tags.tag_id = ANY(SELECT tag_id FROM preferences WHERE user_id = '$user_id') GROUP BY pet.pet_id";
-    $prefer_result = mysqli_query($connection, $prefer_query);
+        echo "<h1>Pets You May Like: </h1>";
+        $prefer_query = "SELECT pet.pet_id, pet.pet_name, pet.pet_type, pet.location FROM pet INNER JOIN pet_tags ON pet.pet_id = pet_tags.pet_id WHERE pet_tags.tag_id = ANY(SELECT tag_id FROM preferences WHERE user_id = '$user_id') GROUP BY pet.pet_id";
+        $prefer_result = mysqli_query($connection, $prefer_query);
 
-    if(!$prefer_result){
-        echo"query faled!";
-        exit;
-    }
-    
-    if(mysqli_num_rows($prefer_result) != 0){
-        echo"<table class='resultTable'><tr>";          
-            echo "<td class='tableGrid'><p class='tableHeader'>Pet ID</p></td>";  
-            echo "<td class='tableGrid'><p class='tableHeader'>Pet Name</p></td>";   
-            echo "<td class='tableGrid'><p class='tableHeader'>Pet Type</p></td>";  
-            echo "<td class='tableGrid'><p class='tableHeader'>Location</p></td>";
-        echo "</tr><tr>";
-        while($row = mysqli_fetch_assoc($prefer_result)){
-            $pet_id = $row['pet_id'];
-            echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_id']. "</a></td>";  
-            echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_name']. "</a></td>";
-            echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_type']. "</a></td>"; 
-            echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['location']. "</a></td>";
-            echo"</tr>";
+        if(!$prefer_result){
+            echo"query faled!";
+            exit;
         }
-        echo"</table>";
-    }
+        
+        if(mysqli_num_rows($prefer_result) != 0){
+            echo"<table class='resultTable'><tr>";          
+                echo "<td class='tableGrid'><p class='tableHeader'>Pet ID</p></td>";  
+                echo "<td class='tableGrid'><p class='tableHeader'>Pet Name</p></td>";   
+                echo "<td class='tableGrid'><p class='tableHeader'>Pet Type</p></td>";  
+                echo "<td class='tableGrid'><p class='tableHeader'>Location</p></td>";
+            echo "</tr><tr>";
+            while($row = mysqli_fetch_assoc($prefer_result)){
+                $pet_id = $row['pet_id'];
+                echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_id']. "</a></td>";  
+                echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_name']. "</a></td>";
+                echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_type']. "</a></td>"; 
+                echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['location']. "</a></td>";
+                echo"</tr>";
+            }
+            echo"</table>";
+        }
 
-    else{
-        echo"<tr>Result is empty!</tr>";
+        else{
+            echo"<tr>Result is empty!</tr>";
+        }
     }
 }
 
