@@ -32,6 +32,36 @@
                     ORDER BY pet.post_date DESC 
                     LIMIT 3";
       $recentPetsResult = mysqli_query($connection, $recentPetsQuery);
+
+      //Process Tags
+      if($_SERVER["REQUEST_METHOD"] === "POST") {
+        $tags = isset($_POST['tags']) ? $_POST['tags']:[];
+        $tag_id;
+        mysqli_begin_transaction($connection);
+
+            $tagQuery = "SELECT tag_id FROM tags WHERE content = '$tags'";
+            $tagResult = mysqli_query($connection, $tagQuery);
+
+            if(mysqli_num_rows($tagResult)>0){
+                $tagRow = mysqli_fetch_assoc($tagResult);
+                $tag_id = $tagRow['tag_id'];
+            } else{
+                $insertTag = "INSERT INTO tags (content) VALUES ('$tags')";
+                $insertTag_res = mysqli_query($connection, $insertTag);
+                if(!$insertTag_res){
+                    array_push($errors, "Failed to inset new tag: " . mysqli_error($connection));
+                } else{
+                    $tag_id = mysqli_insert_id($connection);
+                }
+            }
+
+            $addTag = "INSERT INTO preferences(user_id, tag_id) VALUES ('$user_id', '$tag_id')";
+            $addRes = mysqli_query($connection, $addTag);
+            if(!$addRes){
+                array_push($errors, "Failed to associate tag with pet: " . mysqli_error($connection));
+            }
+        
+      }
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +70,26 @@
     <meta charset="UTF-8">
     <title>Provider Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#tag_input").on("input",function(){
+                    let query = $(this).val();
+                    if(query.length > 1){
+                        $.ajax({
+                            url:"fetch_tags.php",
+                            method:"POST",
+                            data:{query: query},
+                            success: function(data){
+                                $("#tag_suggestions").html(data);
+                            }
+                        });
+                    }else{
+                        $("#tag_suggestions").html("");
+                    }
+                });
+            });
+        </script>
 </head>
 <?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body class="bg-light">
@@ -79,6 +129,29 @@
             <?php endwhile; ?>
         </ul>
     </div>
+
+    <!-- Add Tags-->
+    <form action="adopter_dashboard.php" method="POST" enctype="multipart/form-data">
+        <label>Add Tags: </label><br>
+        <input type="text" id="tag_input" name="tags" placeholder="Type to search or add new...">
+        <input type="submit" value='Add'/>
+        <div id="tag_suggestions"></div>
+    </form>
+        <div id="tag_list"><p>Tag List:</p></div>
+        <?php
+            $taglistQuery = "SELECT tags.content, tags.tag_id FROM tags LEFT JOIN preferences ON preferences.tag_id = tags.tag_id WHERE preferences.user_id = '$user_id'";
+            $taglistResult = mysqli_query($connection, $taglistQuery);
+
+            if(mysqli_num_rows($taglistResult)>0){
+                while($row = mysqli_fetch_assoc($taglistResult)){
+                    $tag_id = $row['tag_id'];
+                    echo "<td class='tableGrid'>". $row['content']. "</td>"; 
+                    echo "<td class='tableGrid'><a href='remove_tags.php?edit=$tag_id' id='link1'>'Remove'</a></td> <br>";
+                }
+            } else{
+                echo "Not Tags Found!";
+            }
+        ?>
 
     <!-- Quick Actions -->
     <div class="mt-4">

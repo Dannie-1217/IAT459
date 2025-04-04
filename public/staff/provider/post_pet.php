@@ -16,7 +16,7 @@
     $userData = mysqli_fetch_assoc($userResult);
     $user_id = $userData['user_id'];
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if($_SERVER["REQUEST_METHOD"] === "POST") {
         $pet_name = mysqli_real_escape_string($connection, $_POST["pet_name"]);
         $location = mysqli_real_escape_string($connection, $_POST["location"]);
         $pet_type = mysqli_real_escape_string($connection, $_POST["pet_type"]);
