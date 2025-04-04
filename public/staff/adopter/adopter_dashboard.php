@@ -48,14 +48,16 @@
 
     <!-- Stats Section -->
     <div class="row">
-        <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Favorite Pets</h5>
-                    <p class="card-text fs-2"><?= $petCount ?></p>
+        <a href="favorite_pets.php" class="col-md-4 text-decoration-none">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Favorite Pets</h5>
+                        <p class="card-text fs-2"><?= $petCount ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>    
         <a href="adopter_records.php" class="col-md-4 text-decoration-none">
             <div class="card text-white bg-success mb-3">
                 <div class="card-body">
