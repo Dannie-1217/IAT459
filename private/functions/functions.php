@@ -1,9 +1,21 @@
 <?php 
 //Add Dropdown box for the page.
+// function drop_list($label,$varname,$options,$texts) {
+// 	global $$varname;
+// 	echo "<td id='label2'>$label</td>";
+// 	echo "<td><select name=\"$varname\"";
+// 	echo ">";
+
+// 	$i = 0;
+// 	foreach($options as $opt) 
+// 		drop_option($texts[$i++],$varname, $opt);
+// 	echo "</select></td>";
+// }
+
 function drop_list($label,$varname,$options,$texts) {
 	global $$varname;
-	echo "<td id='label2'>$label</td>";
-	echo "<td><select name=\"$varname\"";
+	echo "<label>$label</label>";
+	echo "<select name=\"$varname\"";
 	echo ">";
 
 	$i = 0;
