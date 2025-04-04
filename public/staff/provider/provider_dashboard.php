@@ -20,7 +20,7 @@
       $petCount = mysqli_fetch_assoc($petCountResult)['pet_count'];
 
       // Get count of adoption requests for this provider
-      $adoptionRequestCountQuery = "SELECT COUNT(*) AS adoption_request_count FROM adoption_records ar JOIN provide_records pr ON ar.pet_id = pr.pet_id WHERE pr.user_id = '$user_id'";
+      $adoptionRequestCountQuery = "SELECT COUNT(*) AS adoption_request_count FROM adoption_records ar JOIN provide_records pr ON ar.pet_id = pr.pet_id WHERE pr.user_id = '$user_id' AND ar.status = 'Processing'";
       $adoptionRequestCountResult = mysqli_query($connection, $adoptionRequestCountQuery);
       $adoptionRequestCount = mysqli_fetch_assoc($adoptionRequestCountResult)['adoption_request_count'];
 
