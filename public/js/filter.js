@@ -1,26 +1,36 @@
 $(document).ready(function() {
-
-    $("#searchForm").submit(function(event) {
-        event.preventDefault();  // Prevent the form from submitting in the traditional way
-
-        // Get the values of the selected filters using jQuery
-        const petType = $('select[name="pet_type"]').val();
-        const location = $('select[name="location"]').val();
-
-        // Build the query string with the selected filters
-        const queryString = `../../private/functions/filter_result.php?pet_type=${encodeURIComponent(petType)}&location=${encodeURIComponent(location)}`;
-
-        // Fetch the filtered results from the server using jQuery's AJAX
+    // Function to load pets (used for both initial load and searches)
+    function loadPets(petType = '', location = '') {
+        // Show loading indicator
+        $("#search_res").html('<div class="loading">Loading pets...</div>');
+        
         $.ajax({
-            url: queryString,
+            url: "../../private/functions/filter_result.php",
             method: "GET",
+            data: {
+                pet_type: petType,
+                location: location
+            },
             success: function(data) {
-                // Insert the result into the search results container
                 $("#search_res").html(data);
             },
-            error: function(error) {
-                console.error("Error:", error);
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", status, error);
+                $("#search_res").html(
+                    '<div class="error">Error loading pet data. Please try again.</div>'
+                );
             }
         });
+    }
+
+    // Load all pets when page first loads
+    loadPets();
+
+    // Handle form submission
+    $("#searchForm").on('submit', function(event) {
+        event.preventDefault();
+        const petType = $('select[name="pet_type"]').val();
+        const location = $('select[name="location"]').val();
+        loadPets(petType, location);
     });
 });

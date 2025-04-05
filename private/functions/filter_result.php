@@ -49,24 +49,41 @@ if(!$select_result){
 }
 
 if(mysqli_num_rows($select_result) != 0){
-    echo"<table class='resultTable'><tr>";          
-        echo "<td class='tableGrid'><p class='tableHeader'>Pet date</p></td>";  
-        echo "<td class='tableGrid'><p class='tableHeader'>Pet Name</p></td>";     
-        echo "<td class='tableGrid'><p class='tableHeader'>Location</p></td>";
-        echo "<td class='tableGrid'><p class='tableHeader'>Image</p></td>";
-    echo "</tr><tr>";
+    // echo"<table class='resultTable'><tr>";          
+    //     echo "<td class='tableGrid'><p class='tableHeader'>Pet date</p></td>";  
+    //     echo "<td class='tableGrid'><p class='tableHeader'>Pet Name</p></td>";     
+    //     echo "<td class='tableGrid'><p class='tableHeader'>Location</p></td>";
+    //     echo "<td class='tableGrid'><p class='tableHeader'>Image</p></td>";
+    // echo "</tr><tr>";
+    // while($row = mysqli_fetch_assoc($select_result)){
+    //     $pet_id = $row['pet_id'];
+    //     echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['post_date']. "</a></td>";  
+    //     echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_name']. "</a></td>";
+    //     echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['location']. "</a></td>";
+    //     echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_imgs']. "</a></td>";
+    //     echo"</tr>";
+    // }
+    // echo"</table>";
+    echo "<div class='cardContainer grid card_grid'>";
     while($row = mysqli_fetch_assoc($select_result)){
         $pet_id = $row['pet_id'];
-        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['post_date']. "</a></td>";  
-        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_name']. "</a></td>";
-        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['location']. "</a></td>";
-        echo "<td class='tableGrid'><a href='pet_information.php?edit=$pet_id' id='link1'>". $row['pet_imgs']. "</a></td>";
-        echo"</tr>";
+        $pet_name = htmlspecialchars($row['pet_name']);
+        $location = htmlspecialchars($row['location']);
+        $image = htmlspecialchars($row['pet_imgs']);
+
+        echo "
+            <div class='petCard'>
+                <a href='pet_information.php?edit=$pet_id'>
+                    <img src='../../public/images/petimages/$image' alt='$pet_name' class='petImage'>
+                    <div class='petInfo'>
+                        <h3 class='petName'>$pet_name</h3>
+                        <p class='petLocation'>$location</p>
+                    </div>
+                </a>
+            </div>
+        ";
     }
-    echo"</table>";
-}
-//If result is empty, then show this warning.
-else{
-    echo"<tr>Result is empty!</tr>";
+}else{
+    echo"<p>No pets found matching your filters.</p>";
 }
 ?>
