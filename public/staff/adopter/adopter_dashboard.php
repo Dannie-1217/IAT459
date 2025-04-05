@@ -5,6 +5,8 @@
         header(PUBLIC_PATH."/staff/general/login.php");
         exit();
       }
+
+      $placeholder="Type to search or add new...";
       
       $user_name = $_SESSION['user_name'];
 
@@ -37,7 +39,7 @@
       if($_SERVER["REQUEST_METHOD"] === "POST") {
         $tags = isset($_POST['tags']) ? $_POST['tags']:[];
         $tag_id;
-        mysqli_begin_transaction($connection);
+        //mysqli_begin_transaction($connection);
 
             $tagQuery = "SELECT tag_id FROM tags WHERE content = '$tags'";
             $tagResult = mysqli_query($connection, $tagQuery);
@@ -55,7 +57,7 @@
                 }
             }
 
-            $addTag = "INSERT INTO preferences(user_id, tag_id) VALUES ('$user_id', '$tag_id')";
+            $addTag = "INSERT INTO preferences(user_id, tag_id) VALUES ($user_id, $tag_id)";
             $addRes = mysqli_query($connection, $addTag);
             if(!$addRes){
                 array_push($errors, "Failed to associate tag with pet: " . mysqli_error($connection));
@@ -89,6 +91,10 @@
                     }
                 });
             });
+
+            function addTag(tagName){
+                document.getElementById('tag_input').value=tagName;
+            }
         </script>
 </head>
 <?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
@@ -133,7 +139,9 @@
     <!-- Add Tags-->
     <form action="adopter_dashboard.php" method="POST" enctype="multipart/form-data">
         <label>Add Tags: </label><br>
-        <input type="text" id="tag_input" name="tags" placeholder="Type to search or add new...">
+        <?php
+            echo '<input type="text" id="tag_input" name="tags" placeholder='. $placeholder.'>';
+        ?>
         <input type="submit" value='Add'/>
         <div id="tag_suggestions"></div>
     </form>
