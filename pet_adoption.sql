@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 02, 2025 at 08:56 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Apr 05, 2025 at 04:39 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,6 +37,14 @@ CREATE TABLE `adoption_records` (
   `adoption_date` date NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `adoption_records`
+--
+
+INSERT INTO `adoption_records` (`user_id`, `pet_id`, `adopted_before`, `other_pets`, `suitable_living_space`, `reason_for_adoption`, `adoption_date`, `status`) VALUES
+(10019, 10000, 'Yes', 'Yes', 'Yes', 'Dog is cute', '2025-04-02', 'Processing'),
+(10019, 10001, 'Yes', 'Yes', 'Yes', 'Cat is cute, this is a cat right?', '2025-04-02', 'Approve');
 
 -- --------------------------------------------------------
 
@@ -89,7 +97,7 @@ INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `d
 (10010, 'Daisy', 'Vancouver', 'dog', '2025-02-01', 'Daisy is a sweet golden doodle who loves long walks along the seawall. Friendly with kids and other dogs, perfect for a family.'),
 (10011, 'Milo', 'Burnaby', 'cat', '2025-02-03', 'Milo is an adventurous orange tabby who loves exploring high places. He is food-motivated and purrs loudly when happy.'),
 (10012, 'Spirit', 'Richmond', 'horse', '2025-02-05', 'Spirit is a beautiful young black horse, ideal for trail rides. Calm and bonds quickly with gentle riders.'),
-(10013, 'Mochi', 'Coquitlam', 'rabbit	', '2025-02-06', 'Mochi is a fluffy grey bunny who enjoys fresh greens and hopping around the living room. Loves being hand-fed treats.\r\n'),
+(10013, 'Mochi', 'Coquitlam', 'rabbit	', '2025-02-06', 'Mochi is a fluffy grey bunny who enjoys fresh greens and hopping around the living room. Loves being hand-fed treats.\n'),
 (10014, 'Kiwi', 'Surrey', 'bird', '2025-02-08', 'Kiwi is a talkative green parakeet that enjoys learning new words. Social and loves sitting on your shoulder.'),
 (10015, 'Bubbles', 'North Vancouver', 'fish', '2025-02-10', 'Bubbles is a vibrant betta fish with long flowing fins. Peaceful and easy to care for, perfect for any small tank.'),
 (10016, 'Luna', 'New Westminster', 'cat', '2025-02-12', 'Luna is a shy black cat who warms up quickly with treats. Loves chin scratches and sunbathing by the window.'),
@@ -109,7 +117,7 @@ INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `d
 (10030, 'Blue', 'Vancouver', 'bird', '2025-03-12', 'Blue is a majestic macaw with bright blue feathers. Enjoys flying in open spaces and mimicking sounds.'),
 (10031, 'Marble', 'Burnaby', 'fish', '2025-03-14', 'Marble is a marble-patterned angelfish who adds elegance to any tank. Loves swimming through plants.'),
 (10032, 'Simba', 'Richmond', 'cat', '2025-03-16', 'Simba is a big fluffy Maine Coon who loves being the center of attention. Very social and good with children.'),
-(10033, 'Rocky', 'Coquitlam', 'dog', '2025-03-18', 'Rocky is a husky mix with endless energy. Enjoys hikes and outdoor play. Best suited for an active family.\r\n'),
+(10033, 'Rocky', 'Coquitlam', 'dog', '2025-03-18', 'Rocky is a husky mix with endless energy. Enjoys hikes and outdoor play. Best suited for an active family.\n'),
 (10034, 'Snowball', 'Surrey', 'rabbit', '2025-03-20', 'Snowball is a pure white rabbit with red eyes. Very gentle and loves nibbling on apples.'),
 (10035, 'Lemon', 'North Vancouver', 'bird', '2025-03-22', 'Lemon is a small canary with a bright yellow coat. Known for singing sweet melodies every morning.'),
 (10036, 'Flash', 'New Westminster', 'fish', '2025-03-24', 'Flash is a speedy goldfish who loves racing around the tank. Very active and fun to watch.'),
@@ -311,7 +319,113 @@ INSERT INTO `pet_tags` (`pet_id`, `tag_id`) VALUES
 (10010, 10000),
 (10010, 10029),
 (10010, 10031),
-(10010, 10032);
+(10010, 10032),
+(10011, 10001),
+(10011, 10006),
+(10011, 10033),
+(10011, 10034),
+(10011, 10035),
+(10012, 10002),
+(10012, 10013),
+(10012, 10014),
+(10012, 10036),
+(10013, 10003),
+(10013, 10007),
+(10013, 10016),
+(10013, 10037),
+(10014, 10004),
+(10014, 10039),
+(10014, 10040),
+(10014, 10041),
+(10014, 10042),
+(10015, 10005),
+(10015, 10043),
+(10015, 10044),
+(10016, 10001),
+(10016, 10013),
+(10016, 10020),
+(10016, 10045),
+(10017, 10000),
+(10017, 10026),
+(10017, 10046),
+(10017, 10047),
+(10018, 10002),
+(10018, 10024),
+(10018, 10025),
+(10018, 10048),
+(10019, 10003),
+(10019, 10049),
+(10019, 10050),
+(10020, 10004),
+(10020, 10042),
+(10020, 10051),
+(10020, 10052),
+(10021, 10005),
+(10021, 10053),
+(10021, 10054),
+(10022, 10001),
+(10022, 10055),
+(10022, 10056),
+(10023, 10000),
+(10023, 10057),
+(10023, 10058),
+(10023, 10059),
+(10024, 10003),
+(10024, 10012),
+(10024, 10024),
+(10025, 10004),
+(10025, 10060),
+(10025, 10061),
+(10026, 10005),
+(10026, 10062),
+(10026, 10063),
+(10027, 10001),
+(10027, 10064),
+(10027, 10065),
+(10028, 10000),
+(10028, 10066),
+(10028, 10067),
+(10028, 10068),
+(10029, 10003),
+(10029, 10013),
+(10029, 10070),
+(10030, 10004),
+(10030, 10071),
+(10030, 10072),
+(10030, 10073),
+(10031, 10005),
+(10031, 10074),
+(10031, 10075),
+(10032, 10001),
+(10032, 10076),
+(10032, 10077),
+(10032, 10078),
+(10033, 10000),
+(10033, 10026),
+(10033, 10027),
+(10033, 10055),
+(10034, 10003),
+(10034, 10015),
+(10034, 10079),
+(10034, 10080),
+(10035, 10004),
+(10035, 10081),
+(10035, 10082),
+(10035, 10083),
+(10036, 10004),
+(10036, 10023),
+(10036, 10084),
+(10036, 10085),
+(10037, 10001),
+(10037, 10086),
+(10038, 10000),
+(10038, 10087),
+(10039, 10003),
+(10039, 10016),
+(10039, 10033),
+(10039, 10088),
+(10071, 10089),
+(10071, 10090);
 
 -- --------------------------------------------------------
 
@@ -323,6 +437,13 @@ CREATE TABLE `preferences` (
   `user_id` int(5) NOT NULL,
   `tag_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `preferences`
+--
+
+INSERT INTO `preferences` (`user_id`, `tag_id`) VALUES
+(10019, 10000);
 
 -- --------------------------------------------------------
 
@@ -430,7 +551,66 @@ INSERT INTO `tags` (`tag_id`, `content`) VALUES
 (10029, 'sweet'),
 (10030, 'beautiful'),
 (10031, 'golden doodle'),
-(10032, 'like walking');
+(10032, 'like walking'),
+(10033, 'orange'),
+(10034, 'orange cat'),
+(10035, 'Burnaby'),
+(10036, 'trail ride'),
+(10037, 'fluffy'),
+(10038, 'hopping'),
+(10039, 'green'),
+(10040, 'green_fur'),
+(10041, 'parakeet'),
+(10042, 'could talk'),
+(10043, 'betta fish'),
+(10044, 'peaceful'),
+(10045, 'shy'),
+(10046, 'Labrador'),
+(10047, 'Labrador Retriever'),
+(10048, 'good for beginner'),
+(10049, 'small'),
+(10050, 'tan bunny'),
+(10051, 'blue budgie'),
+(10052, 'singing'),
+(10053, 'bright'),
+(10054, 'neon tetra'),
+(10055, 'playful'),
+(10056, 'love climbing'),
+(10057, 'German shepherd'),
+(10058, 'protective'),
+(10059, 'good training'),
+(10060, 'sun conure'),
+(10061, 'colorful'),
+(10062, 'koi fish'),
+(10063, 'orange and white'),
+(10064, 'rescue cat'),
+(10065, 'mismatched eyes'),
+(10066, 'Rottweiler'),
+(10067, 'strong'),
+(10068, 'calm'),
+(10069, 'curious'),
+(10070, 'black rabbit'),
+(10071, 'majestic'),
+(10072, 'macaw'),
+(10073, 'blue feathers'),
+(10074, 'marble-patterned'),
+(10075, 'angelfish'),
+(10076, 'big'),
+(10077, 'Maine'),
+(10078, ',Maine Coon'),
+(10079, 'white rabbit'),
+(10080, 'red eye'),
+(10081, 'small'),
+(10082, 'canary'),
+(10083, 'bright-yellow'),
+(10084, 'speedy'),
+(10085, 'like racing'),
+(10086, 'Siamese cat'),
+(10087, 'border collie'),
+(10088, 'orange bunny'),
+(10089, 'hamster'),
+(10090, 'like running'),
+(10093, '');
 
 -- --------------------------------------------------------
 
@@ -471,7 +651,7 @@ INSERT INTO `user` (`user_id`, `user_type`, `user_name`, `password`, `legal_name
 (10014, 'adopter', 'robert_brown', '123', 'Robert Brown', 'robert.brown@workmail.com', '236-562-7388', '10014.jpg'),
 (10015, 'adopter', 'linda_taylor', '123', 'Linda Taylor', 'linda.taylor@workmail.com', '798-181-2233', '10015.jpg'),
 (10016, 'provider', 'Dannie', '$2y$10$B8YuSg0bu6ovh8sdSdUAiOA5jhgMyytfeWlmft/86XCUZYmEgqNzO', 'Danni Chen', 'dca158@sfu.ca', '7789981116', 'Dannie_95.jpg'),
-(10019, 'adopter', 'Angus', '$2y$10$wJ0eU9AeMkUtFPYSm6vn9.NkALHEb4DN3W27lWqBZu7lp5e.S2TIm', 'Zekun Wang', 'wang@sfu.ca', '7789983821', 'Angus_8.jpg');
+(10019, 'adopter', 'Angus2000', '$2y$10$j2PkTy/A8jRHx2bjXdNA7eD8seU3k.ZXnEr//O8o3Ioztj2RDTe3K', 'Zekun Wang', 'wang@sfu.ca', '7789983821', 'Angus_8.jpg');
 
 --
 -- Indexes for dumped tables
@@ -547,13 +727,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10075;
+  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10076;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `tag_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10036;
+  MODIFY `tag_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10094;
 
 --
 -- AUTO_INCREMENT for table `user`
