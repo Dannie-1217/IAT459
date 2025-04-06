@@ -21,6 +21,8 @@
         if($decision == 'Approve'){
             $update_query = "UPDATE adoption_records SET status = 'Approve' WHERE pet_id = ".$id;
             mysqli_query($connection, $update_query);
+            $update_pet = "UPDATE pet SET status = 'NA' WHERE pet_id = ".$id;
+            mysqli_query($connection, $update_pet);
             header("Location: provider_dashboard.php");
             exit();
         }

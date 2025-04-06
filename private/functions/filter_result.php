@@ -21,7 +21,7 @@ if(!empty($pet_type) && empty($location)){
     $general_query = "SELECT pet.pet_id, pet.pet_name, pet.location, pet.post_date, MIN(pet_images.images) AS pet_imgs
                     FROM pet 
                     JOIN pet_images ON pet.pet_id = pet_images.pet_id 
-                    WHERE pet.pet_type = '".$pet_type."'
+                    WHERE pet.pet_type = '".$pet_type."' AND pet.status = 'Available'
                     GROUP BY pet.pet_id
                     ORDER BY pet.post_date DESC
                     LIMIT $itemPerPage OFFSET $offset;";
@@ -35,7 +35,7 @@ else if(empty($pet_type) && !empty($location)){
     $general_query = "SELECT pet.pet_id, pet.pet_name, pet.location, pet.post_date, MIN(pet_images.images) AS pet_imgs
                     FROM pet 
                     JOIN pet_images ON pet.pet_id = pet_images.pet_id 
-                    WHERE pet.location = '".$location."'
+                    WHERE pet.location = '".$location."' AND pet.status = 'Available'
                     GROUP BY pet.pet_id
                     ORDER BY pet.post_date DESC
                     LIMIT $itemPerPage OFFSET $offset;";
@@ -49,7 +49,7 @@ else if(!empty($pet_type) && !empty($location)){
     $general_query = "SELECT pet.pet_id, pet.pet_name, pet.location, pet.post_date, MIN(pet_images.images) AS pet_imgs
                     FROM pet 
                     JOIN pet_images ON pet.pet_id = pet_images.pet_id 
-                    WHERE pet_type = '".$pet_type."' AND pet.location = '".$location."'
+                    WHERE pet_type = '".$pet_type."' AND pet.location = '".$location."' AND pet.status = 'Available'
                     GROUP BY pet.pet_id
                     ORDER BY pet.post_date DESC
                     LIMIT $itemPerPage OFFSET $offset;";
@@ -64,6 +64,7 @@ else{
     $general_query = "SELECT pet.pet_id, pet.pet_name, pet.location, pet.post_date, MIN(pet_images.images) AS pet_imgs
                     FROM pet 
                     JOIN pet_images ON pet.pet_id = pet_images.pet_id 
+                    WHERE pet.status = 'Available'
                     GROUP BY pet.pet_id
                     ORDER BY pet.post_date DESC
                     LIMIT $itemPerPage OFFSET $offset;";

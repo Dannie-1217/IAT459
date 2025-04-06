@@ -27,8 +27,8 @@
         mysqli_begin_transaction($connection);
 
         // Insert pet information into the "pet" table
-        $insertPetQuery = "INSERT INTO pet (pet_name, location, pet_type, post_date, description)
-                           VALUES ('$pet_name', '$location', '$pet_type', '$post_date', '$description')";
+        $insertPetQuery = "INSERT INTO pet (pet_name, location, pet_type, post_date, description, status)
+                           VALUES ('$pet_name', '$location', '$pet_type', '$post_date', '$description', 'Available')";
     
         if (mysqli_query($connection, $insertPetQuery)) {
             $pet_id = mysqli_insert_id($connection); // Get the inserted pet ID
