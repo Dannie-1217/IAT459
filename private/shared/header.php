@@ -31,10 +31,10 @@
 <body>
     <header>
         <nav>
-            <a class="logo" href="../../public/pages/homepage.php">🐾 FurEver</a>
+            <?php echo '<a class="logo" href="' . PUBLIC_PATH . '/pages/homepage.php"> 🐾 FurEver </a>';?>
             <div>
-                <a href="../../public/pages/homepage.php">Pets</a>
-                <a href="../../public/pages/about_us.php">About Us</a>
+                <?php echo '<a href="' . PUBLIC_PATH . '/pages/homepage.php#trending"> Pets </a>';?>
+                <?php echo '<a href="' . PUBLIC_PATH . '/pages/about_us.php">About Us</a>';?>
                 <?php
                     if(isset($_SESSION['user_name'])){
                         if($userType == 'provider'){

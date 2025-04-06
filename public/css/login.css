@@ -1,0 +1,113 @@
+main {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #f44e21;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+
+form {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #f44e21;
+    outline: none;
+}
+
+
+input[type="submit"] {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #f44e21;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #e53935;
+}
+
+
+form[action="register.php"] input {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: white;
+    color: #f44e21;
+    border: 2px solid #f44e21;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+form[action="register.php"] input:hover {
+    background-color: #f44e21;
+    color: white;
+}
+
+.errors {
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #d32f2f;
+}
+
+
+.password-container input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    cursor: pointer;
+    color: #666;
+}
+
+body {
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}

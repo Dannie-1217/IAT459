@@ -1,11 +1,22 @@
 <?php require_once("../../../private/functions/initialization.php") ?>
 
 <?php
-    require_once(ROOT_PATH . PRIVATE_PATH . "/functions/functions.php");
+    $page_styles = [
+        PUBLIC_PATH . '/css/header.css',
+        PUBLIC_PATH . '/css/login.css',
+        PUBLIC_PATH . '/css/font.css',
+        PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    ];
 
-    echo '<style>'; 
-    include ROOT_PATH . PUBLIC_PATH."/css/Formstyle.css";
-    echo '</style>';
+    require_once(ROOT_PATH . SHARED_PATH . '/header.php');
+
+    require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
+?>
+
+
+<?php
 
     if (isset($_SESSION['user_name'])) {
         $user_name = $_SESSION['user_name'];
@@ -21,15 +32,6 @@
     require_once(ROOT_PATH . SHARED_PATH.'/header.php');
     $user_name = '';
     $password = '';
-
-    // if(isset($_SESSION['user_name'])){
-        
-    //     header("Location: welcome.php");
-    //     exit();
-    // }
-
-   
-
     
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -71,18 +73,33 @@
 ?>
 
 
-    <body>
+    <main>
         <h1>Login</h1>
-
+        <?php if(!empty($errors)): ?>
+            <div class="errors">
+                <?php foreach($errors as $error): ?>
+                <p><?php echo $error; ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
         <form method = "POST", action="login.php">
-            <label>Username:</label><br>
-            <input type="text" name="user_name" value=""/><br>
-            <label>Password</label><br>
-            <input type="text" name="password" value=""/><br>
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="user_name" value=""/>
+            </div>
+            <div class="form-group password-container">
+                <label>Password</label>
+                <input type="password" name="password" value=""/>
+            </div>
             <input type="submit" value="Login"/>
         </form>
         <form action="register.php">
             <input type="submit" value="Create New Account">
         </form>
+</main>
 
 <?php require_once(ROOT_PATH . SHARED_PATH.'/footer.php');?>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</html>
