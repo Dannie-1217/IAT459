@@ -1,14 +1,49 @@
+.title-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/* Minimal Back Button */
+.minimal-back-btn {
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.minimal-back-btn i{
+    color: #666;
+}
+
+.minimal-back-btn:hover i{
+    color: #f44e21;
+}
+
 /* Main Container */
 .pet-profile-container {
     width: 1000px;
     margin: 30px auto;
-    font-family: 'Arial', sans-serif;
+    position: relative; 
+    padding-top: 60px;
 }
 
 .pet-profile-title {
     color: #f44e21;
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 1rem;
     font-size: 28px;
     font-weight: bold;
 }
@@ -23,7 +58,7 @@
     gap: 30px;
 }
 
-/* Image Gallery (Left Side) */
+/* Image Gallery */
 .image-gallery-container {
     width: 450px;
     display: flex;
@@ -247,29 +282,3 @@
     width: 600px;
 }
 
-/* Scrollbars */
-.pet-details::-webkit-scrollbar {
-    width: 8px;
-}
-
-.pet-details::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.pet-details::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
-}
-
-.thumbnail-gallery::-webkit-scrollbar {
-    height: 6px;
-}
-
-.thumbnail-gallery::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.thumbnail-gallery::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 3px;
-}

@@ -42,7 +42,12 @@ if(mysqli_num_rows($select_result) != 0):
     $pet = mysqli_fetch_assoc($select_result);
 ?>
     <main class="pet-profile-container">
-        <h1 class="pet-profile-title">Meet <?php echo htmlspecialchars($pet['pet_name']); ?></h1>
+        <div class="title-container">
+            <a href="<?php echo PUBLIC_PATH . '/pages/homepage.php'; ?>" class="minimal-back-btn" aria-label="Go back to pets list">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <h1 class="pet-profile-title">Meet <?php echo htmlspecialchars($pet['pet_name']); ?></h1>
+        </div>
         
         <div class="pet-card">
             <div class="image-gallery-container">
