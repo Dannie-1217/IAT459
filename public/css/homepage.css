@@ -197,3 +197,31 @@ select:focus {
     color: #777;
     font-size: 0.95rem;
 }
+
+.pagination_controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3rem;
+    margin-top: 1rem;
+    padding: 1.5rem 0;
+}
+
+.pagination_btn {
+    padding: 0.5rem 0.7rem;
+    background-color: #f44e21;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination_btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination_btn:hover:not(:disabled) {
+    background-color: black;
+}

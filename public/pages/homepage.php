@@ -6,6 +6,8 @@
         PUBLIC_PATH . '/css/homepage.css',
         PUBLIC_PATH . '/css/font.css',
         PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
     ];
 
     require_once(ROOT_PATH . SHARED_PATH . '/header.php');
@@ -93,9 +95,9 @@
 // }
 
 
-
-// require_once(ROOT_PATH . SHARED_PATH.'/footer.php');
 ?>
+
+<?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

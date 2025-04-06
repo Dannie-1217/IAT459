@@ -11,3 +11,10 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
 }
+
+.footer_columns_grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items:center;
+    justify-items: center;
+}
