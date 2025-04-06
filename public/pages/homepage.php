@@ -22,7 +22,7 @@
             <p id="welcome_title">Happy Owners🐾</p>
             <p>🔍  With us, you can find pets more easily and quickly! </p>
             <div class="button_div">
-                <a href="" class="button">Get Started</a>
+                <a href="#trending" class="button">Get Started</a>
             </div>
         </div>
         <div>
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <section>
+    <section id="trending">
         <h2>Trending Pets</h2>
         <!-- <h3>Filter</h3> -->
         <form id="searchForm">

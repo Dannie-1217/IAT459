@@ -3,20 +3,15 @@
 <?php
 $page_styles = [
     PUBLIC_PATH . '/css/header.css',
+    PUBLIC_PATH . '/css/pet_information.css',
     PUBLIC_PATH . '/css/font.css',
     PUBLIC_PATH . '/css/grid.css',
     PUBLIC_PATH . '/css/footer.css',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
-    
 ];
 
 require_once(ROOT_PATH . SHARED_PATH . '/header.php');
-
 require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
-?>
-
-<?php
-echo "<h1>Pet Information: </h1>";
 
 if(isset($_GET['edit'])){
     $id = $_GET['edit'];
@@ -30,81 +25,100 @@ $select_result = mysqli_query($connection, $general_query);
 $image_query = "SELECT images FROM pet_images WHERE pet_id = $id";
 $image_result = mysqli_query($connection, $image_query);
 
-if(!$select_result || !$image_result){
-    echo"query faled!";
-    exit;
-}
+$images = [];
 
-if(mysqli_num_rows($select_result) != 0){
-    echo"<table class='resultTable'><tr>";          
-        echo "<td class='tableGrid'><p class='tableHeader'>Pet ID</p></td>";  
-        echo "<td class='tableGrid'><p class='tableHeader'>Pet Name</p></td>";   
-        echo "<td class='tableGrid'><p class='tableHeader'>Pet Type</p></td>";  
-        echo "<td class='tableGrid'><p class='tableHeader'>Location</p></td>";
-        echo "<td class='tableGrid'><p class='tableHeader'>Description</p></td>";
-        echo "<td class='tableGrid'><p class='tableHeader'>Post Date</p></td>";
-        echo "<td class='tableGrid'><p class='tableHeader'>Images</p></td>";
-    echo "</tr><tr>";
-    while($row = mysqli_fetch_assoc($select_result)){
-        $pet_id = $row['pet_id'];
-        echo "<td class='tableGrid'>". $row['pet_id']. "</td>";  
-        echo "<td class='tableGrid'>". $row['pet_name']. "</td>";
-        echo "<td class='tableGrid'>". $row['pet_type']. "</td>"; 
-        echo "<td class='tableGrid'>". $row['location']. "</td>";
-        echo "<td class='tableGrid'>". $row['description']. "</td>";
-        echo "<td class='tableGrid'>". $row['post_date']. "</td>";
-        echo"</tr>";
-    }
-    
-    echo "<td class='tableGrid'>";
+if ($image_result && mysqli_num_rows($image_result) > 0) {
     while ($img_row = mysqli_fetch_assoc($image_result)) {
-        $img = htmlspecialchars($img_row['images']);
-        echo $img;
+        $images[] = htmlspecialchars($img_row['images']);
     }
-    echo "</td>";
-
-    echo "</tr></table>";
-}
-//If result is empty, then show this warning.
-else{
-    echo"<tr>Result is empty!</tr>";
 }
 
-
-
-$tag_query = "SELECT tags.content FROM tags LEFT JOIN pet_tags ON pet_tags.tag_id = tags.tag_id WHERE pet_tags.pet_id = ".$id;
-
-$tag_result = mysqli_query($connection, $tag_query);
-
-if(!$tag_result){
-    echo"query faled!";
+if(!$select_result || !$image_result){
+    echo"<div class='error'>Query failed!</div>";
     exit;
 }
 
-if(mysqli_num_rows($tag_result) != 0){
-    echo"<table class='resultTable'><tr>";          
-        echo "<td class='tableGrid'><p class='tableHeader'>Tags</p></td>";  
-    echo "</tr><tr>";
-    while($row = mysqli_fetch_assoc($tag_result)){
-        echo "<td class='tableGrid'>". $row['content']. "</td>";  
-        echo"</tr>";
-    }
-    echo"</table>";
-}
-//If result is empty, then show this warning.
-else{
-    echo"<tr>Result is empty!</tr>";
-}
-
-echo '<form action="../../private/functions/add_favorite.php">
-            <input type="submit" value="Add to Favorite List">
-        </form>';
-
-echo '<form action="apply_page.php">
-        <input type="submit" value="Apply for Adoption">
-      </form>';      
-
-
+if(mysqli_num_rows($select_result) != 0):
+    $pet = mysqli_fetch_assoc($select_result);
 ?>
+    <main class="pet-profile-container">
+        <h1 class="pet-profile-title">Meet <?php echo htmlspecialchars($pet['pet_name']); ?></h1>
+        
+        <div class="pet-card">
+            <div class="image-gallery-container">
+                <div class="main-image-container">
+                    <img src="../../public/images/petimages/<?php echo htmlspecialchars($images[0])?>"
+                        alt="<?php echo $pet['pet_name'];?>"
+                        class="main-image active"
+                        data-index="0">
+
+                    <button class="image-nav prev" aria-label="Previous image">&lt;</button>
+                    <button class="image-nav next" aria-label="Next image">&gt;</button>
+                </div>
+
+                <div class="thumbnail-gallery">
+                    <?php foreach ($images as $index => $img): ?>
+                        <img src="../../public/images/petimages/<?php echo htmlspecialchars($img); ?>" 
+                            alt="Thumbnail <?php echo $index + 1; ?>" 
+                            class="thumbnail <?php echo $index === 0 ? 'active' : ''; ?>"
+                            data-index="<?php echo $index; ?>">
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <div class="pet-details">
+                <div class="pet-meta">
+                    <span class="pet-type"><?php echo ucfirst($pet['pet_type']); ?></span>
+                    <span class="pet-location"><i class="fas fa-map-marker-alt"></i> <?php echo $pet['location']; ?></span>
+                </div>
+                
+                <div class="pet-info">
+                    <h2><?php echo $pet['pet_name']; ?></h2>
+                    <p class="pet-post-date">Posted on: <?php echo date('F j, Y', strtotime($pet['post_date'])); ?></p>
+                    
+                    <div class="pet-description">
+                        <h3>About Me</h3>
+                        <p><?php echo nl2br(htmlspecialchars($pet['description'])); ?></p>
+                    </div>
+                </div>
+                
+                <?php 
+                $tag_query = "SELECT tags.content FROM tags LEFT JOIN pet_tags ON pet_tags.tag_id = tags.tag_id WHERE pet_tags.pet_id = ".$id;
+                $tag_result = mysqli_query($connection, $tag_query);
+                
+                if(mysqli_num_rows($tag_result) > 0): ?>
+                    <div class="pet-tags">
+                        <h3>Characteristics</h3>
+                        <div class="tags-container">
+                            <?php while($tag = mysqli_fetch_assoc($tag_result)): ?>
+                                <span class="tag"><?php echo $tag['content']; ?></span>
+                            <?php endwhile; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                
+                <div class="pet-actions">
+                    <form action="../../private/functions/add_favorite.php" method="post" class="action-form">
+                        <button type="submit" class="btn-favorite">
+                            <i class="fas fa-heart"></i> Add to Favorites
+                        </button>
+                    </form>
+                    
+                    <form action="apply_page.php" method="get" class="action-form">
+                        <button type="submit" class="btn-apply">
+                            <i class="fas fa-paw"></i> Apply for Adoption
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+<?php else: ?>
+    <div class="error">No pet found with this ID</div>
+<?php endif; ?>
 
 <?php require_once(ROOT_PATH . SHARED_PATH.'/footer.php'); ?>
+
+<script src="../js/change_img.js"></script>
+</body>
+</html>

@@ -32,3 +32,12 @@ if (!$result) {
     <?php mysqli_free_result($result); ?>
 </body>
 </html>
+
+
+<div class="pet-images">
+                <?php while ($img_row = mysqli_fetch_assoc($image_result)): 
+                    $img = htmlspecialchars($img_row['images']); ?>
+                    <img src="../../public/images/petimages/<?php echo $img; ?>" alt="<?php echo $pet['pet_name']; ?>" class="pet-image">
+                <?php endwhile; ?>
+            </div>
+            
