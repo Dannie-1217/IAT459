@@ -56,7 +56,11 @@
     <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <a href="provider_dashboard.php" class="nav-btn">Dashboard</a>
+=======
+        <a href="provider_dashboard.php" class="nav-btn">Overview</a>
+>>>>>>> Stashed changes
 =======
         <a href="provider_dashboard.php" class="nav-btn">Overview</a>
 >>>>>>> Stashed changes

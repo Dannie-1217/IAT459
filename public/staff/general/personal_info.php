@@ -75,6 +75,7 @@
     <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <?php
             if($user_type == 'adopter'){
                 echo '
@@ -103,6 +104,9 @@
         <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
         <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
         <a href="../general/logout.php" class="nav-btn logout">Logout</a>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </div>
 
