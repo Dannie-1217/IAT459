@@ -170,13 +170,11 @@
                         if(mysqli_num_rows($taglistResult)>0){
                             while($row = mysqli_fetch_assoc($taglistResult)){
                                 $tag_id = $row['tag_id'];
-                                echo "<div class='tag_row'> 
-                                      <div class='tag'>". $row['content']. "</div>"; 
-                                echo "<div class='remove'><a href='remove_tags.php?edit=$tag_id' id='link1'>X</a></div> 
-                                      <div>";
+                                echo "
+                                      <div class='tag'><a href='remove_tags.php?edit=$tag_id' id='link1'><p class='tag_content'><span>". $row['content']. "</span></P></a></div>"; 
                             }
                         } else{
-                            echo "Not Tags Found!";
+                            echo "<div class='tag_list'><p>No Tags Found!</p></div>";
                         }
                     ?>
             </div>

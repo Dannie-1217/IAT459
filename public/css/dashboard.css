@@ -166,28 +166,44 @@ input[type="submit"]:hover {
     font-weight: 600;
 }
 
-.tag_row{
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-    /*gap: 8px;*/
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
-}
-
 .tag{
-    width: 100%;
+    width: 30%;
     text-align: center;
     background: #f9f2e8;
+    padding: 6px 6px;
+    border-radius: 20px;
+    color: #5a4a3a;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.tag:hover{
+    content: "change";
+    width: 32%;
+    text-align: center;
+    background: #e53935;
+    margin-left: 1rem;
     padding: 6px 14px;
     border-radius: 20px;
-    font-size: 14px;
-    color: #5a4a3a;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.tag:hover p.tag_content span{
+    display: none;
+}
+
+.tag:hover p.tag_content:after{
+    content:"Remove";
 }
 
 .remove{
-    width: 25%;
+    width: 5%;
     text-align: center;
     background: #d3d3d3;
     margin-left: 1rem;
@@ -197,15 +213,15 @@ input[type="submit"]:hover {
     color: #333;
 }
 
-.remove:hover{
-    width: 30%;
+.remove:hover:after{
+    content: "change";
+    width: 7%;
     text-align: center;
     background: #e53935;
     margin-left: 1rem;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 14px;
-    color: white;
 }
 
 /* Action Buttons */
