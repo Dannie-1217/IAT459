@@ -74,6 +74,7 @@
 <div class="dashboard-wrapper">
     <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
+<<<<<<< Updated upstream
         <?php
             if($user_type == 'adopter'){
                 echo '
