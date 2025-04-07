@@ -171,7 +171,7 @@ input[type="submit"]:hover {
     /*flex-wrap: wrap;*/
     /*gap: 8px;*/
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     margin-left: 1rem;
     margin-bottom: 0.5rem;
 }
@@ -187,7 +187,7 @@ input[type="submit"]:hover {
 }
 
 .remove{
-    width: 50%;
+    width: 25%;
     text-align: center;
     background: #d3d3d3;
     margin-left: 1rem;
@@ -198,7 +198,7 @@ input[type="submit"]:hover {
 }
 
 .remove:hover{
-    width: 60%;
+    width: 30%;
     text-align: center;
     background: #e53935;
     margin-left: 1rem;

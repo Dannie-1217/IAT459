@@ -3,7 +3,7 @@
 <?php
 
     if(!isset($_SESSION['user_name'])){
-        header("Location: public/staff/login.php");
+        header("Location: login.php");
         exit();
     }
 
@@ -39,12 +39,15 @@
                             SET user_name='$new_user_name', legal_name = '$legal_name', other_contact = '$other_contact'
                             WHERE user_id='{$userData['user_id']}'";
             if(mysqli_query($connection, $updateQuery)){
-                $_SESSION['user_name'] = $new_user_name;
+                //$_SESSION['user_name'] = $new_user_name;
                 $successMessage = "Profile updated successfully!";
 
                 // Refresh user data
-                $userResult = mysqli_query($connection, $userQuery);
+                $userQuery2 = "SELECT * FROM user WHERE user_name = '$user_name'";
+                $userResult = mysqli_query($connection, $userQuery2);
                 $userData = mysqli_fetch_assoc($userResult);
+                $_SESSION['user_name'] = $userData['user_name'];
+                //header("Location: ../../pages/homepage.php");
             } else{
                 array_push($errors, "Failed to update profile: ". mysqli_error($connection));
             }
@@ -110,7 +113,7 @@
             <img src="<?php echo htmlspecialchars(PUBLIC_PATH .'/images/profilephoto/' .$userData['profile_photo']); ?>" alt="Profile Photo" class="profile-photo">
         </div> -->
 
-        <form method="POST">
+        <form method="POST" action="personal_info.php">
             <div class="form-group">
                 <label>Username:</label>
                 <input type="text" name="user_name" value="<?php echo htmlspecialchars($userData['user_name']); ?>" required>
