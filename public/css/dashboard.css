@@ -61,6 +61,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     margin-top: 2rem;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
 }
 
@@ -256,4 +257,9 @@ input[type="submit"]:hover {
 
 .quick-actions a:hover {
     filter: brightness(1.1);
+}
+
+/*Add Back Button for some pages*/
+.back{
+    margin-top: 2rem;
 }
