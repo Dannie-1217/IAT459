@@ -39,10 +39,10 @@
                 <?php
                     if(isset($_SESSION['user_name'])){
                         if($userType == 'provider'){
-                            echo '<a href =' . PUBLIC_PATH . '/staff/provider/provider_dashboard.php' .' id=login> Login </a>';
+                            echo '<a href =' . PUBLIC_PATH . '/staff/provider/provider_dashboard.php' .' id=login> My Account </a>';
                         }
                         else if($userType == 'adopter'){
-                            echo '<a href =' . PUBLIC_PATH . '/staff/adopter/adopter_dashboard.php' .' id=login> Login </a>'; 
+                            echo '<a href =' . PUBLIC_PATH . '/staff/adopter/adopter_dashboard.php' .' id=login> My Account </a>'; 
                         }
                     }else{
                         echo '<a href =' . PUBLIC_PATH . '/staff/general/login.php' .' id=login> Login </a>';
