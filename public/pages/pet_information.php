@@ -19,6 +19,15 @@ if(isset($_GET['edit'])){
 
 $_SESSION['pet_id'] = $id;
 
+$user_type = 'adopter';
+if(isset($_SESSION['user_name'])){
+    $user_name = $_SESSION['user_name'];
+    $userQuery = "SELECT user_type FROM user WHERE user_name = '$user_name'";
+    $userResult = mysqli_query($connection, $userQuery);
+    $userData = mysqli_fetch_assoc($userResult);
+    $user_type = $userData['user_type'];
+}
+
 $general_query = "SELECT * FROM pet WHERE pet_id = ".$id;
 $select_result = mysqli_query($connection, $general_query);
 
@@ -102,19 +111,23 @@ if(mysqli_num_rows($select_result) != 0):
                     </div>
                 <?php endif; ?>
                 
-                <div class="pet-actions">
-                    <form action="../../private/functions/add_favorite.php" method="post" class="action-form">
-                        <button type="submit" class="btn-favorite">
-                            <i class="fas fa-heart"></i> Add to Favorites
-                        </button>
-                    </form>
-                    
-                    <form action="apply_page.php" method="get" class="action-form">
-                        <button type="submit" class="btn-apply">
-                            <i class="fas fa-paw"></i> Apply for Adoption
-                        </button>
-                    </form>
-                </div>
+                <?php
+                    if($user_type == 'adopter'){
+                        echo '<div class="pet-actions">
+                            <form action="../../private/functions/add_favorite.php" method="post" class="action-form">
+                                <button type="submit" class="btn-favorite">
+                                    <i class="fas fa-heart"></i> Add to Favorites
+                                </button>
+                            </form>
+                            
+                            <form action="apply_page.php" method="get" class="action-form">
+                                <button type="submit" class="btn-apply">
+                                    <i class="fas fa-paw"></i> Apply for Adoption
+                                </button>
+                            </form>
+                            </div>';
+                    }
+                ?>
             </div>
         </div>
     </main>
