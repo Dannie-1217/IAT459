@@ -64,7 +64,7 @@
                 <?php while ($pet = mysqli_fetch_assoc($allPetsResult)): 
                     $pet_id = $pet['pet_id'];?>
                     
-                    <a class="pet-card" href="../../pages/pet_information.php?pet_id">
+                    <a class="pet-card" href="record_details.php?edit=<?php echo $pet['pet_id']?>">
 
                     <div>
                         <h3><?php echo htmlspecialchars($pet['pet_name']); ?></h3>

@@ -61,10 +61,9 @@
 
         <?php if (mysqli_num_rows($allPetsResult) > 0): ?>
             <div class="pet-grid">
-                <?php while ($pet = mysqli_fetch_assoc($allPetsResult)): 
-                    $pet_id = $pet['pet_id'];?>
+                <?php while ($pet = mysqli_fetch_assoc($allPetsResult)): ?>
                     
-                    <a class="pet-card" href="../../pages/pet_information.php?pet_id">
+                    <a class="pet-card" href="../../pages/pet_information.php?edit=<?php echo $pet['pet_id']?>">
 
                     <div>
                         <h3><?php echo htmlspecialchars($pet['pet_name']); ?></h3>
