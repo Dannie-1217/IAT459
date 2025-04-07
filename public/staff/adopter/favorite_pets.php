@@ -3,7 +3,7 @@
 <?php
     $page_styles = [
         PUBLIC_PATH . '/css/header.css',
-        PUBLIC_PATH . '/css/dashboard.css',
+        PUBLIC_PATH . '/css/provider_dashboard_post.css',
         PUBLIC_PATH . '/css/sidebar.css',
         PUBLIC_PATH . '/css/font.css',
         PUBLIC_PATH . '/css/grid.css',
@@ -16,69 +16,78 @@
     require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
 ?>
 
+<?php
+
+    if(!isset($_SESSION['user_name'])){
+        header("Location: public/staff/login.php");
+        exit();
+    }
+
+    $user_name = $_SESSION['user_name'];
+
+    // Fetch user id based on username
+    $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
+    $userResult = mysqli_query($connection, $userQuery);
+    $userData = mysqli_fetch_assoc($userResult);
+    $user_id = $userData['user_id'];
+
+    // Get all pet posts by this provider
+    $recentPetsQuery = "SELECT pet.pet_name, pet.post_date, pet.pet_id, pet_images.images
+                        FROM favorites 
+                        JOIN pet ON favorites.pet_id = pet.pet_id 
+                        LEFT JOIN pet_images ON pet.pet_id = pet_images.pet_Id
+                        WHERE favorites.user_id = '$user_id' 
+                        GROUP BY pet.pet_id
+                        ORDER BY pet.post_date DESC";
+    $allPetsResult = mysqli_query($connection, $recentPetsQuery);
+?>
+
 <body>
-    <div class="dashboard-wrapper">
-        <div class="sidebar-nav">
+
+<div class="dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-nav">
             <a href="adopter_dashboard.php" class="nav-btn">Dashboard</a>
             <a href="../../pages/homepage.php" class="nav-btn">Adopt New Pet</a>
             <a href="favorite_pets.php" class="nav-btn">Favorite Pets</a>
+            <a href="adopter_records.php" class="nav-btn">Check Records</a>
             <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
             <a href="../general/logout.php" class="nav-btn logout">Logout</a>
-        </div>
-
-        <div class="dashboard-container">
-            <h1>Pets You May Like</h1>
-            <div class="card-recent">
-                <div class="card-recent-header">Recent Liked Pets:</div>
-
-                <ul class="recent-list">
-                    <?php
-                        if(!isset($_SESSION['user_name'])){
-                            header(PUBLIC_PATH."/staff/general/login.php");
-                            exit();
-                        }
-                        
-                        $user_name = $_SESSION['user_name'];
-
-                        // Fetch user id based on username
-                        $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
-                        $userResult = mysqli_query($connection, $userQuery);
-                        $userData = mysqli_fetch_assoc($userResult);
-                        $user_id = $userData['user_id'];
-
-                        $recentPetsQuery = "SELECT pet.pet_name, pet.post_date, pet.pet_id
-                                        FROM favorites 
-                                        JOIN pet ON favorites.pet_id = pet.pet_id 
-                                        WHERE favorites.user_id = '$user_id' 
-                                        ORDER BY pet.post_date DESC";
-                        $recentPetsResult = mysqli_query($connection, $recentPetsQuery);
-
-                        if(!$recentPetsResult){
-                                echo"query faled!";
-                                exit;
-                            }
-
-                            if(mysqli_num_rows($recentPetsResult) != 0){
-                                while($row = mysqli_fetch_assoc($recentPetsResult)){
-                                    $pet_id = $row['pet_id'];
-                                    echo "<a href='../../pages/pet_information.php?edit=$pet_id' id='link1'><li class='list-group-item'>";
-                                    echo "<td>". $row['pet_name']. "</td>";  
-                                    echo " -- Post On: ";
-                                    echo "<td>". $row['post_date']. "</td>";   
-                                    echo"</li></a>";
-                                }
-                            }
-                            else{
-                                echo"<tr>Result is empty!</tr>";
-                            };
-                    ?>
-                </ul>
-            </div>
-            <form action='adopter_dashboard.php'>
-                <input class = 'back' type='submit' value='back'>
-            </form>
-        </div>
     </div>
-    <?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
+
+    <!-- Main Content Area -->
+    <div class="pet_container">
+        <h1>My Posted Pets</h1>
+
+        <?php if (mysqli_num_rows($allPetsResult) > 0): ?>
+            <div class="pet-grid">
+                <?php while ($pet = mysqli_fetch_assoc($allPetsResult)): ?>
+                    
+                    <a class="pet-card" href="../../pages/pet_information.php?edit=<?php echo $pet['pet_id']?>">
+
+                    <div>
+                        <h3><?php echo htmlspecialchars($pet['pet_name']); ?></h3>
+                        <p>Posted on: <?php echo htmlspecialchars($pet['post_date']); ?></p>
+
+                        <?php if (!empty($pet['images'])): ?>
+                            <img src="<?php echo htmlspecialchars(PUBLIC_PATH . '/images/petimages/' . $pet['images']); ?>" 
+                                alt="<?php echo htmlspecialchars($pet['pet_name']); ?>">
+                            <?php else: ?>
+                                <p><em>No image uploaded.</em></p>
+                        <?php endif; ?>
+                    </div>
+                </a>
+            <?php endwhile; ?>
+
+        <?php else: ?>
+            <p>No pets posted yet.</p>
+        <?php endif; ?>
+        
+    </div>
+
+</div>
+
+
 </body>
+
 </html>
