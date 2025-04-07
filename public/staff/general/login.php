@@ -72,7 +72,7 @@
 
 ?>
 
-
+<body>
     <main>
         <h1>Login</h1>
         <?php if(!empty($errors)): ?>

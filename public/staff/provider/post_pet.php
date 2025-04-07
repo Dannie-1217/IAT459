@@ -104,106 +104,91 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Post a Pet</title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $("#tag_input").on("input",function(){
-                    let query = $(this).val();
-                    if(query.length > 1){
-                        $.ajax({
-                            url:"fetch_tags.php",
-                            method:"POST",
-                            data:{query: query},
-                            success: function(data){
-                                $("#tag_suggestions").html(data);
-                            }
-                        });
-                    }else{
-                        $("#tag_suggestions").html("");
+<?php
+    $page_styles = [
+        PUBLIC_PATH . '/css/header.css',
+        PUBLIC_PATH . '/css/post_pet.css',
+        PUBLIC_PATH . '/css/sidebar.css',
+        PUBLIC_PATH . '/css/font.css',
+        PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    ];
+
+    require_once(ROOT_PATH . SHARED_PATH . '/header.php');
+
+    require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
+?>
+
+<body>
+
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar-nav">
+            <a href="../provider/provider_dashboard.php" class="nav-btn">Overview</a>
+            <a href="../provider/post_pet.php" class="nav-btn">Add New Pet</a>
+            <a href="../provider/provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
+            <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
+            <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
+            <a href="../general/logout.php" class="nav-btn logout">Logout</a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="add_post_container">
+            <h1>Post a Pet</h1>
+
+            <?php
+                if (!empty($errors)) {
+                    foreach ($errors as $err) {
+                    echo "<p style='color:red;'>$err</p>";
                     }
-                });
-            });
-
-            // Function to add tag from user input
-            function addTagFromInput() {
-                let tagName = $("#tag_input").val().trim();
-                if (tagName) {
-                    addTag(tagName);
                 }
-            }
+            ?>
 
-            function addTag(tagName){
-                let tagList = $("#tag_list");
-                tagName = tagName.toLowerCase();
+            <form action="post_pet.php" method="POST" enctype="multipart/form-data">
+                <label>Pet Name: </label><br>
+                <input type = "text" name = "pet_name" required/><br><br>
 
-                if (!tagList.find("[data-tag='" + tagName + "']").length) {
-                    tagList.append(`<span data-tag='${tagName}' class='tag-item'>${tagName} <button type='button' onclick='removeTag("${tagName}")'>x</button></span>`);
-                    $("#tags").append(`<input type='hidden' name='tags[]' value='${tagName}' data-tag='${tagName}'>`);
-                }
-                $("#tag_input").val("");
-                $("#tag_suggestions").html("");
-            }
+                <label>Location: </label><br>
+                <input type= "text" name = "location" required/><br><br>
 
-            function removeTag(tagName) {
-                $(`[data-tag='${tagName}']`).remove();
-            }
-        </script>
-    </head>
-    <?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
+                <label>Pet Type:</lable><br>
+                <select name = "pet_type" required>
+                    <option value = ""> -- Select Pet Type --</option>
+                    <option value = "dog">Dog</option>
+                    <option value = "cat">Cat</option>
+                    <option value="horse">Horse</option>
+                    <option value="rabbit">Rabbit</option>
+                    <option value="bird">Bird</option>
+                    <option value="fish">Fish</option>
+                    <option value="others">Others</option>
+                </select><br><br>
+
+                <label>Description: </label><br>
+                <textarea name = "description" required></textarea><br><br>
+
+                <label>Add Tags: </label><br>
+                <input type="text" id="tag_input" placeholder="Type to search or add new...">
+                <button type="button" onclick="addTagFromInput()">Add</button>
+
+                <div id="tag_suggestions"></div>
+                <div id="tag_list"><p>Tag List:</p></div>
+                <div id="tags"></div><br><br>
+
+                <label>Upload Pet Images: </label><br>
+                <input type = "file" name = "images[]" multiple accept = "image/*"><br><br>
+
+                <input type = "submit" value = "Post"/>
+
+            </form>
+        </div>
+    </div>
+    <?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
+</body>
+
     
-    <body>
-        <h1>Post a Pet</h1>
-
-        <?php
-            if (!empty($errors)) {
-                foreach ($errors as $err) {
-                echo "<p style='color:red;'>$err</p>";
-                }
-            }
-        ?>
-
-        <form action="post_pet.php" method="POST" enctype="multipart/form-data">
-            <label>Pet Name: </label><br>
-            <input type = "text" name = "pet_name" required/><br><br>
-
-            <label>Location: </label><br>
-            <input type= "text" name = "location" required/><br><br>
-
-            <label>Pet Type:</lable><br>
-            <select name = "pet_type" required>
-                <option value = ""> -- Select Pet Type --</option>
-                <option value = "dog">Dog</option>
-                <option value = "cat">Cat</option>
-                <option value="horse">Horse</option>
-                <option value="rabbit">Rabbit</option>
-                <option value="bird">Bird</option>
-                <option value="fish">Fish</option>
-                <option value="others">Others</option>
-            </select><br><br>
-
-            <label>Description: </label><br>
-            <textarea name = "description" required></textarea><br><br>
-
-            <label>Add Tags: </label><br>
-            <input type="text" id="tag_input" placeholder="Type to search or add new...">
-            <button type="button" onclick="addTagFromInput()">Add</button>
-
-            <div id="tag_suggestions"></div>
-            <div id="tag_list"><p>Tag List:</p></div>
-            <div id="tags"></div><br><br>
-
-            <label>Upload Pet Images: </label><br>
-            <input type = "file" name = "images[]" multiple accept = "image/*"><br><br>
-
-            <input type = "submit" value = "Post"/>
-
-        </form>
-
-    </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../js/tag-handler.js"></script>
+<script src="../../js/pet_img.js"></script>
 </html>
 

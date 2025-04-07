@@ -45,60 +45,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Password</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .form-container { width: 50%; margin: auto;text-align: center;  }
-        .form-group { margin: 10px 0; }
-        label { display: block; font-weight: bold; }
-        input { width: 100%; padding: 8px; }
-        .submit-btn { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        .error { color: red; }
-        .success { color: green; }
-    </style>
-</head>
-<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
+<?php
+    $page_styles = [
+        PUBLIC_PATH . '/css/header.css',
+        PUBLIC_PATH . '/css/change_password.css',
+        PUBLIC_PATH . '/css/sidebar.css',
+        PUBLIC_PATH . '/css/font.css',
+        PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    ];
+
+    require_once(ROOT_PATH . SHARED_PATH . '/header.php');
+
+    require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
+?>
+
 <body>
-    <div class="form-container">
-        <h2>Change Password</h2>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar-nav">
+            <a href="../provider/post_pet.php" class="nav-btn">Add New Pet</a>
+            <a href="../provider/provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
+            <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
+            <a href="personal_info.php" class="nav-btn">Update Info</a>
+            <a href="logout.php" class="nav-btn logout">Logout</a>
+        </div>
 
-        <?php if (isset($successMessage)) echo "<p class='success'>$successMessage</p>"; ?>
-        <?php
-            if (!empty($errors)) {
-                foreach ($errors as $err) {
-                    echo "<p class='error'>$err</p>";
+        <!-- Main Content Area -->
+        <div class="form-container">
+            <h2>Change Password</h2>
+
+            <?php if (isset($successMessage)) echo "<p class='success'>$successMessage</p>"; ?>
+            <?php
+                if (!empty($errors)) {
+                    foreach ($errors as $err) {
+                        echo "<p class='error'>$err</p>";
+                    }
                 }
-            }
-        ?>
+            ?>
         
-        <form method="POST">
-            <!-- Old Password -->
-            <div class="form-group">
-                <label>Old Password:</label>
-                <input type="password" name="old_password" required>
-            </div>
+            <form method="POST">
+                <!-- Old Password -->
+                <div class="form-group">
+                    <label>Old Password:</label>
+                    <input type="password" name="old_password" required>
+                </div>
 
-            <!-- New Password -->
-            <div class="form-group">
-                <label>New Password:</label>
-                <input type="password" name="new_password" required>
-            </div>
+                <!-- New Password -->
+                <div class="form-group">
+                    <label>New Password:</label>
+                    <input type="password" name="new_password" required>
+                </div>
 
-            <!-- Confirm New Password -->
-            <div class="form-group">
-                <label>Confirm New Password:</label>
-                <input type="password" name="confirm_new_password" required>
-            </div>
+                <!-- Confirm New Password -->
+                <div class="form-group">
+                    <label>Confirm New Password:</label>
+                    <input type="password" name="confirm_new_password" required>
+                </div>
 
-            <input type="submit" value="Change Password" class="submit-btn">
-        </form>
-        <a href="personal_info.php">Go Back to Perosnal Information</a>
+                <input type="submit" value="Change Password" class="submit-btn">
+            </form>
+            <a href="personal_info.php">Go Back to Perosnal Information</a>
+        </div>
+
     </div>
+
+    <?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
 </body>
 </html>
 
