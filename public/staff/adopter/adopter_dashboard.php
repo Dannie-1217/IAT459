@@ -84,9 +84,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!--<meta charset="UTF-8">-->
     <title>Provider Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function(){
@@ -151,30 +151,38 @@
             </div>
 
             <!-- Add Tags-->
-            <form action="adopter_dashboard.php" method="POST" enctype="multipart/form-data">
-                <label>Add Tags: </label><br>
-                <?php
-                    echo '<input type="text" id="tag_input" name="tags" placeholder='. $placeholder.'>';
-                ?>
-                <input type="submit" value='Add'/>
-                <div id="tag_suggestions"></div>
-            </form>
-                <div id="tag_list"><p>Tag List:</p></div>
-                <?php
-                    $taglistQuery = "SELECT tags.content, tags.tag_id FROM tags LEFT JOIN preferences ON preferences.tag_id = tags.tag_id WHERE preferences.user_id = '$user_id'";
-                    $taglistResult = mysqli_query($connection, $taglistQuery);
+            <div class="card-tag">
+                <div class="add-tag">
+                    <form action="adopter_dashboard.php" method="POST" enctype="multipart/form-data">
+                        <label>Add Tags: </label><br>
+                        <?php
+                            echo '<input type="text" id="tag_input" name="tags" placeholder='. $placeholder.'>';
+                        ?>
+                        <input type="submit" value='Add'/>
+                        <div id="tag_suggestions"></div>
+                    </form>
+                </div>
+                    <div class="tag_list"><p>Tag List:</p></div>
+                    <?php
+                        $taglistQuery = "SELECT tags.content, tags.tag_id FROM tags LEFT JOIN preferences ON preferences.tag_id = tags.tag_id WHERE preferences.user_id = '$user_id'";
+                        $taglistResult = mysqli_query($connection, $taglistQuery);
 
-                    if(mysqli_num_rows($taglistResult)>0){
-                        while($row = mysqli_fetch_assoc($taglistResult)){
-                            $tag_id = $row['tag_id'];
-                            echo "<td class='tableGrid'>". $row['content']. "</td>"; 
-                            echo "<td class='tableGrid'><a href='remove_tags.php?edit=$tag_id' id='link1'>'Remove'</a></td> <br>";
+                        if(mysqli_num_rows($taglistResult)>0){
+                            while($row = mysqli_fetch_assoc($taglistResult)){
+                                $tag_id = $row['tag_id'];
+                                echo "<div class='tag_row'> 
+                                      <div class='tag'>". $row['content']. "</div>"; 
+                                echo "<div class='remove'><a href='remove_tags.php?edit=$tag_id' id='link1'>X</a></div> 
+                                      <div>";
+                            }
+                        } else{
+                            echo "Not Tags Found!";
                         }
-                    } else{
-                        echo "Not Tags Found!";
-                    }
-                ?>
+                    ?>
+            </div>
         </div>
     </div>
+
+    <?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
 </body>
 </html>

@@ -88,6 +88,126 @@ body {
     border-bottom: none;
 }
 
+/*Set Tags Preferences for Adopters*/
+.card-tag {
+    width: 50%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+}
+
+.add-tag{
+    background-color: #ffebee;
+    color: #333;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+input[type="text"]{
+    width: 50%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+input[type="submit"] {
+    width: 30%;
+    padding: 0.8rem;
+    background-color: #f44e21;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #e53935;
+}
+
+.tag_list {
+    color: #333;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tag-suggestion{
+    width: 20%;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    border: 2px solid #ffffff;
+    color: #333;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.tag-suggestion:hover{
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    border: 2px solid #ffffff;
+    background: #f9f2e8;
+    color: #5a4a3a;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.tag_row{
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*gap: 8px;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.tag{
+    width: 100%;
+    text-align: center;
+    background: #f9f2e8;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #5a4a3a;
+}
+
+.remove{
+    width: 50%;
+    text-align: center;
+    background: #d3d3d3;
+    margin-left: 1rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.remove:hover{
+    width: 60%;
+    text-align: center;
+    background: #e53935;
+    margin-left: 1rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: white;
+}
+
 /* Action Buttons */
 .quick-actions {
     margin-top: 2rem;
