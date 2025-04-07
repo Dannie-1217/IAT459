@@ -1,6 +1,22 @@
 <?php require_once("../../../private/functions/initialization.php") ?>
 
 <?php
+    $page_styles = [
+        PUBLIC_PATH . '/css/header.css',
+        PUBLIC_PATH . '/css/dashboard.css',
+        PUBLIC_PATH . '/css/sidebar.css',
+        PUBLIC_PATH . '/css/font.css',
+        PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    ];
+
+    require_once(ROOT_PATH . SHARED_PATH . '/header.php');
+
+    require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
+?>
+
+<?php
 
     if(!isset($_SESSION['user_name'])){
         header("Location: public/staff/login.php");

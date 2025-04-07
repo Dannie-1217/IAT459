@@ -1,11 +1,23 @@
 <?php require_once("../../../private/functions/initialization.php") ?>
 
 <?php
+    $page_styles = [
+        PUBLIC_PATH . '/css/header.css',
+        PUBLIC_PATH . '/css/register.css',
+        PUBLIC_PATH . '/css/font.css',
+        PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    ];
 
-    if(isset($_SESSION['user_name'])){
-        header("Location: welcome.php");
-        exit();
-    }
+    require_once(ROOT_PATH . SHARED_PATH . '/header.php');
+
+    require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
+?>
+
+<?php
+    $user_name = $legal_name = $email = $other_contact = '';
+    $user_type = '';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_name = mysqli_real_escape_string($connection, $_POST['user_name']);
@@ -82,53 +94,85 @@
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body>
-    <h2>User Registration</h2>
 
-    <?php
-    if (!empty($errors)) {
-        foreach ($errors as $err) {
-            echo "<p style='color:red;'>$err</p>";
-        }
-    }
-    ?>
+    <div class="registration-container">
+        <h2 class="registration-title">Create Your Account</h2>
 
-    <form action="register.php" method="POST" enctype="multipart/form-data">
-        <label>Username:</label><br>
-        <input type="text" name="user_name" required><br><br>
+        <?php if (!empty($errors)): ?>
+            <div class="error-message">
+                <?php foreach ($errors as $err): ?>
+                    <p><?php echo $err; ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
+        <form class="registration-form" action="register.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="form-label">Profile Photo:</label>
+                <div class="profile-photo-section">
+                    <label class="custom-file-upload">
+                        Choose File
+                        <input type="file" name="profile_photo" accept="image/*" style="display: none;" required>
+                    </label>
+                    <img id="profile-preview" src="#" alt="Profile preview">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="user_name">Username:</label>
+                <input class="form-input" type="text" name="user_name" id="user_name" value="<?php echo htmlspecialchars($user_name); ?>" required>
+            </div>
 
-        <label>Confirm Password:</label><br>
-        <input type="password" name="confirm_password" required><br><br>
+            <div class="form-group">
+                <label class="form-label" for="password">Password:</label>
+                <input class="form-input" type="password" name="password" id="password" required>
+            </div>
 
-        <label>Legal Name:</label><br>
-        <input type="text" name="legal_name" required><br><br>
+            <div class="form-group">
+                <label class="form-label" for="confirm_password">Confirm Password:</label>
+                <input class="form-input" type="password" name="confirm_password" id="confirm_password" required>
+            </div>
 
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
+            <div class="form-group">
+                <label class="form-label" for="legal_name">Legal Name:</label>
+                <input class="form-input" type="text" name="legal_name" id="legal_name" value="<?php echo htmlspecialchars($legal_name); ?>" required>
+            </div>
 
-        <label>Other Contact (Phone):</label><br>
-        <input type="text" name="other_contact"><br><br>
+            <div class="form-group">
+                <label class="form-label" for="email">Email:</label>
+                <input class="form-input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($email); ?>" required>
+            </div>
 
-        <label>Profile Photo (Upload):</label><br>
-        <input type="file" name="profile_photo" accept="image/*" required><br><br>
+            <div class="form-group">
+                <label class="form-label" for="other_contact">Phone Number:</label>
+                <input class="form-input" type="text" name="other_contact" id="other_contact" value="<?php echo htmlspecialchars($other_contact); ?>">
+            </div>
 
-        <label>User Type:</label><br>
-        <input type="radio" name="user_type" value="provider" required> Provider<br>
-        <input type="radio" name="user_type" value="adopter" required> Adopter<br><br>
+           
 
-        <input type="submit" value="Register">
-    </form>
+
+            <div class="form-group">
+                <label class="form-label">Account Type:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" name="user_type" id="provider" value="provider" <?php echo ($user_type === 'provider') ? 'checked' : ''; ?> required>
+                        <label for="provider">Pet Provider</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="user_type" id="adopter" value="adopter" <?php echo ($user_type === 'adopter') ? 'checked' : ''; ?> required>
+                        <label for="adopter">Pet Adopter</label>
+                    </div>
+                </div>
+            </div>
+
+            <input class="submit-btn" type="submit" value="Register">
+        </form>
+    </div>
+
+    <?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../js/photo_preview.js"></script>
 
 </html>

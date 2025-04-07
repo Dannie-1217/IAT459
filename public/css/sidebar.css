@@ -1,0 +1,40 @@
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+.sidebar-nav {
+    width: 200px;
+    background-color: #fff;
+    padding: 2rem 1rem;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 40px;
+}
+
+.nav-btn {
+    padding: 0.6rem 0;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    color: #f44e21;
+    border-bottom: 2px solid #f44e21;
+}
+
+.nav-btn.logout {
+    color: #d32f2f;
+}
+
+.nav-btn.logout:hover {
+    color: #b71c1c;
+    border-bottom: 2px solid #b71c1c;
+}

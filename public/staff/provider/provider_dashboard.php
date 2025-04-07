@@ -1,6 +1,22 @@
 <?php require_once("../../../private/functions/initialization.php") ?>
 
 <?php
+    $page_styles = [
+        PUBLIC_PATH . '/css/header.css',
+        PUBLIC_PATH . '/css/dashboard.css',
+        PUBLIC_PATH . '/css/sidebar.css',
+        PUBLIC_PATH . '/css/font.css',
+        PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    ];
+
+    require_once(ROOT_PATH . SHARED_PATH . '/header.php');
+
+    require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
+?>
+
+<?php
       if(!isset($_SESSION['user_name'])){
         header("Location: ../staff/general/login.php");
         exit();
@@ -34,58 +50,49 @@
       $recentPetsResult = mysqli_query($connection, $recentPetsQuery);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Provider Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
-<body class="bg-light">
-<div class="container mt-5">
-    <h1 class="mb-4">Welcome, <?= htmlspecialchars($user_name) ?></h1>
 
-    <!-- Stats Section -->
-    <div class="row">
-        <a href="provider_dashboard_post.php" class="col-md-4 text-decoration-none">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Pets Posted</h5>
-                    <p class="card-text fs-2"><?= $petCount ?></p>
-                </div>
-            </div>
-        </a>
-        <a href="adoption_requests.php" class="col-md-4 text-decoration-none">
-            <div class="card text-white bg-success mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Adoption Requests</h5>
-                    <p class="card-text fs-2"><?= $adoptionRequestCount ?></p>
-                </div>
-            </div>
-        </a>
+<body>
+<div class="dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-nav">
+        <a href="post_pet.php" class="nav-btn">Add New Pet</a>
+        <a href="provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
+        <a href="adoption_requests.php" class="nav-btn">Adoption Requests</a>
+        <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
+        <a href="../general/logout.php" class="nav-btn logout">Logout</a>
     </div>
 
-    <!-- Recent Activity Section -->
-    <div class="card mt-4">
-        <div class="card-header bg-dark text-white">Recent Pet Posts</div>
-        <ul class="list-group list-group-flush">
-            <?php while ($pet = mysqli_fetch_assoc($recentPetsResult)) : ?>
-                <li class="list-group-item">
-                    <?= htmlspecialchars($pet['pet_name']) ?> - Posted on <?= htmlspecialchars($pet['post_date']) ?>
-                </li>
-            <?php endwhile; ?>
-        </ul>
+    <!-- Main Content Area -->
+    <div class="dashboard-container">
+        <h1>Welcome, <?= htmlspecialchars($user_name) ?></h1>
+
+        <!-- Stats Section -->
+        <div class="stats-row">
+            <a href="provider_dashboard_post.php" class="stat-card">
+                <h5>Pets Posted</h5>
+                <p class="fs-2"><?= $petCount ?></p>
+            </a>
+            <a href="adoption_requests.php" class="stat-card bg-success">
+                <h5>Adoption Requests</h5>
+                <p class="fs-2"><?= $adoptionRequestCount ?></p>
+            </a>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <div class="card-recent">
+            <div class="card-recent-header">Recent Pet Posts</div>
+            <ul class="recent-list">
+                <?php while ($pet = mysqli_fetch_assoc($recentPetsResult)) : ?>
+                    <li><?= htmlspecialchars($pet['pet_name']) ?> - Posted on <?= htmlspecialchars($pet['post_date']) ?></li>
+                <?php endwhile; ?>
+            </ul>
+        </div>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="mt-4">
-        <a href="post_pet.php" class="btn btn-primary">Add New Pet</a>
-        <a href="../general/personal_info.php" class="btn btn-secondary">Update Personal information</a>
-        <a href="../general/logout.php" class="btn btn-danger">Logout</a>
-    </div>
 </div>
 
+<?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
 </body>
+
 
 </html>

@@ -34,10 +34,44 @@ if (!$result) {
 </html>
 
 
-<div class="pet-images">
-                <?php while ($img_row = mysqli_fetch_assoc($image_result)): 
-                    $img = htmlspecialchars($img_row['images']); ?>
-                    <img src="../../public/images/petimages/<?php echo $img; ?>" alt="<?php echo $pet['pet_name']; ?>" class="pet-image">
+
+//
+<body>
+<div class="dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-nav">
+        <a href="post_pet.php" class="nav-btn">Add New Pet</a>
+        <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
+        <a href="../general/logout.php" class="nav-btn logout">Logout</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="dashboard-container">
+        <h1>Welcome, <?= htmlspecialchars($user_name) ?></h1>
+
+        <!-- Stats Section -->
+        <div class="stats-row">
+            <a href="provider_dashboard_post.php" class="stat-card">
+                <h5>Pets Posted</h5>
+                <p class="fs-2"><?= $petCount ?></p>
+            </a>
+            <a href="adoption_requests.php" class="stat-card bg-success">
+                <h5>Adoption Requests</h5>
+                <p class="fs-2"><?= $adoptionRequestCount ?></p>
+            </a>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <div class="card-recent">
+            <div class="card-recent-header">Recent Pet Posts</div>
+            <ul class="recent-list">
+                <?php while ($pet = mysqli_fetch_assoc($recentPetsResult)) : ?>
+                    <li><?= htmlspecialchars($pet['pet_name']) ?> - Posted on <?= htmlspecialchars($pet['post_date']) ?></li>
                 <?php endwhile; ?>
-            </div>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
             

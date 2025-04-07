@@ -33,6 +33,7 @@
         <nav>
             <?php echo '<a class="logo" href="' . PUBLIC_PATH . '/pages/homepage.php"> 🐾 FurEver </a>';?>
             <div>
+                <?php echo '<a href="' . PUBLIC_PATH . '/pages/homepage.php"> Homepage </a>';?>
                 <?php echo '<a href="' . PUBLIC_PATH . '/pages/homepage.php#trending"> Pets </a>';?>
                 <?php echo '<a href="' . PUBLIC_PATH . '/pages/about_us.php">About Us</a>';?>
                 <?php

@@ -1,0 +1,123 @@
+body {
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    flex-grow: 1;
+    margin: 3rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.dashboard-container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* Stat Cards */
+.stats-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    flex: 1;
+    background-color: #f44e21;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.stat-card.bg-success {
+    background-color: #4caf50;
+}
+
+.stat-card:hover {
+    filter: brightness(1.05);
+}
+
+.stat-card h5 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.stat-card .fs-2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Recent Posts */
+.card-recent {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 2rem;
+    border: 1px solid #ddd;
+}
+
+.card-recent-header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.recent-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.recent-list li {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.recent-list li:last-child {
+    border-bottom: none;
+}
+
+/* Action Buttons */
+.quick-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.quick-actions a {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.quick-actions .btn-primary {
+    background-color: #f44e21;
+}
+
+.quick-actions .btn-secondary {
+    background-color: #6c757d;
+}
+
+.quick-actions .btn-danger {
+    background-color: #d32f2f;
+}
+
+.quick-actions a:hover {
+    filter: brightness(1.1);
+}

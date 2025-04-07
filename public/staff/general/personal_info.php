@@ -9,12 +9,6 @@
 
     $user_name = $_SESSION['user_name'];
 
-    // Fetch user id based on username
-    // $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
-    // $userResult = mysqli_query($connection, $userQuery);
-    // $userData = mysqli_fetch_assoc($userResult);
-    // $user_id = $userData['user_id'];
-
     // Fetch user details
     $userQuery = "SELECT * FROM user WHERE user_name = '$user_name'";
     $userResult = mysqli_query($connection ,$userQuery);
@@ -57,47 +51,35 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <style>
-        body { font-family: Arial, sans-serif;  }
-        .profile-container { width: 50%; margin: auto;text-align: center; }
-        .profile-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
-        .form-group { margin: 10px 0; }
-        label { display: block; font-weight: bold; }
-        input { width: 100%; padding: 8px; }
-        input[disabled] { background-color: #eee; }
-        .submit-btn { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        .error { color: red; }
-        .success { color: green; }
-        .black_button{width: 50%; margin: auto}
-        .reset-btn {
-            width: 100%; 
-            padding: 5px 10px;
-            background-color: #095F98; 
-            color: white; 
-            border: none; 
-            cursor: pointer; 
-            text-decoration: none; 
-            display: inline-block;
-            text-align: center; 
-            margin-bottom: 0.5rem
-        }
-        <?php include ROOT_PATH . PUBLIC_PATH."/css/Formstyle.css"; ?>
-    </style>
-   
-</head>
+<?php
+    $page_styles = [
+        PUBLIC_PATH . '/css/header.css',
+        PUBLIC_PATH . '/css/personal_info.css',
+        PUBLIC_PATH . '/css/sidebar.css',
+        PUBLIC_PATH . '/css/font.css',
+        PUBLIC_PATH . '/css/grid.css',
+        PUBLIC_PATH . '/css/footer.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    ];
 
-<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
+    require_once(ROOT_PATH . SHARED_PATH . '/header.php');
 
-<body>
-    
+    require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
+?>
+
+<div class="dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-nav">
+        <a href="../provider/post_pet.php" class="nav-btn">Add New Pet</a>
+        <a href="../provider/provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
+        <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
+        <a href="personal_info.php" class="nav-btn">Update Info</a>
+        <a href="logout.php" class="nav-btn logout">Logout</a>
+    </div>
+
+    <!-- Main Content Area -->
     <div class="profile-container">
-    <h2>User Profile</h2>
+    <h2>Profile Update</h2>
 
         <?php if (isset($successMessage)) echo "<p class='success'>$successMessage</p>"; ?>
         <?php
@@ -107,8 +89,9 @@
                 }
             }
         ?>
- 
-        <img src="<?php echo htmlspecialchars(PUBLIC_PATH .'/images/profilephoto/' .$userData['profile_photo']); ?>" alt="Profile Photo" class="profile-photo">
+        <!-- <div class="img-container">
+            <img src="<?php echo htmlspecialchars(PUBLIC_PATH .'/images/profilephoto/' .$userData['profile_photo']); ?>" alt="Profile Photo" class="profile-photo">
+        </div> -->
 
         <form method="POST">
             <div class="form-group">
@@ -136,16 +119,19 @@
                 <input type="text" name="other_contact" value="<?php echo htmlspecialchars($userData['other_contact']); ?>">
             </div>
 
-            <input type="submit" value="Update Profile" class="submit-btn">
+            <div class="button-row">
+                <input type="submit" value="Update Profile" class="submit-btn">
+                <a href="change_password.php" class="reset-btn">Reset Password</a>
+            </div>
         </form>
         <br>
-        <div class="black_button">
-            <a href="change_password.php" class="reset-btn">Reset Password</a>
-            <br>
-            <a href="provider_dashboard.php" class="reset-btn">Back to Dashboard</a>
-        </div>
+        
     </div>
-   
+
+</div>
+
+<?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
 </body>
+
 
 </html>

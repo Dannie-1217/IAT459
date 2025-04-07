@@ -101,5 +101,5 @@
 <?php require_once(ROOT_PATH . SHARED_PATH.'/footer.php');?>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </html>

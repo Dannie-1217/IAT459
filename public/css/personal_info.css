@@ -1,0 +1,102 @@
+.profile-container {
+    flex-grow: 1;
+    margin: 3rem;
+    padding: 2rem 3rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.profile-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #f44e21;
+    outline: none;
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.submit-btn {
+    width: fit-content;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    color: white;
+    background-color: #f44e21;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #d63e1b;
+}
+
+.success {
+    color: #2e7d32;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+
+
+
+.profile-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    border: 3px solid #eee;
+}
+
+
+.reset-btn {
+    width: fit-content;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    color: #f44e21;
+    background-color:#ffcdd2;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+    background-color: #111;
+}
