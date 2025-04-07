@@ -32,7 +32,7 @@
     $user_id = $userData['user_id'];
 
     // Get all pet posts by this provider
-    $allPetsQuery = "SELECT pet.pet_id, pet.pet_name, pet_images.images, pet.post_date
+    $allPetsQuery = "SELECT pet.pet_id, pet.pet_name, pet_images.images, pet.post_date, pet.status
     FROM provide_records 
     JOIN pet ON provide_records.pet_id = pet.pet_id
     LEFT JOIN pet_images ON pet.pet_id = pet_images.pet_Id
@@ -66,7 +66,7 @@
 
                     <div>
                         <h3><?php echo htmlspecialchars($pet['pet_name']); ?></h3>
-                        <p>Posted on: <?php echo htmlspecialchars($pet['post_date']); ?></p>
+                        <p>Status: <?php echo htmlspecialchars($pet['status']); ?></p><br>
 
                         <?php if (!empty($pet['images'])): ?>
                             <img src="<?php echo htmlspecialchars(PUBLIC_PATH . '/images/petimages/' . $pet['images']); ?>" 

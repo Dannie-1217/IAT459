@@ -18,11 +18,11 @@
     $userData = mysqli_fetch_assoc($userResult);
     $user_id = $userData['user_id'];
 
-    $adoptionRequestQuery = "SELECT ar.pet_id, ar.status FROM adoption_records ar JOIN provide_records pr ON ar.pet_id = pr.pet_id WHERE pr.user_id = '$user_id' AND ar.status = 'Processing'";
+    $adoptionRequestQuery = "SELECT ar.pet_id, ar.status FROM adoption_records ar JOIN provide_records pr ON ar.pet_id = pr.pet_id WHERE pr.user_id = '$user_id'";
     $adoptionRequestResult = mysqli_query($connection, $adoptionRequestQuery);
     
     if(!$adoptionRequestResult){
-        echo"query faled!";
+        echo"query failed!";
         exit;
     }
 
