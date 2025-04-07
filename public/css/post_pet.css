@@ -1,8 +1,19 @@
-/* Container for the form */
+/* 
 .add_post_container {
     flex: 1;
     padding: 3rem 4rem;
     background-color: #ffffff;
+} */
+
+.add_post_container {
+    flex: 1;
+    max-width: 900px;
+    margin: 3rem auto; /* center it within available space */
+    padding: 3rem 4rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 .add_post_container h1 {
@@ -13,7 +24,6 @@
     padding-bottom: 0.5rem;
 }
 
-/* General label + input styles */
 .add_post_container label {
     font-weight: 600;
     display: block;
@@ -60,7 +70,7 @@
     background-color: #d63f18;
 }
 
-/* Tag input & list */
+
 #tag_input {
     width: calc(100% - 100px);
     display: inline-block;
@@ -98,7 +108,7 @@
     color: #d32f2f;
 }
 
-/* Image preview area */
+
 #image_preview {
     margin-top: 1rem;
     display: flex;
@@ -115,11 +125,12 @@
 }
 
 p[style*="color:red"] {
-    color: #d32f2f !important;
+    color: #d32f2f;
     font-weight: 500;
 }
 
 p[style*="color:green"] {
-    color: #388e3c !important;
+    color: #388e3c;
     font-weight: 500;
 }
+

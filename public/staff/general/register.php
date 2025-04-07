@@ -16,6 +16,15 @@
 ?>
 
 <?php
+    if (isset($_SESSION['user_name'])) {
+        $user_name = $_SESSION['user_name'];
+        if(check_user_type($connection, $user_name) == "adopter"){
+            header("Location: ../adopter/adopter_dashboard.php");
+        } else{
+            header("Location: ../provider/provider_dashboard.php");
+        }
+    }
+
     $user_name = $legal_name = $email = $other_contact = '';
     $user_type = '';
 
@@ -34,7 +43,7 @@
         array_push($errors, 'Passwords do not match');
     } else {
         // Handle file upload
-        $target_dir = PUBLIC_PATH . "/images/profilephoto/";
+        $target_dir = ROOT_PATH . PUBLIC_PATH . "/images/profilephoto/";
 
         if (!is_dir($target_dir)) {
             array_push($errors, "The image folder does not exist");
@@ -44,6 +53,7 @@
             $target_file = $target_dir . $user_name. "_" . $file_name;
             $new_file_name = $user_name . "_" . $file_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
 
             // Validate file upload
             if (isset($_FILES["profile_photo"]) && $_FILES["profile_photo"]["tmp_name"] != '') {
@@ -79,7 +89,7 @@
                                         VALUES ('$user_name', '$password_hashed', '$legal_name', '$email', '$other_contact', '$new_file_name', '$user_type')";
                                 if (mysqli_query($connection, $insertQuery)) {
                             $_SESSION['user_name'] = $user_name;
-                            header("Location: welcome.php");
+                            header("Location: register.php");
                             exit();
                         } else {
                             array_push($errors, "Database error: " . mysqli_error($connection));

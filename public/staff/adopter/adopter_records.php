@@ -48,7 +48,7 @@
     <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
             <a href="adopter_dashboard.php" class="nav-btn">Dashboard</a>
-            <a href="../../pages/homepage.php" class="nav-btn">Adopt New Pet</a>
+            <a href="../../pages/homepage.php#trending" class="nav-btn">Adopt New Pet</a>
             <a href="favorite_pets.php" class="nav-btn">Favorite Pets</a>
             <a href="adopter_records.php" class="nav-btn">Check Records</a>
             <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
@@ -57,7 +57,7 @@
 
     <!-- Main Content Area -->
     <div class="pet_container">
-        <h1>My Posted Pets</h1>
+        <h1>My Applications</h1>
 
         <?php if (mysqli_num_rows($allPetsResult) > 0): ?>
             <div class="pet-grid">

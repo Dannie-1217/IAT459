@@ -84,9 +84,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--<meta charset="UTF-8">-->
     <title>Provider Dashboard</title>
-    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function(){
@@ -117,7 +115,7 @@
     <div class="dashboard-wrapper">
         <div class="sidebar-nav">
             <a href="adopter_dashboard.php" class="nav-btn">Dashboard</a>
-            <a href="../../pages/homepage.php" class="nav-btn">Adopt New Pet</a>
+            <a href="../../pages/homepage.php#trending" class="nav-btn">Adopt New Pet</a>
             <a href="favorite_pets.php" class="nav-btn">Favorite Pets</a>
             <a href="adopter_records.php" class="nav-btn">Check Records</a>
             <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
