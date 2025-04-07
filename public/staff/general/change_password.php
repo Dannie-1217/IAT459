@@ -107,7 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <input type="submit" value="Change Password" class="submit-btn">
             </form>
-            <a href="personal_info.php">Go Back to Perosnal Information</a>
         </div>
 
     </div>

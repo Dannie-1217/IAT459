@@ -152,9 +152,9 @@
                 <label>Location: </label><br>
                 <input type= "text" name = "location" required/><br><br>
 
-                <label>Pet Type:</lable><br>
+                <label>Pet Type:</lable><br><br>
                 <select name = "pet_type" required>
-                    <option value = ""> -- Select Pet Type --</option>
+                    <option value = ""></option>
                     <option value = "dog">Dog</option>
                     <option value = "cat">Cat</option>
                     <option value="horse">Horse</option>
@@ -172,7 +172,7 @@
                 <button type="button" onclick="addTagFromInput()">Add</button>
 
                 <div id="tag_suggestions"></div>
-                <div id="tag_list"><p>Tag List:</p></div>
+                <div id="tag_list"></div>
                 <div id="tags"></div><br><br>
 
                 <label>Upload Pet Images: </label><br>
@@ -188,7 +188,7 @@
 
     
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../../js/tag-handler.js"></script>
+<script src="../../js/tag_handler.js"></script>
 <script src="../../js/pet_img.js"></script>
 </html>
 

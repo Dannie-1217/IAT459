@@ -3,7 +3,7 @@
 <?php
     $page_styles = [
         PUBLIC_PATH . '/css/header.css',
-        PUBLIC_PATH . '/css/dashboard.css',
+        PUBLIC_PATH . '/css/provider_dashboard_post.css',
         PUBLIC_PATH . '/css/sidebar.css',
         PUBLIC_PATH . '/css/font.css',
         PUBLIC_PATH . '/css/grid.css',
@@ -41,34 +41,52 @@
     $allPetsResult = mysqli_query($connection, $allPetsQuery);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Posted Pets</title>
-</head>
-<?php require(ROOT_PATH . SHARED_PATH.'/header.php'); ?>
 <body>
-    <h1>My Posted Pets</h1>
 
-    <?php if (mysqli_num_rows($allPetsResult) > 0): ?>
-        <?php while ($pet = mysqli_fetch_assoc($allPetsResult)): ?>
-            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px;">
-                <h3><?php echo htmlspecialchars($pet['pet_name']); ?></h3>
-                <p>Posted on: <?php echo htmlspecialchars($pet['post_date']); ?></p>
-                
-                <?php if (!empty($pet['images'])): ?>
-                    <img src="<?php echo htmlspecialchars(PUBLIC_PATH .'/images/petimages/' . $pet['images']); ?>" 
-                         alt="<?php echo htmlspecialchars($pet['pet_name']); ?>" 
-                         style="width: 200px; height: auto;">
-                <?php else: ?>
-                    <p><em>No image uploaded.</em></p>
-                <?php endif; ?>
-            </div>
-        <?php endwhile; ?>
-    <?php else: ?>
-        <p>No pets posted yet.</p>
-    <?php endif; ?>
+<div class="dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-nav">
+
+        <a href="provider_dashboard.php" class="nav-btn">Dashboard</a>
+        <a href="post_pet.php" class="nav-btn">Add New Pet</a>
+        <a href="provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
+        <a href="adoption_requests.php" class="nav-btn">Adoption Requests</a>
+        <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
+        <a href="../general/logout.php" class="nav-btn logout">Logout</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="pet_container">
+        <h1>My Posted Pets</h1>
+
+        <?php if (mysqli_num_rows($allPetsResult) > 0): ?>
+            <div class="pet-grid">
+                <?php while ($pet = mysqli_fetch_assoc($allPetsResult)): ?>
+                    <a class="pet-card" href="../../pages/pet_information.php?pet_id=<?php echo $pet['pet_id']; ?>">
+
+                    <div>
+                        <h3><?php echo htmlspecialchars($pet['pet_name']); ?></h3>
+                        <p>Posted on: <?php echo htmlspecialchars($pet['post_date']); ?></p>
+
+                        <?php if (!empty($pet['images'])): ?>
+                            <img src="<?php echo htmlspecialchars(PUBLIC_PATH . '/images/petimages/' . $pet['images']); ?>" 
+                                alt="<?php echo htmlspecialchars($pet['pet_name']); ?>">
+                            <?php else: ?>
+                                <p><em>No image uploaded.</em></p>
+                        <?php endif; ?>
+                    </div>
+                </a>
+            <?php endwhile; ?>
+
+        <?php else: ?>
+            <p>No pets posted yet.</p>
+        <?php endif; ?>
+        
+    </div>
+
+</div>
+
 
 </body>
+
 </html>

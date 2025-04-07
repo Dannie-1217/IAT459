@@ -1,0 +1,61 @@
+/* Container for the pet posts */
+.pet_container {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+/* Grid layout: 3 per row, responsive */
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Each pet post as a card */
+.pet-card {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #fff;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.pet-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Pet image: same size, clean */
+.pet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+}
+
+/* Pet name */
+.pet-card h3 {
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+/* Post date */
+.pet-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* If no image uploaded */
+.pet-card em {
+    color: #888;
+    font-size: 0.9rem;
+}

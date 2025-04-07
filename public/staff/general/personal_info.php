@@ -95,7 +95,7 @@
                 ';
             }
         ?>
-
+    </div>
     <!-- Main Content Area -->
     <div class="profile-container">
     <h2>Profile Update</h2>
