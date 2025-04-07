@@ -55,15 +55,8 @@
 <div class="dashboard-wrapper">
     <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         <a href="provider_dashboard.php" class="nav-btn">Dashboard</a>
-=======
-        <a href="provider_dashboard.php" class="nav-btn">Overview</a>
->>>>>>> Stashed changes
-=======
-        <a href="provider_dashboard.php" class="nav-btn">Overview</a>
->>>>>>> Stashed changes
         <a href="post_pet.php" class="nav-btn">Add New Pet</a>
         <a href="provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
         <a href="adoption_requests.php" class="nav-btn">Adoption Requests</a>

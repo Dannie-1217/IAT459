@@ -74,8 +74,6 @@
 <div class="dashboard-wrapper">
     <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         <?php
             if($user_type == 'adopter'){
                 echo '
@@ -97,20 +95,6 @@
                 ';
             }
         ?>
-=======
-=======
->>>>>>> Stashed changes
-        <a href="../provider/provider_dashboard.php" class="nav-btn">Overview</a>
-        <a href="../provider/post_pet.php" class="nav-btn">Add New Pet</a>
-        <a href="../provider/provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
-        <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
-        <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
-        <a href="../general/logout.php" class="nav-btn logout">Logout</a>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    </div>
 
     <!-- Main Content Area -->
     <div class="profile-container">

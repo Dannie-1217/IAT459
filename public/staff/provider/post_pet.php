@@ -125,7 +125,7 @@
     <div class="dashboard-wrapper">
         <!-- Sidebar Navigation -->
         <div class="sidebar-nav">
-            <a href="../provider/provider_dashboard.php" class="nav-btn">Overview</a>
+            <a href="../provider/provider_dashboard.php" class="nav-btn">Dashboard</a>
             <a href="../provider/post_pet.php" class="nav-btn">Add New Pet</a>
             <a href="../provider/provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
             <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
