@@ -75,7 +75,10 @@
             if($user_type == 'adopter'){
                 echo '
                 <a href="../adopter/adopter_dashboard.php" class="nav-btn">Dashboard</a>
-
+                <a href="../../pages/homepage.php" class="nav-btn">Adopt New Pet</a>
+                <a href="../adopter/favorite_pets.php" class="nav-btn">Favorite Pets</a>
+                <a href="personal_info.php" class="nav-btn">Update Info</a>
+                <a href="logout.php" class="nav-btn logout">Logout</a>
                 ';
             }
             else{

@@ -113,75 +113,68 @@
         </script>
 </head>
 
-<body class="bg-light">
-<div class="container mt-5">
-    <h1 class="mb-4">Welcome, <?= htmlspecialchars($user_name) ?></h1>
+<body>
+    <div class="dashboard-wrapper">
+        <div class="sidebar-nav">
+            <a href="adopter_dashboard.php" class="nav-btn">Dashboard</a>
+            <a href="../../pages/homepage.php" class="nav-btn">Adopt New Pet</a>
+            <a href="favorite_pets.php" class="nav-btn">Favorite Pets</a>
+            <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
+            <a href="../general/logout.php" class="nav-btn logout">Logout</a>
+        </div>
 
-    <!-- Stats Section -->
-    <div class="row">
-        <a href="favorite_pets.php" class="col-md-4 text-decoration-none">
-            <div class="col-md-4">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Favorite Pets</h5>
-                        <p class="card-text fs-2"><?= $petCount ?></p>
-                    </div>
-                </div>
+        <div class="dashboard-container">
+            <h1>Welcome, <?= htmlspecialchars($user_name) ?></h1>
+
+            <!-- Stats Section -->
+            <div class="stats-row">
+                <a href="favorite_pets.php" class="stat-card">
+                                <h5>Favorite Pets</h5>
+                                <p class="card-text fs-2"><?= $petCount ?></p>
+                </a>    
+                <a href="adopter_records.php" class="stat-card bg-success">
+                            <h5 class="card-title">Adoption Records</h5>
+                            <p class="card-text fs-2"><?= $adoptionRequestCount ?></p>
+                </a>
             </div>
-        </a>    
-        <a href="adopter_records.php" class="col-md-4 text-decoration-none">
-            <div class="card text-white bg-success mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Adoption Records</h5>
-                    <p class="card-text fs-2"><?= $adoptionRequestCount ?></p>
-                </div>
+
+            <!-- Recent Activity Section -->
+            <div class="card-recent">
+                <div class="card-recent-header">Recent Liked Pets</div>
+                <ul class="recent-list">
+                    <?php while ($pet = mysqli_fetch_assoc($recentPetsResult)) : ?>
+                        <li class="list-group-item">
+                            <?= htmlspecialchars($pet['pet_name']) ?> - Posted on <?= htmlspecialchars($pet['post_date']) ?>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
             </div>
-        </a>
+
+            <!-- Add Tags-->
+            <form action="adopter_dashboard.php" method="POST" enctype="multipart/form-data">
+                <label>Add Tags: </label><br>
+                <?php
+                    echo '<input type="text" id="tag_input" name="tags" placeholder='. $placeholder.'>';
+                ?>
+                <input type="submit" value='Add'/>
+                <div id="tag_suggestions"></div>
+            </form>
+                <div id="tag_list"><p>Tag List:</p></div>
+                <?php
+                    $taglistQuery = "SELECT tags.content, tags.tag_id FROM tags LEFT JOIN preferences ON preferences.tag_id = tags.tag_id WHERE preferences.user_id = '$user_id'";
+                    $taglistResult = mysqli_query($connection, $taglistQuery);
+
+                    if(mysqli_num_rows($taglistResult)>0){
+                        while($row = mysqli_fetch_assoc($taglistResult)){
+                            $tag_id = $row['tag_id'];
+                            echo "<td class='tableGrid'>". $row['content']. "</td>"; 
+                            echo "<td class='tableGrid'><a href='remove_tags.php?edit=$tag_id' id='link1'>'Remove'</a></td> <br>";
+                        }
+                    } else{
+                        echo "Not Tags Found!";
+                    }
+                ?>
+        </div>
     </div>
-
-    <!-- Recent Activity Section -->
-    <div class="card mt-4">
-        <div class="card-header bg-dark text-white">Recent Liked Pets</div>
-        <ul class="list-group list-group-flush">
-            <?php while ($pet = mysqli_fetch_assoc($recentPetsResult)) : ?>
-                <li class="list-group-item">
-                    <?= htmlspecialchars($pet['pet_name']) ?> - Posted on <?= htmlspecialchars($pet['post_date']) ?>
-                </li>
-            <?php endwhile; ?>
-        </ul>
-    </div>
-
-    <!-- Add Tags-->
-    <form action="adopter_dashboard.php" method="POST" enctype="multipart/form-data">
-        <label>Add Tags: </label><br>
-        <?php
-            echo '<input type="text" id="tag_input" name="tags" placeholder='. $placeholder.'>';
-        ?>
-        <input type="submit" value='Add'/>
-        <div id="tag_suggestions"></div>
-    </form>
-        <div id="tag_list"><p>Tag List:</p></div>
-        <?php
-            $taglistQuery = "SELECT tags.content, tags.tag_id FROM tags LEFT JOIN preferences ON preferences.tag_id = tags.tag_id WHERE preferences.user_id = '$user_id'";
-            $taglistResult = mysqli_query($connection, $taglistQuery);
-
-            if(mysqli_num_rows($taglistResult)>0){
-                while($row = mysqli_fetch_assoc($taglistResult)){
-                    $tag_id = $row['tag_id'];
-                    echo "<td class='tableGrid'>". $row['content']. "</td>"; 
-                    echo "<td class='tableGrid'><a href='remove_tags.php?edit=$tag_id' id='link1'>'Remove'</a></td> <br>";
-                }
-            } else{
-                echo "Not Tags Found!";
-            }
-        ?>
-
-    <!-- Quick Actions -->
-    <div class="mt-4">
-        <a href="../../pages/homepage.php" class="btn btn-primary">Adopt New Pet</a>
-        <a href="../general/personal_info.php" class="btn btn-secondary">Update Personal information</a>
-        <a href="../general/logout.php" class="btn btn-danger">Logout</a>
-    </div>
-</div>
 </body>
 </html>
