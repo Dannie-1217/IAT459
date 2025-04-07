@@ -22,6 +22,7 @@
             <a href="adopter_dashboard.php" class="nav-btn">Dashboard</a>
             <a href="../../pages/homepage.php" class="nav-btn">Adopt New Pet</a>
             <a href="favorite_pets.php" class="nav-btn">Favorite Pets</a>
+            <a href="adopter_records.php" class="nav-btn">Check Records</a>
             <a href="../general/personal_info.php" class="nav-btn">Update Info</a>
             <a href="../general/logout.php" class="nav-btn logout">Logout</a>
         </div>
