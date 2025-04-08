@@ -19,7 +19,7 @@ if(isset($_GET['edit'])){
     $id = $_SESSION['pet_id'];  // Get pet_id from session
 }
 
-// $_SESSION['pet_id'] = $id;
+$_SESSION['pet_id'] = $id;
 
 $user_type = 'adopter';
 if(isset($_SESSION['user_name'])){

@@ -60,7 +60,7 @@
                             JOIN pet_images ON pet.pet_id = pet_images.pet_id
                             WHERE pet_tags.tag_id = ANY(SELECT tag_id 
                                                         FROM preferences 
-                                                        WHERE user_id = '$user_id') 
+                                                        WHERE user_id = '$user_id') AND pet.status = 'Available'
                             GROUP BY pet.pet_id";
             $prefer_result = mysqli_query($connection, $prefer_query);
 
