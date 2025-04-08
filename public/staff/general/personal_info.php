@@ -108,9 +108,6 @@ $page_styles = [
                 }
             }
         ?>
-        <div class="img-container">
-            <img src="<?php echo htmlspecialchars(PUBLIC_PATH .'/images/profilephoto/' .$userData['profile_photo']); ?>" alt="Profile Photo" class="profile-photo">
-        </div> 
 
         <form method="POST" action="personal_info.php">
             <div class="form-group">
