@@ -32,7 +32,10 @@
       $user_id = $userData['user_id'];
 
       // Get count of saved pets by the user
-      $petCountQuery = "SELECT COUNT(*) AS favorite_pet_count FROM favorites WHERE user_id = '$user_id'";
+      $petCountQuery = "SELECT COUNT(*) AS favorite_pet_count
+                        FROM favorites 
+                        JOIN pet ON favorites.pet_id = pet.pet_id 
+                        WHERE favorites.user_id = '$user_id' AND pet.status = 'Available'";
       $petCountResult = mysqli_query($connection, $petCountQuery);
       $petCount = mysqli_fetch_assoc($petCountResult)['favorite_pet_count'];
 
@@ -45,7 +48,7 @@
       $recentPetsQuery = "SELECT pet.pet_name, pet.post_date 
                     FROM favorites 
                     JOIN pet ON favorites.pet_id = pet.pet_id 
-                    WHERE favorites.user_id = '$user_id' 
+                    WHERE favorites.user_id = '$user_id' AND pet.status = 'Available'
                     ORDER BY pet.post_date DESC 
                     LIMIT 3";
       $recentPetsResult = mysqli_query($connection, $recentPetsQuery);
