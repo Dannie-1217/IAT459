@@ -49,10 +49,12 @@
 
     <?php
         // Fetch user id based on username
-        $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
-        $userResult = mysqli_query($connection, $userQuery);
-        $userData = mysqli_fetch_assoc($userResult);
-        $user_id = $userData['user_id'];
+        if(isset($_SESSION['user_name'])){
+            $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
+            $userResult = mysqli_query($connection, $userQuery);
+            $userData = mysqli_fetch_assoc($userResult);
+            $user_id = $userData['user_id'];
+        }
 
         if (isset($userType) && $userType === 'adopter'){
             $prefer_query = "SELECT pet.pet_id, pet.pet_name, pet.pet_type, pet.location, MIN(pet_images.images) AS image

@@ -36,7 +36,7 @@
                         FROM favorites 
                         JOIN pet ON favorites.pet_id = pet.pet_id 
                         LEFT JOIN pet_images ON pet.pet_id = pet_images.pet_Id
-                        WHERE favorites.user_id = '$user_id' 
+                        WHERE favorites.user_id = '$user_id' AND pet.status = 'Available'
                         GROUP BY pet.pet_id
                         ORDER BY pet.post_date DESC";
     $allPetsResult = mysqli_query($connection, $recentPetsQuery);
