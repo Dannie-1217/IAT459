@@ -6,6 +6,7 @@ $(document).ready(function () {
     let recPage = 1;
     let recTotalPages = 1;
 
+    // Used to load trending (baisc filter) part
     function loadPets(petType = '', location = '', page = 1) {
         currentPage = page;
         currentPetType = petType;
@@ -28,12 +29,14 @@ $(document).ready(function () {
         });
     }
 
+    // Used to update trending part button states
     function updatePaginationButtons() {
         $('#prev_page').prop('disabled', currentPage <= 1);
         $('#next_page').prop('disabled', currentPage >= totalPages);
         $('.pagination_controls span').text(`Page ${currentPage} of ${totalPages}`);
     }
 
+    // Used to load recommendation part
     function loadRecommendations(page = 1) {
         recPage = page;
         $("#recommendation_res").html('<div class="loading">Loading recommendations...</div>');
@@ -53,6 +56,7 @@ $(document).ready(function () {
         });
     }
 
+    // Used to update recommendation part button states.
     function updateRecommendationPagination() {
         $('#recommend_prev').prop('disabled', recPage <= 1);
         $('#recommend_next').prop('disabled', recPage >= recTotalPages);
@@ -70,6 +74,7 @@ $(document).ready(function () {
         loadPets(petType, location);
     });
 
+    
     $(document).on("click", ".pagination_btn", function () {
         const id = $(this).attr("id");
 
