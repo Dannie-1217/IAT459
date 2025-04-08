@@ -72,11 +72,17 @@
 
                         <div class="request-content">
                             <div class="request-details">
-                                <h3><?= htmlspecialchars($row['pet_name']) ?></h3>
-                                <p><strong>Applicant:</strong> <?php echo ucfirst(htmlspecialchars($row['user_name'])) ?></p>
-                                <?php
+                                <?php 
                                     $status = ucfirst(htmlspecialchars($row['status']));
                                     $status_class = '';
+                                    if($status === "Processing"): 
+                                ?>
+                                    <h3><?= htmlspecialchars($row['pet_name']) ?><span> (Awaiting Processing...)</span></h3>
+                                <?php else: ?>
+                                    <h3><?= htmlspecialchars($row['pet_name']) ?></h3>
+                                <?php endif; ?>
+                                <?php
+                                   
 
                                     if ($status === 'Approved') {
                                         $status_class = 'status-approved';
