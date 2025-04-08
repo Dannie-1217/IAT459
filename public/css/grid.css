@@ -7,6 +7,11 @@
     align-items:center;
 }
 
+.about_grid{
+    grid-template-columns: 1fr 2.5fr;
+    align-items:center;
+}
+
 .card_grid{
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;

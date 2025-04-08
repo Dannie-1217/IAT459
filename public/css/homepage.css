@@ -225,3 +225,11 @@ select:focus {
 .pagination_btn:hover:not(:disabled) {
     background-color: black;
 }
+
+.intro{
+    padding-left: 2rem;
+    line-height: 3rem;
+    font-size: 1.2rem;
+    color:#212427;
+}
+
