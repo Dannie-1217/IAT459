@@ -40,6 +40,7 @@ $(document).ready(function() {
         $('#prev_page').prop('disabled', currentPage <= 1);
         $('#next_page').prop('disabled', currentPage >= totalPages);
         $('.pagination_controls span').text(`Page ${currentPage} of ${totalPages}`);
+
     }
 
     // Load all pets when page first loads
