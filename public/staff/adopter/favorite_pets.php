@@ -67,7 +67,7 @@
 
                     <div>
                         <h3><?php echo htmlspecialchars($pet['pet_name']); ?></h3>
-                        <p>Posted on: <?php echo htmlspecialchars($pet['post_date']); ?></p>
+                        <p>Posted on: <?php echo htmlspecialchars($pet['post_date']); ?></p><br>
 
                         <?php if (!empty($pet['images'])): ?>
                             <img src="<?php echo htmlspecialchars(PUBLIC_PATH . '/images/petimages/' . $pet['images']); ?>" 

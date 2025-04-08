@@ -5,9 +5,17 @@
 <?php
     if(isset($_SESSION['user_name'])){
         $user_name = $_SESSION['user_name'];
-        $type_query = "SELECT user_type FROM user WHERE user_name = '" . $user_name. "'";
+        $type_query = "SELECT user_type, profile_photo FROM user WHERE user_name = '" . $user_name. "'";
         $type_res = mysqli_query($connection, $type_query);
-        $userType = mysqli_fetch_assoc($type_res)['user_type'];
+
+        // Check if the query is successful and contains at least one row
+        if ($type_res && mysqli_num_rows($type_res) > 0) {
+            $userData = mysqli_fetch_assoc($type_res);  
+            $userType = $userData['user_type'];        
+            $photo = $userData['profile_photo'];        
+        } else {
+            echo "No user found or query failed.";
+        }
     }
 ?>
 
@@ -39,13 +47,17 @@
                 <?php
                     if(isset($_SESSION['user_name'])){
                         if($userType == 'provider'){
-                            echo '<a href =' . PUBLIC_PATH . '/staff/provider/provider_dashboard.php' .' id=login> My Account </a>';
+                            echo '<a href =' . PUBLIC_PATH . '/staff/provider/provider_dashboard.php' .' id="profile-photo-link">';
+                            echo '<img src="' . PUBLIC_PATH . '/images/profilephoto/' . $photo . '" alt="Profile Photo" class="profile-photo">';
+                            echo '</a>';
                         }
                         else if($userType == 'adopter'){
-                            echo '<a href =' . PUBLIC_PATH . '/staff/adopter/adopter_dashboard.php' .' id=login> My Account </a>'; 
+                            echo '<a href =' . PUBLIC_PATH . '/staff/adopter/adopter_dashboard.php' .' id="profile-photo-link">';
+                            echo '<img src="' . PUBLIC_PATH . '/images/profilephoto/' . $photo . '" alt="Profile Photo" class="profile-photo">';
+                            echo '</a>';
                         }
-                    }else{
-                        echo '<a href =' . PUBLIC_PATH . '/staff/general/login.php' .' id=login> Login </a>';
+                    } else {
+                        echo '<a href =' . PUBLIC_PATH . '/staff/general/login.php' .' id="login">Login</a>';
                     }
                 ?>
             </div>

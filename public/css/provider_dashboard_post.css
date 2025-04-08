@@ -1,14 +1,13 @@
-/* Container for the pet posts */
+
 .pet_container {
     flex: 1;
     padding: 2rem;
     background-color: #f9f9f9;
 }
 
-/* Grid layout: 3 per row, responsive */
 .pet-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
 }
 
