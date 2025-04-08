@@ -64,7 +64,8 @@
                             WHERE pet_tags.tag_id = ANY(SELECT tag_id 
                                                         FROM preferences 
                                                         WHERE user_id = '$user_id') AND pet.status = 'Available'
-                            GROUP BY pet.pet_id";
+                            GROUP BY pet.pet_id
+                            LIMIT 10";
             $prefer_result = mysqli_query($connection, $prefer_query);
 
             if(!$prefer_result){
