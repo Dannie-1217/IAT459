@@ -13,6 +13,11 @@ $userQuery = "SELECT * FROM user WHERE user_name = '$user_name'";
 $userResult = mysqli_query($connection, $userQuery);
 $userData = mysqli_fetch_assoc($userResult);
 
+$userQuery = "SELECT * FROM user WHERE user_name = '$user_name'";
+$userResult = mysqli_query($connection ,$userQuery);
+$userData = mysqli_fetch_assoc($userResult);
+$user_type = $userData['user_type'];
+
 // Handle form submission for password change
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
@@ -65,13 +70,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="dashboard-wrapper">
         <!-- Sidebar Navigation -->
         <div class="sidebar-nav">
-            <a href="../provider/provider_dashboard.php" class="nav-btn">Dashboard</a>
-            <a href="../provider/post_pet.php" class="nav-btn">Add New Pet</a>
-            <a href="../provider/provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
-            <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
-            <a href="personal_info.php" class="nav-btn">Update Info</a>
-            <a href="logout.php" class="nav-btn logout">Logout</a>
-        </div>
+        <?php
+            if($user_type == 'adopter'){
+                echo '
+                <a href="../adopter/adopter_dashboard.php" class="nav-btn">Dashboard</a>
+                <a href="../../pages/homepage.php#trending" class="nav-btn">Adopt New Pet</a>
+                <a href="../adopter/favorite_pets.php" class="nav-btn">Favorite Pets</a>
+                <a href="../adopter/adopter_records.php" class="nav-btn">Check Records</a>
+                <a href="personal_info.php" class="nav-btn">Update Info</a>
+                <a href="logout.php" class="nav-btn logout">Logout</a>
+                ';
+            }
+            else{
+                echo'
+                <a href="../provider/provider_dashboard.php" class="nav-btn">Dashboard</a>
+                <a href="../provider/post_pet.php" class="nav-btn">Add New Pet</a>
+                <a href="../provider/provider_dashboard_post.php" class="nav-btn">Pets Posted</a>
+                <a href="../provider/adoption_requests.php" class="nav-btn">Adoption Requests</a>
+                <a href="personal_info.php" class="nav-btn">Update Info</a>
+                <a href="logout.php" class="nav-btn logout">Logout</a>
+                ';
+            }
+        ?>
+    </div>
 
         <!-- Main Content Area -->
         <div class="form-container">
