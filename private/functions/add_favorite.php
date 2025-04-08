@@ -7,6 +7,7 @@
         $user_res = mysqli_query($connection, $user_query);
         $user_id = mysqli_fetch_assoc($user_res)['user_id'];
         $pet_id = $_SESSION['pet_id'];
+        echo $pet_id;
 
         $add_favorite = "INSERT INTO favorites(user_id, pet_id) 
                     VALUES($user_id, $pet_id)";

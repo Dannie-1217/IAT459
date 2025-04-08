@@ -8,7 +8,6 @@
     }
 
     $user_name = $_SESSION['user_name'];
-
     // Fetch user details
     $userQuery = "SELECT * FROM user WHERE user_name = '$user_name'";
     $userResult = mysqli_query($connection ,$userQuery);
