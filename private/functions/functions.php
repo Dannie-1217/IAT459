@@ -12,28 +12,28 @@
 // 	echo "</select></td>";
 // }
 
-function drop_list($label,$varname,$options,$texts) {
-	global $$varname;
-	echo "<label>$label</label>";
-	echo "<select name=\"$varname\"";
-	echo ">";
+function drop_list($label, $varname, $options, $texts) {
+    global $$varname;
+    echo "<select name=\"$varname\">";
+    
+    // Add the first option as the placeholder (with value="")
+    echo "<option value=\"\" disabled selected>$label</option>";
 
-	$i = 0;
-	foreach($options as $opt) 
-		drop_option($texts[$i++],$varname, $opt);
-	echo "</select></td>";
+    $i = 0;
+    foreach($options as $opt) {
+        drop_option($texts[$i++], $varname, $opt);
+    }
+    echo "</select>";
 }
 
-function drop_option($text,$varname, $opt) {
-	global $$varname;
-	
-	echo "<option value=\"$opt\" ";
-	if (!empty($$varname) && $$varname==$opt ) echo "selected"; 
-	echo ">$text</option>\n";
-}
-
-function search_button() {	
-	echo "<tr><td id='submit'><input type=\"submit\"  name=\"submit\" border=0 value=\"Search\"></td></tr>";
+function drop_option($text, $varname, $opt) {
+    global $$varname;
+    
+    echo "<option value=\"$opt\" ";
+    if (!empty($$varname) && $$varname == $opt) {
+        echo "selected";
+    }
+    echo ">$text</option>\n";
 }
 
 // check user type

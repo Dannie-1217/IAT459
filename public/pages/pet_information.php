@@ -33,9 +33,11 @@ if(isset($_SESSION['user_name'])){
 $general_query = "SELECT * FROM pet WHERE pet_id = ".$id;
 $select_result = mysqli_query($connection, $general_query);
 
+// Get all the images of the pet
 $image_query = "SELECT images FROM pet_images WHERE pet_id = $id";
 $image_result = mysqli_query($connection, $image_query);
 
+// Initialize the image array
 $images = [];
 
 if ($image_result && mysqli_num_rows($image_result) > 0) {
@@ -52,13 +54,18 @@ if(!$select_result || !$image_result){
 if(mysqli_num_rows($select_result) != 0):
     $pet = mysqli_fetch_assoc($select_result);
 ?>
+
     <main class="pet-profile-container">
-        <div class="title-container">
-            <a href="<?php echo PUBLIC_PATH . '/pages/homepage.php'; ?>" class="minimal-back-btn" aria-label="Go back to pets list">
-                <i class="fas fa-chevron-left"></i>
-            </a>
-            <h1 class="pet-profile-title">Meet <?php echo htmlspecialchars($pet['pet_name']); ?></h1>
-        </div>
+    <div class="title-container">
+        <?php
+            // Check if the referer (previous page) is available
+            $previous_page = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PUBLIC_PATH . '/pages/homepage.php';
+        ?>
+        <a href="<?php echo htmlspecialchars($previous_page); ?>" class="minimal-back-btn" aria-label="Go back to the previous page">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1 class="pet-profile-title">Meet <?php echo htmlspecialchars($pet['pet_name']); ?></h1>
+    </div>
         
         <div class="pet-card">
             <div class="image-gallery-container">

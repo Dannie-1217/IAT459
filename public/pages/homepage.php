@@ -35,12 +35,13 @@
         <h2>Trending Pets</h2>
        
         <form id="searchForm">
-            <?php
-                drop_list('Pet Type: ', 'pet_type' , ['','dog','cat','horse','rabbit','bird','fish','other'],['','Dog','Cat','Horse','Rabbit','Bird','Fish','Other']);
-                drop_list('Location: ', 'location' , ['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster'],['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster']);
-            ?>
-            <input type="submit" value="Search" class="search_btn">
-        </form>
+    <?php
+        drop_list('Pet Type:', 'pet_type', ['','dog','cat','horse','rabbit','bird','fish','other'], ['All','Dog','Cat','Horse','Rabbit','Bird','Fish','Other']);
+        drop_list('Location:', 'location', ['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster'], ['All','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster']);
+    ?>
+    <input type="submit" value="Search" class="search_btn">
+</form>
+
         <div id="search_res"></div>
     </section>
 
