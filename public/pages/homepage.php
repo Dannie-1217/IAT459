@@ -30,32 +30,14 @@
         </div>
     </div>
 
-    <!-- <section id="trending">
+    <section id="trending">
         <h2>Trending Pets</h2>
+       
         <form id="searchForm">
             <?php
                 drop_list('Pet Type: ', 'pet_type' , ['','dog','cat','horse','rabbit','bird','fish','other'],['','Dog','Cat','Horse','Rabbit','Bird','Fish','Other']);
                 drop_list('Location: ', 'location' , ['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster'],['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster']);
             ?>
-            <input type="submit" value="Search" class="search_btn">
-        </form>
-        <div id="search_res"></div>
-    </section> -->
-    <section id="trending">
-        <h2>Trending Pets</h2>
-        <form id="searchForm">
-            <div class="form-row">
-                <div class="selectWrapper">
-                    <?php
-                        drop_list('Pet Type: ', 'pet_type', ['','dog','cat','horse','rabbit','bird','fish','other'], ['','Dog','Cat','Horse','Rabbit','Bird','Fish','Other']);
-                    ?>
-                </div>
-                <div class="selectWrapper">
-                    <?php
-                        drop_list('Location: ', 'location', ['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster'], ['','Burnaby','Surrey','Richmond','Vancouver','Delta','Langley','Coquitlam','North Vancouver','New Westminster']);
-                    ?>
-                </div>
-            </div>
             <input type="submit" value="Search" class="search_btn">
         </form>
         <div id="search_res"></div>

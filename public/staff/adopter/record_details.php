@@ -95,14 +95,11 @@ if(mysqli_num_rows($select_result) != 0):
                     
                     <div class="pet-description">
                         <h3>Application Questions</h3>
-                        <p>Have you adopted a pet before?</p>
-                        <p><?php echo nl2br(htmlspecialchars($pet['adopted_before'])); ?></p>
-                        <p>Do you have other pets at home?</p>
-                        <p><?php echo nl2br(htmlspecialchars($pet['other_pets'])); ?></p>
-                        <p>Do you have a suitable living space for this pet?</p>
-                        <p><?php echo nl2br(htmlspecialchars($pet['suitable_living_space'])); ?></p>
-                        <p>Why do you want to adopt this pet?</p>
-                        <p><?php echo nl2br(htmlspecialchars($pet['reason_for_adoption'])); ?></p>
+                        <p>Have you adopted a pet before: <span style="color: #1565c0;"><?php echo htmlspecialchars($pet['adopted_before']); ?></span></p>
+                        <p>Do you have other pets at home: <span style="color: #1565c0;"><?php echo htmlspecialchars($pet['other_pets']); ?></p>
+                        <p>Do you have a suitable living space for this pet: <span style="color: #1565c0;"><?php echo htmlspecialchars($pet['suitable_living_space']); ?></p>
+                        <p>Why do you want to adopt this pet:</p>
+                        <p style="color: #1565c0; "><?php echo htmlspecialchars($pet['reason_for_adoption']); ?></p>
                     </div>
                 </div>
                 
