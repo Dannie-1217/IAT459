@@ -103,17 +103,19 @@ $RequestResult = mysqli_query($connection, $RequestQuery);
                         </div>
 
                         <div class="request-details">
-                            <p><strong>Adopted Before:</strong> <?php echo htmlspecialchars($row['adopted_before']) ?></p>
-                            <p><strong>Other Pets:</strong> <?php echo htmlspecialchars($row['other_pets']) ?></p>
-                            <p><strong>Suitable Living Space:</strong> <?php echo htmlspecialchars($row['suitable_living_space']) ?></p>
-                            <p><strong>Reason for Adoption:</strong> <?php echo htmlspecialchars($row['reason_for_adoption']) ?></p>
+                            <p><strong>Adopted Before:</strong> <span><?php echo htmlspecialchars($row['adopted_before']) ?></span></p>
+                            <p><strong>Other Pets:</strong> <span><?php echo htmlspecialchars($row['other_pets']) ?></span></p>
+                            <p><strong>Suitable Living Space:</strong> <span><?php echo htmlspecialchars($row['suitable_living_space']) ?></span></p>
+                            <p><strong>Reason for Adoption:</strong> <span><?php echo htmlspecialchars($row['reason_for_adoption']) ?></span></p>
                         </div>
 
                         <form class="decision-form" method="GET"  action="request_processing.php">
                             <h3>Your Decision:</h3>
-                            <label><input type="radio" name="decision" value="Later" checked> Later</label><br>
-                            <label><input type="radio" name="decision" value="Approved" required> Approved</label><br>
-                            <label><input type="radio" name="decision" value="Declined" required> Declined</label><br><br>
+                            <div class="decision_container">
+                                <label><input type="radio" name="decision" value="Later" checked> Later</label><br>
+                                <label><input type="radio" name="decision" value="Approved" required> Approved</label><br>
+                                <label><input type="radio" name="decision" value="Declined" required> Declined</label><br><br>
+                            </div>
                             <input type="submit" value="Make Decision" class="btn-decision">
                         </form>
                     </div>

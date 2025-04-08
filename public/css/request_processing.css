@@ -59,6 +59,9 @@
     color: #444;
     line-height: 1.5;
 }
+.request-details span{
+   color:#004085
+}
 
 /* Status badge styling */
 .status {
@@ -81,7 +84,7 @@
 
 .status.processing {
     background-color: #cce5ff;
-    color: #004085;
+    color: #1565c0;
 }
 
 /* Decision form layout */
@@ -91,10 +94,16 @@
     border-radius: 10px;
 }
 
+.decision_container{
+    display: flex;
+    justify-content: space-between;
+}
+
 .decision-form h3 {
     margin-top: 0;
     color: #333;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .decision-form label {
@@ -102,6 +111,7 @@
     margin-bottom: 0.4rem;
     font-weight: 500;
     color: #333;
+    font-size: 1.1rem;
 }
 
 .btn-decision {

@@ -1,0 +1,75 @@
+/* Application Questions Section */
+.pet-description {
+    margin: 25px 0;
+    line-height: 1.7;
+    color: #444;
+}
+
+.pet-description h3 {
+    color: #f44e21;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+form label {
+    font-size: 16px;
+    color: #444;
+}
+
+form select, form textarea {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+form select:hover, form textarea:hover {
+    border-color: #f44e21;
+}
+
+form select:focus, form textarea:focus {
+    border-color: #f44e21;
+    background-color: #fff;
+    outline: none;
+}
+
+form textarea {
+    resize: none;
+    min-height: 100px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f44e21;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: black;
+}
+
+button[type="submit"] i {
+    color: white;
+}
