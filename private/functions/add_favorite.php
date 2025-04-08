@@ -21,7 +21,7 @@
             exit;
         }
         else{
-            header("Location: ../../public/pages/homepage.php");
+            header("Location: ../../public/pages/pet_information.php");
         }
     }
     else{
