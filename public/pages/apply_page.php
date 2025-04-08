@@ -4,6 +4,7 @@
     $page_styles = [
         PUBLIC_PATH . '/css/header.css',
         PUBLIC_PATH . '/css/pet_information.css',
+        PUBLIC_PATH . '/css/apply_page.css',
         PUBLIC_PATH . '/css/font.css',
         PUBLIC_PATH . '/css/grid.css',
         PUBLIC_PATH . '/css/footer.css',
@@ -91,10 +92,14 @@
 
     <main class="pet-profile-container">
         <div class="title-container">
-            <a href="<?php echo PUBLIC_PATH . '/pages/homepage.php'; ?>" class="minimal-back-btn" aria-label="Go back to pets list">
+            <?php
+                // Check if the referer (previous page) is available
+                $previous_page = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PUBLIC_PATH . '/pages/homepage.php';
+            ?>
+            <a href="<?php echo htmlspecialchars($previous_page); ?>" class="minimal-back-btn" aria-label="Go back to the previous page">
                 <i class="fas fa-chevron-left"></i>
             </a>
-            <h1 class="pet-profile-title">Application Form:</h1>
+            <h1 class="pet-profile-title">Meet <?php echo htmlspecialchars($pet['pet_name']); ?></h1>
         </div>
         
         <div class="pet-card">
@@ -130,38 +135,34 @@
                     <p class="pet-post-date">Posted on: <?php echo date('F j, Y', strtotime($pet['post_date'])); ?></p>
                     
                     <div class="pet-description">
-                        <h3>Application Questions</h3>
-                        <form action="apply_page.php" method="POST" enctype="multipart/form-data">
-                            <label>Have you adopted a pet before?</label><br>
-                            <select name="q1">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select> <br>
-                       
-                            <label>Do you have other pets right now?</label><br>
-                            <select name="q2">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select> <br>
-                        
-                            <label>Do you have a suitable living space for this pet?</label><br>
-                            <select name="q3">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select><br>
-              
-                            <label>Why do you want to adopt this pet?</label><br>
-                            <textarea name="q4" rows="1" style='width:  16.76rem ; 
-                                height: 4rem;
-                                margin-right: 1em;
-                                margin-top: 0.5em;
-                                resize: none;'></textarea><br>
+    <h3>Application Questions</h3>
+    <form action="apply_page.php" method="POST" enctype="multipart/form-data">
+        <label for="q1">Have you adopted a pet before?</label>
+        <select name="q1" id="q1">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        
+        <label for="q2">Do you have other pets right now?</label>
+        <select name="q2" id="q2">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        
+        <label for="q3">Do you have a suitable living space for this pet?</label>
+        <select name="q3" id="q3">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
 
-                            <button type="submit" class="btn-apply">
-                                    <i class="fas fa-paw"></i> Apply for Adoption
-                            </button>
-                        </form>
-                    </div>
+        <label for="q4">Why do you want to adopt this pet?</label>
+        <textarea name="q4" id="q4" rows="1" style="resize: none;"></textarea>
+
+        <button type="submit">
+            <i class="fas fa-paw"></i> Apply for Adoption
+        </button>
+    </form>
+</div>
                 </div>
             </div>
         </div>
