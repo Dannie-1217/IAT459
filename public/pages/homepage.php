@@ -15,6 +15,7 @@
     require_once(ROOT_PATH . PRIVATE_PATH.'/functions/functions.php');  
 ?>
 
+
 <main>
     <div class="grid welcome_grid welcome_container">
         <div class="welcome_left">
@@ -42,6 +43,70 @@
         </form>
         <div id="search_res"></div>
     </section>
+
+
+
+    <?php
+        // Fetch user id based on username
+        $userQuery = "SELECT user_id FROM user WHERE user_name = '$user_name'";
+        $userResult = mysqli_query($connection, $userQuery);
+        $userData = mysqli_fetch_assoc($userResult);
+        $user_id = $userData['user_id'];
+
+        if (isset($userType) && $userType === 'adopter'){
+            $prefer_query = "SELECT pet.pet_id, pet.pet_name, pet.pet_type, pet.location, MIN(pet_images.images) AS image
+                            FROM pet
+                            JOIN pet_tags ON pet.pet_id = pet_tags.pet_id
+                            JOIN pet_images ON pet.pet_id = pet_images.pet_id
+                            WHERE pet_tags.tag_id = ANY(SELECT tag_id 
+                                                        FROM preferences 
+                                                        WHERE user_id = '$user_id') 
+                            GROUP BY pet.pet_id";
+            $prefer_result = mysqli_query($connection, $prefer_query);
+
+            if(!$prefer_result){
+                echo"query failed!";
+                exit;
+            }
+        }
+    ?>
+    <?php if (isset($userType) && $userType === 'adopter') { ?>
+
+    
+
+    <section id="recommendations">
+        <h2>Recommendations</h2>
+        
+        <?php if(mysqli_num_rows($prefer_result)>0): ?>
+            <div class="cardContainer grid">
+                <?php while($row = mysqli_fetch_assoc($prefer_result)): 
+                    $pet_id = $row['pet_id'];
+                    $pet_name = htmlspecialchars($row['pet_name']);
+                    $pet_type = htmlspecialchars($row['pet_type']);
+                    $location = htmlspecialchars($row['location']);
+                    $image_path = htmlspecialchars($row['image']);
+                ?>
+                    <div class="petCard">
+                        <a href="pet_information.php?edit=<?php echo $pet_id; ?>">
+                            <img src="<?php echo PUBLIC_PATH . "/images/petimages/".$image_path; ?>" alt="<?php echo $pet_name; ?>" class="petImage">
+                            <div class="petInfo">
+                                <h3 class="petName"><?php echo $pet_name; ?></h3>
+                                <p><strong>Type:</strong> <?php echo ucfirst($pet_type); ?></p>
+                                <p class="petLocation"><?php echo $location; ?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        <?php else: ?>
+            <p class="intro">No recommendations found based on your preferences.</p>
+        <?php endif; ?> 
+
+
+
+    </section>
+
+    <?php }?>
 
 
 </main>
