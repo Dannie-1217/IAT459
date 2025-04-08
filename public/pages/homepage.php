@@ -64,8 +64,7 @@
                             WHERE pet_tags.tag_id = ANY(SELECT tag_id 
                                                         FROM preferences 
                                                         WHERE user_id = '$user_id') AND pet.status = 'Available'
-                            GROUP BY pet.pet_id
-                            LIMIT 10";
+                            GROUP BY pet.pet_id";
             $prefer_result = mysqli_query($connection, $prefer_query);
 
             if(!$prefer_result){
@@ -76,41 +75,20 @@
     ?>
 
     
-    <?php if (isset($userType) && $userType === 'adopter') { ?>
-
+<?php if (isset($userType) && $userType === 'adopter') { ?>
     <section id="recommendations">
         <h2>Recommendations</h2>
-        
-        <?php if(mysqli_num_rows($prefer_result)>0): ?>
-            <div class="cardContainer grid">
-                <?php while($row = mysqli_fetch_assoc($prefer_result)): 
-                    $pet_id = $row['pet_id'];
-                    $pet_name = htmlspecialchars($row['pet_name']);
-                    $pet_type = htmlspecialchars($row['pet_type']);
-                    $location = htmlspecialchars($row['location']);
-                    $image_path = htmlspecialchars($row['image']);
-                ?>
-                    <div class="petCard">
-                        <a href="pet_information.php?edit=<?php echo $pet_id; ?>">
-                            <img src="<?php echo PUBLIC_PATH . "/images/petimages/".$image_path; ?>" alt="<?php echo $pet_name; ?>" class="petImage">
-                            <div class="petInfo">
-                                <h3 class="petName"><?php echo $pet_name; ?></h3>
-                                <p><strong>Type:</strong> <?php echo ucfirst($pet_type); ?></p>
-                                <p class="petLocation"><?php echo $location; ?></p>
-                            </div>
-                        </a>
-                    </div>
-                <?php endwhile; ?>
-            </div>
-        <?php else: ?>
-            <p class="intro">No recommendations found based on your preferences.</p>
-        <?php endif; ?> 
 
+        <div id="recommendation_res"></div>
 
-
+        <div class="pagination_controls">
+            <button class="pagination_btn" id="recommend_prev"><</button>
+            <span id="recommend_page_info">Page 1</span>
+            <button class="pagination_btn" id="recommend_next">></button>
+        </div>
     </section>
+<?php } ?>
 
-    <?php }?>
 
 
 </main>
