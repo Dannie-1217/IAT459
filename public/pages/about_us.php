@@ -1,30 +1,56 @@
 <?php require_once("../../private/functions/initialization.php") ?>
 
 <?php
-
 $page_styles = [
     PUBLIC_PATH . '/css/header.css',
     PUBLIC_PATH . '/css/homepage.css',
     PUBLIC_PATH . '/css/font.css',
     PUBLIC_PATH . '/css/grid.css',
     PUBLIC_PATH . '/css/footer.css',
+    PUBLIC_PATH . '/css/about_us.css', // Add the about_us.css here
 ];
 
 require_once(ROOT_PATH . SHARED_PATH . '/header.php');
 ?>
 
+<body>
+    <div class="about-us-container">
+        <div class="about-us-header">
+            <h1>Welcome to FurEver Friends!</h1>
+            <p>A platform designed to help you post and adopt adorable pets in the Greater Vancouver area.</p>
+        </div>
 
-<boady>
-    <div style="display:grid; grid-template-columns: 2fr 2.5fr; align-items:center; height: 800px; margin-top: 3rem; margin-bottom: 3rem;">
-        <div style="margin-left: 15rem; margin-right: 0rem;">
-            <img src="../images/assets/about_us_paw.png" style="width:auto;height:500px; align-items:center;" alt="paw">
+        <div class="about-us-content">
+            <div class="about-us-image">
+                <img src="../images/assets/aboutus.png" width="1284" height="690" alt="FurEver Friends Image"/>
+            </div>
+
+            <div class="about-us-text">
+                <h2>Our Mission</h2>
+                <p>We believe that every animal deserves a warm and sweet home, and we also believe that happy pets bring happy owners. That's why we're here to facilitate free adoptions and connect loving families with wonderful pets!</p>
+                <p>What are you waiting for? Become a member today and start your pet adoption adventure!</p>
+            </div>
         </div>
-        <div style="margin-right: 20rem;">
-            <h1 style="font-size: 6.2rem; color:#212427;">About us</h1>
-            <p style="padding-left: 2rem; line-height: 2rem;font-size: 1.8rem; color:#212427;">Welcome to FurEver Friends, a platform that design to let people post and adopt adorable pets in the Greater Vancouver area. We believe that every animal deserves a warm and sweet home in their lives, and we also believe a happy pets could bring about a happy owner. That is why we're here to facilitate free adoptions. What are you nwaiting for? Come and become a memeber to start pet adoption advantures!</p>
+
+        <div class="contact-us">
+            <h2>Contact Us</h2>
+            <div class="detail">
+                <div class="contact-info">
+                    <p><strong>Phone:</strong> (604) 123-4567</p>
+                    <p><strong>Email:</strong> hello@fureverfriends.com</p>
+                    <p><strong>Address:</strong> 123 Pet Adoption Ave, Burnaby, BC</p>
+                </div>
+
+                <div class="hours-info">
+                    <p><span class="day">Monday-Friday:</span> 10am-6pm</p>
+                    <p><span class="day">Saturday:</span> 10am-4pm</p>
+                    <p><span class="day">Sunday:</span> Closed</p>
+                </div>
+            </div>
         </div>
+
     </div>
 
-    <?php require_once(ROOT_PATH . SHARED_PATH.'/footer.php'); ?>
+    <?php require_once(ROOT_PATH . SHARED_PATH . '/footer.php'); ?>
 </body>
 </html>
