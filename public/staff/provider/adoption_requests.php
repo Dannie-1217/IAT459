@@ -25,12 +25,20 @@
 
     $adoptionRequestQuery = "SELECT pet.pet_id, pet.pet_name, user.user_name, ar.status, ar.adoption_date, MIN(pet_images.images) AS image
         FROM adoption_records ar
-        JOIN provide_records pr ON ar.pet_id = pr.pet_id
-        JOIN pet ON ar.pet_id = pet.pet_id
-        JOIN user ON ar.user_id = user.user_id
+        LEFT JOIN provide_records pr ON ar.pet_id = pr.pet_id
+        LEFT JOIN pet ON ar.pet_id = pet.pet_id
+        LEFT JOIN user ON ar.user_id = user.user_id
         LEFT JOIN pet_images ON pet.pet_id = pet_images.pet_id
         WHERE pr.user_id = '$user_id'
-        GROUP BY pet.pet_id, pet.pet_name, ar.status
+        GROUP BY pr.pet_id
+        ORDER BY ar.adoption_date DESC";
+
+    $adoptionRequestQuery1 = "SELECT pet.pet_id, pet.pet_name, user.user_name, ar.status, ar.adoption_date
+        FROM adoption_records ar
+        LEFT JOIN provide_records pr ON ar.pet_id = pr.pet_id
+        LEFT JOIN pet ON ar.pet_id = pet.pet_id
+        LEFT JOIN user ON ar.user_id = user.user_id
+        WHERE pr.user_id = '$user_id'
         ORDER BY ar.adoption_date DESC";
 
     $adoptionRequestResult = mysqli_query($connection, $adoptionRequestQuery);

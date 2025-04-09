@@ -35,7 +35,7 @@
       $petCountQuery = "SELECT COUNT(*) AS favorite_pet_count
                         FROM favorites 
                         JOIN pet ON favorites.pet_id = pet.pet_id 
-                        WHERE favorites.user_id = '$user_id' AND pet.status = 'Available'";
+                        WHERE favorites.user_id = '$user_id' AND pet.status != 'Adopted'";
       $petCountResult = mysqli_query($connection, $petCountQuery);
       $petCount = mysqli_fetch_assoc($petCountResult)['favorite_pet_count'];
 

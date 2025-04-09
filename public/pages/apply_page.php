@@ -46,6 +46,8 @@
                 $apply = "INSERT INTO adoption_records(user_id, pet_id, adopted_before, other_pets, suitable_living_space, reason_for_adoption, adoption_date, status) 
                     VALUES($user_id, $pet_id, '$q1', '$q2', '$q3', '$q4', '$date', 'Processing')";
                 echo $apply;
+                $update_pet = "UPDATE pet SET status = 'Processing' WHERE pet_id = $id";
+                mysqli_query($connection, $update_pet);
                 $add_res = mysqli_query($connection, $apply);
 
                 if(!$add_res){

@@ -75,7 +75,7 @@
                 <p class="fs-2"><?= $petCount ?></p>
             </a>
             <a href="adoption_requests.php" class="stat-card bg-success">
-                <h5>Adoption Requests</h5>
+                <h5>Requests Need Processing</h5>
                 <p class="fs-2"><?= $adoptionRequestCount ?></p>
             </a>
         </div>

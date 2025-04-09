@@ -53,6 +53,8 @@ if(!$select_result || !$image_result){
 
 if(mysqli_num_rows($select_result) != 0):
     $pet = mysqli_fetch_assoc($select_result);
+    $pet_status = $pet['status'];
+
 ?>
 
     <main class="pet-profile-container">
@@ -122,19 +124,32 @@ if(mysqli_num_rows($select_result) != 0):
                 
                 <?php
                     if($user_type == 'adopter'){
+                        if($pet_status == 'Processing'){
+                            echo'<p style="color:red;">*Someone else already applied adoption for this pet. Please save this pet First!</p>';
+                        }
                         echo '<div class="pet-actions">
                             <form action="../../private/functions/add_favorite.php" method="post" class="action-form">
                                 <button type="submit" class="btn-favorite">
                                     <i class="fas fa-heart"></i> Add to Favorites
                                 </button>
-                            </form>
+                            </form>';
+                        if ($pet_status == 'Available'){
                             
-                            <form action="apply_page.php" method="get" class="action-form">
+                            echo '<form action="apply_page.php" method="get" class="action-form">
                                 <button type="submit" class="btn-apply">
                                     <i class="fas fa-paw"></i> Apply for Adoption
                                 </button>
                             </form>
                             </div>';
+                        }
+                        else if($pet_status == 'Processing'){
+                            echo '
+                                <button type="submit" class="btn-apply" style="background:grey;">
+                                    <i class="fas fa-paw"></i> Apply for Adoption
+                                </button>
+                            
+                            </div>';
+                        }
                     }
                 ?>
             </div>
