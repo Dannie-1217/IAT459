@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2025 at 09:39 AM
+-- Generation Time: Apr 09, 2025 at 04:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,16 @@ INSERT INTO `adoption_records` (`user_id`, `pet_id`, `adopted_before`, `other_pe
 (10019, 10000, 'Yes', 'Yes', 'Yes', 'Dog is cute', '2025-04-02', 'Processing'),
 (10019, 10001, 'Yes', 'Yes', 'Yes', 'Cat is cute, this is a cat right?', '2025-04-02', 'Approve'),
 (10019, 10003, 'Yes', 'Yes', 'Yes', 'Rabbit is cute', '2025-04-06', 'Approve'),
-(10019, 10005, 'Yes', 'Yes', 'Yes', 'To feed my cat', '2025-04-06', 'Approve');
+(10019, 10005, 'Yes', 'Yes', 'Yes', 'To feed my cat', '2025-04-06', 'Approve'),
+(10019, 10077, 'Yes', 'Yes', 'Yes', 'Rough Collie is cute', '2025-04-07', 'Declined'),
+(10019, 10039, 'Yes', 'Yes', 'Yes', 'I do not like bunny actually. But I have no idea why I want this one.', '2025-04-07', 'Processing'),
+(10026, 10012, 'Yes', 'Yes', 'Yes', 'He looks cool!', '2025-04-08', 'Approved'),
+(10019, 10078, 'Yes', 'Yes', 'Yes', 'I want to eat him.', '2025-04-08', 'Approved'),
+(10019, 10077, 'Yes', 'Yes', 'Yes', 'She is cute', '2025-04-09', 'Processing'),
+(10019, 10039, 'Yes', 'Yes', 'Yes', 'Cute', '2025-04-09', 'Processing'),
+(10019, 10036, 'Yes', 'Yes', 'Yes', 'For eat', '2025-04-09', 'Approved'),
+(10028, 10036, 'Yes', 'Yes', 'Yes', 'cute', '2025-04-09', 'Approved'),
+(10019, 10071, 'Yes', 'Yes', 'Yes', 'he is cute', '2025-04-09', 'Processing');
 
 -- --------------------------------------------------------
 
@@ -65,7 +74,14 @@ CREATE TABLE `favorites` (
 
 INSERT INTO `favorites` (`user_id`, `pet_id`) VALUES
 (10019, 10000),
-(10019, 10003);
+(10019, 10003),
+(10019, 10005),
+(10019, 10071),
+(10019, 10077),
+(10023, 10033),
+(10023, 10077),
+(10026, 10012),
+(10026, 10077);
 
 -- --------------------------------------------------------
 
@@ -88,19 +104,19 @@ CREATE TABLE `pet` (
 --
 
 INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `description`, `status`) VALUES
-(10000, 'Bella', 'Vancouver', 'dog', '2025-01-01', 'Bella is a friendly and well-trained golden retriever who loves playing fetch in the park. She is great with kids and other dogs, perfect family pet.', 'Available'),
-(10001, 'Whiskers', 'Burnaby', 'cat', '2025-01-03', 'Whiskers is a gentle gray tabby cat who enjoys lounging by the window and soaking up the sun. She loves cuddles and is very affectionate.', 'NA'),
+(10000, 'Bella', 'Vancouver', 'dog', '2025-01-01', 'Bella is a friendly and well-trained golden retriever who loves playing fetch in the park. She is great with kids and other dogs, perfect family pet.', 'Processing'),
+(10001, 'Whiskers', 'Burnaby', 'cat', '2025-01-03', 'Whiskers is a gentle gray tabby cat who enjoys lounging by the window and soaking up the sun. She loves cuddles and is very affectionate.', 'Adopted'),
 (10002, 'Thunder', 'Richmond', 'horse', '2025-01-04', 'Thunder is a majestic black stallion with a calm temperament. He is trained for trail rides and enjoys open pastures. Ideal for experienced riders.', 'Available'),
-(10003, 'Fluffy', 'Coquitlam', 'rabbit', '2025-01-07', 'Fluffy is a cute white bunny with floppy ears who loves being petted. She enjoys hopping around and munching on fresh greens and carrots.', 'Available'),
+(10003, 'Fluffy', 'Coquitlam', 'rabbit', '2025-01-07', 'Fluffy is a cute white bunny with floppy ears who loves being petted. She enjoys hopping around and munching on fresh greens and carrots.', 'Adopted'),
 (10004, 'Sunny', 'Surrey', 'bird', '2025-01-08', 'Sunny is a bright yellow parrot known for singing beautiful melodies every morning. He is social and can mimic a few words with regular interaction.', 'Available'),
-(10005, 'Goldie', 'North Vancouver', 'fish', '2025-01-12', 'Goldie is a graceful goldfish with shimmering scales. Easy to care for, she adds a calming presence to any aquarium.', 'NA'),
+(10005, 'Goldie', 'North Vancouver', 'fish', '2025-01-12', 'Goldie is a graceful goldfish with shimmering scales. Easy to care for, she adds a calming presence to any aquarium.', 'Adopted'),
 (10006, 'Oreo', 'New Westminster', 'cat', '2025-01-15', 'Oreo is a playful black and white kitten who loves chasing toys and exploring new spaces. Very friendly and gets along with other pets.', 'Available'),
 (10007, 'Rocky', 'Coquitlam', 'dog', '2025-01-19', 'Rocky is an energetic husky with striking blue eyes. He loves outdoor adventures, long walks, and playing with his favorite ball.', 'Available'),
 (10008, 'Shadow', 'Delta', 'horse', '2025-01-22', 'Shadow is a beautiful brown mare with a gentle personality. She is perfect for light riding and enjoys quiet time in the stable or out in the field.', 'Available'),
 (10009, 'Nibbles', 'Langley', 'rabbit', '2025-01-28', 'Nibbles is a sweet little bunny who loves attention and treats. She enjoys being held and will happily sit on your lap while nibbling on vegetables.', 'Available'),
 (10010, 'Daisy', 'Vancouver', 'dog', '2025-02-01', 'Daisy is a sweet golden doodle who loves long walks along the seawall. Friendly with kids and other dogs, perfect for a family.', 'Available'),
 (10011, 'Milo', 'Burnaby', 'cat', '2025-02-03', 'Milo is an adventurous orange tabby who loves exploring high places. He is food-motivated and purrs loudly when happy.', 'Available'),
-(10012, 'Spirit', 'Richmond', 'horse', '2025-02-05', 'Spirit is a beautiful young black horse, ideal for trail rides. Calm and bonds quickly with gentle riders.', 'Available'),
+(10012, 'Spirit', 'Richmond', 'horse', '2025-02-05', 'Spirit is a beautiful young black horse, ideal for trail rides. Calm and bonds quickly with gentle riders.', 'Adopted'),
 (10013, 'Mochi', 'Coquitlam', 'rabbit	', '2025-02-06', 'Mochi is a fluffy grey bunny who enjoys fresh greens and hopping around the living room. Loves being hand-fed treats.\n', 'Available'),
 (10014, 'Kiwi', 'Surrey', 'bird', '2025-02-08', 'Kiwi is a talkative green parakeet that enjoys learning new words. Social and loves sitting on your shoulder.', 'Available'),
 (10015, 'Bubbles', 'North Vancouver', 'fish', '2025-02-10', 'Bubbles is a vibrant betta fish with long flowing fins. Peaceful and easy to care for, perfect for any small tank.', 'Available'),
@@ -124,11 +140,13 @@ INSERT INTO `pet` (`pet_id`, `pet_name`, `location`, `pet_type`, `post_date`, `d
 (10033, 'Rocky', 'Coquitlam', 'dog', '2025-03-18', 'Rocky is a husky mix with endless energy. Enjoys hikes and outdoor play. Best suited for an active family.\n', 'Available'),
 (10034, 'Snowball', 'Surrey', 'rabbit', '2025-03-20', 'Snowball is a pure white rabbit with red eyes. Very gentle and loves nibbling on apples.', 'Available'),
 (10035, 'Lemon', 'North Vancouver', 'bird', '2025-03-22', 'Lemon is a small canary with a bright yellow coat. Known for singing sweet melodies every morning.', 'Available'),
-(10036, 'Flash', 'New Westminster', 'fish', '2025-03-24', 'Flash is a speedy goldfish who loves racing around the tank. Very active and fun to watch.', 'Available'),
+(10036, 'Flash', 'New Westminster', 'fish', '2025-03-24', 'Flash is a speedy goldfish who loves racing around the tank. Very active and fun to watch.', 'Adopted'),
 (10037, 'Bella', 'Coquitlam', 'cat', '2025-03-26', 'Bella is a loving Siamese cat who enjoys being close to people. Loves sitting on laps and purring for hours.', 'Available'),
 (10038, 'Rex', 'Delta', 'dog', '2025-03-28', 'Rex is a border collie known for his intelligence and agility. Perfect for someone who loves training and outdoor activities.', 'Available'),
-(10039, 'Carrot', 'Langley', 'rabbit', '2025-03-30', 'Carrot is an orange bunny who gets excited every time she sees her food bowl. Very friendly and loves to play.', 'Available'),
-(10071, 'Biscuit', 'Surrey', 'others', '2025-03-30', 'A playful and energetic hamster that loves to run on its wheel and explore its surroundings. Great for first-time pet owners.\r\n', 'Available');
+(10039, 'Carrot', 'Langley', 'rabbit', '2025-03-30', 'Carrot is an orange bunny who gets excited every time she sees her food bowl. Very friendly and loves to play.', 'Processing'),
+(10071, 'Biscuit', 'Surrey', 'others', '2025-03-30', 'A playful and energetic hamster that loves to run on its wheel and explore its surroundings. Great for first-time pet owners.\r\n', 'Processing'),
+(10077, 'Cross', 'Burnaby', 'dog', '2025-04-08', 'Cross is a very beautiful rough collie. She is very playful and gentle for other people. What\'s more, she is well trained and could be a very good friends for your kid!', 'Processing'),
+(10078, 'Angus', 'Burnaby', 'others', '2025-04-08', 'Angus is a strong highland cattle. He has a huge horn and ready to ram to the people who wants to adopt him. Great!', 'Adopted');
 
 -- --------------------------------------------------------
 
@@ -264,7 +282,10 @@ INSERT INTO `pet_images` (`pet_id`, `images`) VALUES
 (10038, 'Rex-4.webp'),
 (10039, 'Carrot-1.webp'),
 (10039, 'Carrot-2.webp'),
-(10071, '10071_Biscuit-1.jpg');
+(10071, '10071_Biscuit-1.jpg'),
+(10077, '10077_RoughColliePuppies.jpg'),
+(10078, '10078_highland cow1.webp'),
+(10078, '10078_Highland-Cattle-Calf.jpg');
 
 -- --------------------------------------------------------
 
@@ -429,7 +450,18 @@ INSERT INTO `pet_tags` (`pet_id`, `tag_id`) VALUES
 (10039, 10033),
 (10039, 10088),
 (10071, 10089),
-(10071, 10090);
+(10071, 10090),
+(10077, 10000),
+(10077, 10012),
+(10077, 10021),
+(10077, 10024),
+(10077, 10030),
+(10077, 10098),
+(10077, 10099),
+(10078, 10024),
+(10078, 10100),
+(10078, 10101),
+(10078, 10102);
 
 -- --------------------------------------------------------
 
@@ -447,7 +479,14 @@ CREATE TABLE `preferences` (
 --
 
 INSERT INTO `preferences` (`user_id`, `tag_id`) VALUES
-(10019, 10000);
+(10023, 10000),
+(10023, 10001),
+(10026, 10000),
+(10026, 10098),
+(10026, 10002),
+(10019, 10000),
+(10019, 10001),
+(10019, 10010);
 
 -- --------------------------------------------------------
 
@@ -505,7 +544,9 @@ INSERT INTO `provide_records` (`user_id`, `pet_id`) VALUES
 (10012, 10037),
 (10002, 10038),
 (10005, 10039),
-(10001, 10071);
+(10001, 10071),
+(10022, 10077),
+(10027, 10078);
 
 -- --------------------------------------------------------
 
@@ -614,7 +655,12 @@ INSERT INTO `tags` (`tag_id`, `content`) VALUES
 (10088, 'orange bunny'),
 (10089, 'hamster'),
 (10090, 'like running'),
-(10093, '');
+(10093, ''),
+(10098, 'rough_collie'),
+(10099, 'collie'),
+(10100, 'cow'),
+(10101, 'high land cattle'),
+(10102, 'horn');
 
 -- --------------------------------------------------------
 
@@ -625,12 +671,12 @@ INSERT INTO `tags` (`tag_id`, `content`) VALUES
 CREATE TABLE `user` (
   `user_id` int(5) NOT NULL,
   `user_type` varchar(20) NOT NULL,
-  `user_name` varchar(15) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `legal_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `other_contact` varchar(50) NOT NULL,
-  `profile_photo` varchar(50) NOT NULL
+  `profile_photo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -655,7 +701,12 @@ INSERT INTO `user` (`user_id`, `user_type`, `user_name`, `password`, `legal_name
 (10014, 'adopter', 'robert_brown', '123', 'Robert Brown', 'robert.brown@workmail.com', '236-562-7388', '10014.jpg'),
 (10015, 'adopter', 'linda_taylor', '123', 'Linda Taylor', 'linda.taylor@workmail.com', '798-181-2233', '10015.jpg'),
 (10016, 'provider', 'Dannie', '$2y$10$B8YuSg0bu6ovh8sdSdUAiOA5jhgMyytfeWlmft/86XCUZYmEgqNzO', 'Danni Chen', 'dca158@sfu.ca', '7789981116', 'Dannie_95.jpg'),
-(10019, 'adopter', 'Angus2000', '$2y$10$j2PkTy/A8jRHx2bjXdNA7eD8seU3k.ZXnEr//O8o3Ioztj2RDTe3K', 'Zekun Wang', 'wang@sfu.ca', '7789983821', 'Angus_8.jpg');
+(10019, 'adopter', 'Angus', '$2y$10$j2PkTy/A8jRHx2bjXdNA7eD8seU3k.ZXnEr//O8o3Ioztj2RDTe3K', 'Angus Wang', 'wang@sfu.ca', '6047000874', 'Angus_8.jpg'),
+(10022, 'provider', 'Angus_Provider', '$2y$10$fpG50IfMBA1H0aYEiAx/f.mJg7z2AeHqifegHd1/Pjgli1xtqGJv2', 'Zekun Wang', 'zekun_wang@sfu.ca', '6047000874', 'Angus_Provider_WeChat Image_20250407211542.jpg'),
+(10023, 'adopter', 'Angus Noob', '$2y$10$2lv7xWh2YTeBaB9XGotzoOtS56/PuEwgKqd4rpa1yZM6deHz5shx.', 'Zekun Wang', 'zekun_wang123@sfu.ca', '6047000874', 'Angus Noob_WeChat Image_20250407211554.jpg'),
+(10026, 'adopter', 'Angus 2000 Cattle', '$2y$10$FTaIHKB3IbxIEa2RstniH.xenvGml6l9hdgv4.4AMDFFc4gkHSnuu', 'Zekun Wang', 'angus_wang@sfu.ca', '6047000874', 'Angus the Cattle_WeChat Image_20250407211542.jpg'),
+(10027, 'provider', 'Angus_2000_Provider', '$2y$10$vsTFFZ4IUDrPZfV0tb9csexNrmHv5krjQ7N4DTL1ZZLJ1EiRriuEy', 'Zekun Wang', 'zekun_wang456@sfu.ca', '6047000874', 'Angus_2000_Provider_WeChat Image_20250407211613.jpg'),
+(10028, 'adopter', 'Angus2000Noob', '$2y$10$lfTeDpswQB8YIL/45/DboO2hDj24.vhDrSxUfPctubmozTwrt0ULC', 'Angus Wang', 'zekun_wang567@sfu.ca', '6047000874', 'Angus2000Noob_WeChat Image_20250407211554.jpg');
 
 --
 -- Indexes for dumped tables
@@ -731,19 +782,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10076;
+  MODIFY `pet_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10079;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `tag_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10094;
+  MODIFY `tag_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10103;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10020;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10029;
 
 --
 -- Constraints for dumped tables
